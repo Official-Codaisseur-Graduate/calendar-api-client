@@ -2,8 +2,10 @@ import React from "react";
 import moment from "moment";
 import "./calendar.css";
 import Calendar from './Calendar'
+import { connect } from 'react-redux'
+import { getEvents } from '../../actions'
 
-export default class CalendarContainer extends React.Component {
+class CalendarContainer extends React.Component {
 
   state = {
     showMonthTable: false,
@@ -76,104 +78,16 @@ export default class CalendarContainer extends React.Component {
   };
 
   onPrev = () => {
-    let curr = "";
-    if (this.state.showYearTable === true) {
-      curr = "year";
-    } else {
-      curr = "month";
-    }
     this.setState({
-      dateObject: this.state.dateObject.subtract(1, curr)
+      dateObject: this.state.dateObject.subtract(1, "month")
     });
   };
 
   onNext = () => {
-    let curr = "";
-    if (this.state.showYearTable === true) {
-      curr = "year";
-    } else {
-      curr = "month";
-    }
     this.setState({
-      dateObject: this.state.dateObject.add(1, curr)
+      dateObject: this.state.dateObject.add(1, "month")
     });
   }
-
-  setYear = year => {
-    let dateObject = Object.assign({}, this.state.dateObject);
-    dateObject = moment(dateObject).set("year", year);
-    this.setState({
-      dateObject: dateObject,
-      showMonthTable: !this.state.showMonthTable,
-      showYearTable: !this.state.showYearTable
-    });
-  }
-
-  onYearChange = e => {
-    this.setYear(e.target.value);
-  }
-
-  // getDates(start, stop) {
-  //   let dateArray = [];
-  //   let currentDate = moment(start);
-  //   let stopDate = moment(stop);
-  //   while (currentDate <= stopDate) {
-  //     dateArray.push(moment(currentDate).format("YYYY"));
-  //     currentDate = moment(currentDate).add(1, "year");
-  //   }
-  //   return dateArray;
-  // }
-
-  // YearTable = props => {
-  //   let months = [];
-  //   let nextten = moment()
-  //     .set("year", props)
-  //     .add(12, "year")
-  //     .format("Y");
-
-  //   let tenyear = this.getDates(props, nextten);
-
-  //   tenyear.map(data => {
-  //     return months.push(
-  //       <td
-  //         key={data}
-  //         className="calendar-month"
-  //         onClick={e => {
-  //           this.setYear(data);
-  //         }}
-  //       >
-  //         <span>{data}</span>
-  //       </td>
-  //     );
-  //   });
-  //   let rows = [];
-  //   let cells = [];
-
-  //   months.forEach((row, i) => {
-  //     if (i % 3 !== 0 || i === 0) {
-  //       cells.push(row);
-  //     } else {
-  //       rows.push(cells);
-  //       cells = [];
-  //       cells.push(row);
-  //     }
-  //   });
-  //   rows.push(cells);
-  //   let yearlist = rows.map((d, i) => {
-  //     return <tr key={i}>{d}</tr>;
-  //   });
-
-  //   return (
-  //     <table className="calendar-month">
-  //       <thead>
-  //         <tr>
-  //           <th colSpan="4">Select a Year</th>
-  //         </tr>
-  //       </thead>
-  //       <tbody>{yearlist}</tbody>
-  //     </table>
-  //   );
-  // }
 
   onDayClick = (e, d) => {
     this.setState(
@@ -182,6 +96,7 @@ export default class CalendarContainer extends React.Component {
       },
       () => {
         console.log("SELECTED DAY: ", this.state.selectedDay, 'Month:', this.state.dateObject.format("MM"), 'year:', this.state.dateObject.format("Y"));
+        this.props.getEvents()
       }
     );
   };
@@ -207,3 +122,5 @@ export default class CalendarContainer extends React.Component {
     );
   }
 }
+
+export default connect(null, { getEvents })(CalendarContainer)

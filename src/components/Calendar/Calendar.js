@@ -94,7 +94,6 @@ export default class Calendar extends Component {
             </span>
           )}
           <span className="calendar-label" > 
-          {/* // onClick={e => this.props.showYearTableFn()} */}
             {this.year()}
           </span>
            <span

@@ -11,7 +11,7 @@ function setEvents(payload) {
   }
 }
 
-export const getEvents = () => dispatch => {
+export const getEvents = (year, month, day) => dispatch => {
   request
     .get(`${url}/events`)
     .then(res => {
