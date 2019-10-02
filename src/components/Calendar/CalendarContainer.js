@@ -11,11 +11,10 @@ class CalendarContainer extends React.Component {
     showMonthTable: false,
     showDateTable: true,
     dateObject: moment(),
-    allmonths: moment.months(),
-    selectedDay: null
+    selectedDay: null,
   }
 
-  showMonth = (e, month) => {
+  showMonth = () => {
     this.setState({
       showMonthTable: !this.state.showMonthTable,
      showDateTable: !this.state.showDateTable
@@ -23,7 +22,7 @@ class CalendarContainer extends React.Component {
   }
 
   setMonth = month => {
-    let monthNo = this.state.allmonths.indexOf(month)
+    let monthNo = moment.months().indexOf(month)
     let dateObject = Object.assign({}, this.state.dateObject)
     dateObject = moment(dateObject).set("month", monthNo)
     this.setState({
@@ -32,50 +31,6 @@ class CalendarContainer extends React.Component {
       showDateTable: !this.state.showDateTable
     })
   }
-
-  MonthList = props => {
-    let months = [];
-    props.data.map(data => {
-      return months.push(
-        <td
-          key={data}
-          className="calendar-month"
-          onClick={e => {
-            this.setMonth(data);
-          }}
-        >
-          <span>{data}</span>
-        </td>
-      );
-    });
-    let rows = [];
-    let cells = [];
-
-    months.forEach((row, i) => {
-      if (i % 3 !== 0 || i === 0) {
-        cells.push(row);
-      } else {
-        rows.push(cells);
-        cells = [];
-        cells.push(row);
-      }
-    });
-    rows.push(cells);
-    let monthlist = rows.map((d, i) => {
-      return <tr key={i}>{d}</tr>;
-    });
-
-    return (
-      <table className="calendar-month">
-        <thead>
-          <tr>
-            <th colSpan="4">Select a Month</th>
-          </tr>
-        </thead>
-        <tbody>{monthlist}</tbody>
-      </table>
-    );
-  };
 
   onPrev = () => {
     this.setState({
@@ -96,25 +51,28 @@ class CalendarContainer extends React.Component {
       },
       () => {
         console.log("SELECTED DAY: ", this.state.selectedDay, 'Month:', this.state.dateObject.format("MM"), 'year:', this.state.dateObject.format("Y"));
-        this.props.getEvents()
+        
       }
     );
   };
+
+  componentDidMount() {
+    this.props.getEvents()
+  }
+
   render() {
-    
 
     return (
       <div>
         <Calendar 
         onPrev={this.onPrev}
-        weekdaysShort={this.weekdayshort}
         showMonthTable={this.state.showMonthTable}
         showMonth={this.showMonth}
         onNext={this.onNext}
-        MonthList={this.MonthList}
         showDateTable={this.state.showDateTable}
         dateObject={this.state.dateObject}
         onDayClick={this.onDayClick}
+        setMonth={this.setMonth}
 
         />
       
@@ -123,4 +81,10 @@ class CalendarContainer extends React.Component {
   }
 }
 
-export default connect(null, { getEvents })(CalendarContainer)
+const mapStateToProps = state => {
+  return {
+    events: state.events
+  }
+}
+
+export default connect(mapStateToProps, { getEvents })(CalendarContainer)
