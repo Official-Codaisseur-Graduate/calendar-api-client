@@ -49,24 +49,48 @@
   background-repeat: no-repeat;
   background-position: center center;
 }
-.tail-datetime-calendar .calendar-navi span:first-child,
+/* .tail-datetime-calendar .calendar-navi span:first-child,
 .tail-datetime-calendar .calendar-navi span:last-child {
   width: 35px;
   padding: 0 0 5px 0;
   font-size: 22px;
-}
+} */
 .tail-datetime-calendar .calendar-navi span:hover {
   background-color: rgba(0, 0, 0, 0.15);
 }
+
+.tail-datetime-calendar .calendar-navi span.button-prevYear {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC\
+    9zdmciIHdpZHRoPSI2IiBoZWlnaHQ9IjE2IiB2aWV3Qm94PSIwIDAgNiAxNiI+PHBhdGggZmlsbD0iI2ZmZmZmZiIgZD0iT\
+    TYgMkwwIDhsNiA2VjJ6Ii8+PC9zdmc+");
+    width: 35px;
+    padding: 0 0 5px 0;
+    height: 22px;
+}
+.tail-datetime-calendar .calendar-navi span.button-nextYear {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC\
+    9zdmciIHdpZHRoPSI2IiBoZWlnaHQ9IjE2IiB2aWV3Qm94PSIwIDAgNiAxNiI+PHBhdGggZmlsbD0iI2ZmZmZmZiIgZD0iT\
+    TAgMTRsNi02LTYtNnYxMnoiLz48L3N2Zz4=");
+    width: 35px;
+    padding: 0 0 5px 0;
+    height: 22px;
+}
+
 .tail-datetime-calendar .calendar-navi span.button-prev {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC\
     9zdmciIHdpZHRoPSI2IiBoZWlnaHQ9IjE2IiB2aWV3Qm94PSIwIDAgNiAxNiI+PHBhdGggZmlsbD0iI2ZmZmZmZiIgZD0iT\
     TYgMkwwIDhsNiA2VjJ6Ii8+PC9zdmc+");
+    width: 35px;
+    padding: 0 0 5px 0;
+    height: 22px;
 }
 .tail-datetime-calendar .calendar-navi span.button-next {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC\
     9zdmciIHdpZHRoPSI2IiBoZWlnaHQ9IjE2IiB2aWV3Qm94PSIwIDAgNiAxNiI+PHBhdGggZmlsbD0iI2ZmZmZmZiIgZD0iT\
     TAgMTRsNi02LTYtNnYxMnoiLz48L3N2Zz4=");
+    width: 35px;
+    padding: 0 0 5px 0;
+    height: 22px;
 }
 /* .tail-datetime-calendar .calendar-navi span.button-check {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC\
