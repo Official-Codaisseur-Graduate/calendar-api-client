@@ -20,3 +20,43 @@ export const getEvents = (year, month, day) => dispatch => {
     })
     .catch(console.error)
 }
+
+
+export const JWT = 'JWT'
+
+function jwt(payload) {
+  return{
+    type: JWT,
+    payload
+  }
+}
+
+export const login = (email, password) => dispatch => {  
+  request
+  .post(`${url}/login`)
+  .send({ email, password })
+  .then(res => {
+    const action = jwt(res.body)
+    dispatch(action)
+  })
+  .catch(console.error)
+}
+
+export const GET_USER = 'GET_USER'
+
+function getUser(payload) {
+  return{
+    type: GET_USER,
+    payload
+  }
+}
+
+export const newUser = (user) => (dispatch) => {  
+  request
+  .post(`${url}/users`)
+  .send(user)
+  .then(res => {
+    dispatch(getUser(res.body))
+  })
+  .catch(console.error)
+}

@@ -5,8 +5,6 @@ export default class LoginForm extends React.Component {
 
   render(){
     return <div className="form-container">
-      {this.props.user.jwt}
-      {this.props.values.loggedIn && !this.props.user.jwt ? <div>Please supply a valid name and password to log in.</div> : 'Loginn succes'}
 
       <form className="form" onSubmit={this.props.onSubmit}>
       
@@ -34,7 +32,7 @@ export default class LoginForm extends React.Component {
           />
         </label>
         <button type='submit'>Login</button>
-        <p>Or sign up for free <Link to={'/signup'}>here</Link></p>
+        <p>Or sign up <Link to={'/signup'}>here</Link></p>
       </form>
       </div>
   }

@@ -8,7 +8,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Route path ="/login" component={ LoginFormContainer } />
+      <Route path ="/" component={ LoginFormContainer } />
       <Route path ="/signup" component={ SignupFormContainer } />  
       <CalendarContainer />
     </div>
