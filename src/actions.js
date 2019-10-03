@@ -13,7 +13,7 @@ function setEvents(payload) {
 
 export const getEvents = (year, month, day) => dispatch => {
   request
-    .get(`${url}/events`)
+    .get(`${url}/events/${year}/${month}/${day}`)
     .then(res => {
       const action = setEvents(res.body)
       dispatch(action)
@@ -21,6 +21,20 @@ export const getEvents = (year, month, day) => dispatch => {
     .catch(console.error)
 }
 
+export const CHOSEN_DATE = 'CHOSEN_DATE'
+
+function date(payload) {
+  return {
+    type: CHOSEN_DATE,
+    payload
+  }
+}
+
+export const chosenDate = (year, month, day) => dispatch => {
+  const dateObject = { year: year, month: month, day: day}
+  const action = date(dateObject)
+  dispatch(action)
+}
 
 export const JWT = 'JWT'
 

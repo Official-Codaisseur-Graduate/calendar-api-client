@@ -3,7 +3,7 @@ import moment from "moment";
 import "./calendar.css";
 import Calendar from './Calendar'
 import { connect } from 'react-redux'
-import { getEvents } from '../../actions'
+import { getEvents, chosenDate } from '../../actions'
 
 class CalendarContainer extends React.Component {
 
@@ -50,14 +50,15 @@ class CalendarContainer extends React.Component {
         selectedDay: d
       },
       () => {
-        console.log("SELECTED DAY: ", this.state.selectedDay, 'Month:', this.state.dateObject.format("MM"), 'year:', this.state.dateObject.format("Y"));
-        
+        this.props.getEvents(this.state.dateObject.format("Y"), this.state.dateObject.format("MM"), this.state.selectedDay)  
+        this.props.chosenDate(this.state.dateObject.format("Y"), this.state.dateObject.format("MMMM"), this.state.selectedDay)
       }
     );
   };
 
   componentDidMount() {
-    this.props.getEvents()
+    this.props.getEvents(this.state.dateObject.format("Y"), this.state.dateObject.format("MM"), Number(this.state.dateObject.format("D")))
+    this.props.chosenDate(this.state.dateObject.format("Y"), this.state.dateObject.format("MMMM"), Number(this.state.dateObject.format("D")))
   }
 
   render() {
@@ -81,10 +82,5 @@ class CalendarContainer extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    events: state.events
-  }
-}
 
-export default connect(mapStateToProps, { getEvents })(CalendarContainer)
+export default connect(null, { getEvents, chosenDate })(CalendarContainer)

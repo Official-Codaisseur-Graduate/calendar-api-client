@@ -1,0 +1,88 @@
+
+
+.eventList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50vh;
+  background-color: #cd283c;
+  font-family: "Open Sans", Calibri, Arial, sans-serif;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3125);
+  margin: 15px;
+  padding: 0;
+}
+
+.eventDetailsBody h3 {
+  color: white;
+}
+
+.eventDetailsBox {
+  background-color: white;
+  font-family: 'Cabin', sans-serif;
+  margin: 15px;
+}
+
+.eventDescription {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50vh;
+}
+
+.eventGuests {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50vh;
+}
+
+.eventDetailsBox p {
+  color: #223344;
+}
+
+.eventTitle {
+  display: flex;
+  width: 50vh;
+  height: 3rem;
+  background-color: #223344;
+  align-items: center;
+  justify-content: center;
+}
+
+.eventTitle h4{
+  color: white;
+}
+
+.detailsBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44vh;
+  height: auto;
+  background-color: #223344;
+  border: solid #cd283c 3vh;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3125);
+  margin: 15px;
+  padding: 0;
+}
+
+.detailsBox h4 {
+  width: 40vh;
+  color: white;
+  font-family: 'Cabin', sans-serif;
+}
+
+.detailsBox p {
+  width: 40vh;
+  color: white;
+  font-family: 'Cabin', sans-serif;
+}
+
+.closeButton h2 {
+  color: white;
+  padding: 1vh;
+  border: solid white 2px;
+  font-family: 'Cabin', sans-serif;
+}

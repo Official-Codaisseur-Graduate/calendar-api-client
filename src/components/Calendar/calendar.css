@@ -1,11 +1,11 @@
 .tail-datetime-calendar {
   width: 50vh;
-  height: 50vh;;
+  height: 60vh;;
   margin: 15px;
   padding: 0;
   display: block;
   overflow: hidden;
-  position: absolute;
+  /* position: absolute; */
   border-collapse: separate;
   font-family: "Open Sans", Calibri, Arial, sans-serif;
   background-color: #ffffff;
@@ -120,7 +120,7 @@
 .tail-datetime-calendar .calendar-date table.calendar-day tbody tr > *::after {
   top: 0px;
   left: 0px;
-  width: 48px;
+  width: 40px;
   height: 40px;
   content: "";
   display: block;

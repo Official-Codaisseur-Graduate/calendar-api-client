@@ -23,12 +23,10 @@ export default class Calendar extends Component {
       let currentDay = day === Number(this.props.dateObject.format("D")) && currentMonth === this.props.dateObject.format("MMMM") ? "today" : ''
 
       daysInMonth.push(
-        <td key={day} className={`calendar-day ${currentDay}`}>
-          <span
-            onClick={e => {
-              this.props.onDayClick(e, day);
-            }}
-          >
+        <td key={day} className={`calendar-day ${currentDay}`} onClick={e => {
+          this.props.onDayClick(e, day);
+        }}>
+          <span>
             {day}
           </span>
         </td>
@@ -89,7 +87,6 @@ export default class Calendar extends Component {
   render() {
     return (
       <div>
-        <h2>Calendar</h2>
         <div className="tail-datetime-calendar">
       <div className="calendar-navi">
           <span
