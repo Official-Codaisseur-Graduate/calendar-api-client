@@ -1,5 +1,4 @@
 
-
 .eventList {
   display: flex;
   align-items: center;
@@ -10,6 +9,10 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3125);
   margin: 15px;
   padding: 0;
+}
+
+.eventList h3 {
+  color: white;
 }
 
 .eventDetailsBody h3 {
