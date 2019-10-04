@@ -1,39 +1,40 @@
-import React from 'react'
-import SignupForm from './SignupForm'
-import request from 'superagent'
-const { url } = require('../../constants')
+import React from "react"
+import { connect } from "react-redux"
+import request from "superagent"
 
-export default class SignupFormContainer extends React.Component {
-  state = { email: '', password: '' }
+import SignupForm from "./SignupForm"
+import { baseUrl } from "../../constants"
+import { handleResult } from "../../actions"
 
-  signUp = (email, password) => {
-    request
-      .post(`${url}/user`)
-      .send({ email, password })
-      .then(res => {
-        console.log(res.body)
-      })
-      .catch(console.error)
+class SignupFormContainer extends React.Component {
+  state = { email: "", password: "" }
+
+  onChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
   }
 
-  onSubmit = (event) => {
-    event.preventDefault()
-    this.signUp(this.state.email, this.state.password)
-    this.props.history.push('/login')
-  }
+  onSubmit = event => {
+    event.preventDefault()
+    request.post(`${baseUrl}/register`)
+      .send({
+        email: this.state.password,
+        password: this.state.password,
+      })
+      .then(this.props.handleResult)
+      .catch(error => this.props.handleResult(error.response))
+  }
 
-  onChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
-
-  render() {
-
-    return <SignupForm
-      onSubmit={this.onSubmit}
-      onChange={this.onChange}
-      values={this.state}
-    />
-  }
+  render() {
+    return <SignupForm
+      onSubmit={this.onSubmit}
+      onChange={this.onChange}
+      values={this.state}
+    />
+  }
 }
+
+const mapDispatchToProps = { handleResult }
+
+export default connect(null, mapDispatchToProps)(SignupFormContainer)
