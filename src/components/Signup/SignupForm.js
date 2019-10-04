@@ -19,7 +19,7 @@ export default class SignupForm extends React.Component {
           />
         </label>
 
-        <label>
+        {/* <label>
           password:
           <input
             type='text'
@@ -28,7 +28,7 @@ export default class SignupForm extends React.Component {
             placeholder='enter password'
             onChange={this.props.onChange}
           />
-        </label>
+        </label> */}
         <button type='submit'>Sign up</button>
 
       </form>

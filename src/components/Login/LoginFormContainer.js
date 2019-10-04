@@ -1,20 +1,25 @@
 import React from 'react'
 import LoginForm from './LoginForm'
 import { connect } from 'react-redux'
-import { login } from '../../actions'
+import { handleResult } from '../../actions'
+import { baseUrl } from "../../constants"
+import request from "superagent"
+
 
 class LoginFormContainer extends React.Component {
-  state = { email: '', password: '', loggedIn: false }
+  state = { email: '', password: '' }
 
   onSubmit = (event) => {
     event.preventDefault()
-    this.props.login(this.state.email, this.state.password)
+    request
+      .post(`${baseUrl}/login`)
+      .send({ email: this.state.email, password: this.state.password })
+      .then(this.props.handleResult)
+      .catch(error => this.props.handleResult(error.response))
     this.setState({
       email: '',
       password: '',
-      loggedIn: true
     })
-    this.props.history.push('/')
   }
 
   onChange = (event) => {
@@ -39,4 +44,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { login })(LoginFormContainer)
+export default connect(mapStateToProps, { handleResult })(LoginFormContainer)

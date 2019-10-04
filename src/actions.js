@@ -65,25 +65,25 @@ export const chosenDate = (year, month, day) => dispatch => {
   dispatch(action)
 }
 
-export const JWT = 'JWT'
+// export const JWT = 'JWT'
 
-function jwt(payload) {
-  return {
-    type: JWT,
-    payload
-  }
-}
+// function jwt(payload) {
+//   return {
+//     type: JWT,
+//     payload
+//   }
+// }
 
-export const login = (email, password) => dispatch => {
-  request
-    .post(`${url}/login`)
-    .send({ email, password })
-    .then(res => {
-      const action = jwt(res.body)
-      dispatch(action)
-    })
-    .catch(console.error)
-}
+// export const login = (email, password) => dispatch => {
+//   request
+//     .post(`${url}/login`)
+//     .send({ email, password })
+//     .then(res => {
+//       const action = jwt(res.body)
+//       dispatch(action)
+//     })
+//     .catch(console.error)
+// }
 
 export const GET_USER = 'GET_USER'
 

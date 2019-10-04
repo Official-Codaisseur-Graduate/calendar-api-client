@@ -7,7 +7,9 @@ import { baseUrl } from "../../constants"
 import { handleResult } from "../../actions"
 
 class SignupFormContainer extends React.Component {
-  state = { email: "", password: "" }
+  state = { email: "",
+    // password: ""  
+  }
 
   onChange = event => {
     this.setState({
@@ -19,10 +21,13 @@ class SignupFormContainer extends React.Component {
     event.preventDefault()
     request.post(`${baseUrl}/register`)
       .send({
-        email: this.state.password,
-        password: this.state.password,
+        email: this.state.email,
+        // password: this.state.password,
       })
-      .then(this.props.handleResult)
+      .then(response => {
+        this.props.handleResult(response)
+        this.props.history.push('/')
+      })
       .catch(error => this.props.handleResult(error.response))
   }
 
