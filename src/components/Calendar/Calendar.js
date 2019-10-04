@@ -101,13 +101,21 @@ export default class Calendar extends Component {
               {this.props.dateObject.format("MMMM")}
             </span>
           )}
-          <span className="calendar-label" > 
-            {this.props.dateObject.format("Y")}
-          </span>
-           <span
+          <span
           onClick={this.props.onNext}
           className="calendar-button button-next"
         />
+          <span
+            onClick={this.props.onPrevYear}
+            className="calendar-button button-prevYear"
+          />
+          <span className="calendar-label" > 
+            {this.props.dateObject.format("Y")}
+            </span>
+            <span
+          onClick={this.props.onNextYear}
+          className="calendar-button button-nextYear"
+          />
         </div>
        
         <div className="calendar-date">

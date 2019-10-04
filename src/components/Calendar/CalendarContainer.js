@@ -44,6 +44,23 @@ class CalendarContainer extends React.Component {
     });
   }
 
+  onPrevYear = () => {
+    this.setState({
+      dateObject: this.state.dateObject.subtract(1, "year"),
+      showMonthTable: !this.state.showMonthTable,
+      showDateTable: !this.state.showDateTable
+    });
+
+  };
+
+  onNextYear = () => {
+    this.setState({
+      dateObject: this.state.dateObject.add(1, "year"),
+      showMonthTable: !this.state.showMonthTable,
+      showDateTable: !this.state.showDateTable
+    });
+  }
+
   onDayClick = (e, d) => {
     this.setState(
       {
@@ -74,6 +91,8 @@ class CalendarContainer extends React.Component {
         dateObject={this.state.dateObject}
         onDayClick={this.onDayClick}
         setMonth={this.setMonth}
+        onPrevYear={this.onPrevYear}
+        onNextYear={this.onNextYear}
 
         />
       
