@@ -68,14 +68,14 @@ class CalendarContainer extends React.Component {
         selectedDay: d
       },
       () => {
-        this.props.getEvents(this.state.dateObject.format("Y"), this.state.dateObject.format("MM"), this.state.selectedDay)  
+        this.props.getEvents(this.state.dateObject.format("Y"), this.state.dateObject.format("MM"), this.state.selectedDay,this.props.user.jwt)  
         this.props.chosenDate(this.state.dateObject.format("Y"), this.state.dateObject.format("MMMM"), this.state.selectedDay)
       }
     );
   };
 
   componentDidMount() {
-    this.props.getEvents(this.state.dateObject.format("Y"), this.state.dateObject.format("MM"), Number(this.state.dateObject.format("D")))
+    this.props.getEvents(this.state.dateObject.format("Y"), this.state.dateObject.format("MM"), Number(this.state.dateObject.format("D")), this.props.user.jwt)
     this.props.chosenDate(this.state.dateObject.format("Y"), this.state.dateObject.format("MMMM"), Number(this.state.dateObject.format("D")))
   }
 
@@ -102,5 +102,11 @@ class CalendarContainer extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
 
-export default connect(null, { getEvents, chosenDate })(CalendarContainer)
+
+export default connect(mapStateToProps, { getEvents, chosenDate })(CalendarContainer)

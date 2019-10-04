@@ -30,6 +30,7 @@ onSubmit = event => {
       this.props.handleResult(response)
     })
     .catch(error => this.props.handleResult(error.response))
+    this.props.history.push('/')
 }
 
   componentDidMount() {

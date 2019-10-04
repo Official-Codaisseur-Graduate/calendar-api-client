@@ -5,6 +5,7 @@ const url = 'http://localhost:4000'
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE"
 export const SET_MESSAGE = "SET_MESSAGE"
 export const SET_USER = "SET_USER"
+export const SET_USERS = "SET_USERS"
 export const SET_VALIDATIONTYPE = "SET_VALIDATIONTYPE"
 
 export const clearMessage = () => dispatch => {
@@ -20,6 +21,10 @@ export const handleResult = data => dispatch => {
 
   if (data && data.body && data.body.user) {
     dispatch({ type: SET_USER, payload: data.body.user })
+  }
+
+  if (data && data.body && data.body.users) {
+    dispatch({ type: SET_USERS, payload: data.body.users })
   }
 
   if (data && data.body && data.body.validationType) {
@@ -40,9 +45,10 @@ function setEvents(payload) {
   }
 }
 
-export const getEvents = (year, month, day) => dispatch => {
+export const getEvents = (year, month, day, jwt) => dispatch => {
   request
     .get(`${url}/events/${year}/${month}/${day}`)
+    .set('Authorization', `Bearer ${jwt}`)
     .then(res => {
       const action = setEvents(res.body)
       dispatch(action)
