@@ -1,3 +1,3 @@
-export const url = 'http://localhost:4000'
+export const baseUrl = "http://localhost:4000"
 
-//export const url = 'https://'
+export const messageTimeout = 8000
