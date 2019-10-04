@@ -4,6 +4,7 @@ import "./calendar.css";
 import Calendar from './Calendar'
 import { connect } from 'react-redux'
 import { getEvents, chosenDate } from '../../actions'
+import EventDetailsContainer from '../EventDetails/EventDetailsContainer'
 
 class CalendarContainer extends React.Component {
 
@@ -95,7 +96,7 @@ class CalendarContainer extends React.Component {
         onNextYear={this.onNextYear}
 
         />
-      
+        <EventDetailsContainer />
       </div>
     );
   }
