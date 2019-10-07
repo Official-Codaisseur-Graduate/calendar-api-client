@@ -11,11 +11,10 @@ class AdminPageContainer extends Component {
     event.preventDefault()
     console.log('rank:', event.currentTarget.dataset.rank, 'user:', event.currentTarget.dataset.user_id)
     request.put(`${baseUrl}/userrank/${event.currentTarget.dataset.user_id}`)
-    .set('Authorization', `Bearer ${this.props.user.jwt}`)
-    .send({ rank: event.currentTarget.dataset.rank })
-    .then(this.props.handleResult)
-    .catch(error => this.props.handleResult(error.response))
-
+      .set('Authorization', `Bearer ${this.props.user.jwt}`)
+      .send({ rank: event.currentTarget.dataset.rank })
+      .then(this.props.handleResult)
+      .catch(error => this.props.handleResult(error.response))
   }
 
   componentDidMount() {

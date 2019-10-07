@@ -3,7 +3,9 @@ import moment from "moment";
 import "./calendar.css";
 import Calendar from './Calendar'
 import { connect } from 'react-redux'
-import { getEvents, chosenDate } from '../../actions'
+import request from "superagent"
+import { baseUrl } from "../../constants"
+import { handleResult, chosenDate } from '../../actions'
 import EventDetailsContainer from '../EventDetails/EventDetailsContainer'
 
 class CalendarContainer extends React.Component {
@@ -68,14 +70,31 @@ class CalendarContainer extends React.Component {
         selectedDay: d
       },
       () => {
-        this.props.getEvents(this.state.dateObject.format("Y"), this.state.dateObject.format("MM"), this.state.selectedDay,this.props.user.jwt)  
+        request
+      .get(`${baseUrl}/events/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${this.state.selectedDay}`)
+      .set('Authorization', `Bearer ${this.props.user.jwt}`)
+      .then(response => {
+        console.log(response)
+        this.props.handleResult(response)})
+      .catch(console.error)
+
+        // this.props.getEvents(this.state.dateObject.format("Y"), this.state.dateObject.format("MM"), this.state.selectedDay,this.props.user.jwt)  
         this.props.chosenDate(this.state.dateObject.format("Y"), this.state.dateObject.format("MMMM"), this.state.selectedDay)
       }
     );
   };
 
   componentDidMount() {
-    this.props.getEvents(this.state.dateObject.format("Y"), this.state.dateObject.format("MM"), Number(this.state.dateObject.format("D")), this.props.user.jwt)
+
+    request
+      .get(`${baseUrl}/events/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
+      .set('Authorization', `Bearer ${this.props.user.jwt}`)
+      .then(response => {
+        console.log(response)
+        this.props.handleResult(response)})
+      .catch(console.error)
+
+    // this.props.getEvents(this.state.dateObject.format("Y"), this.state.dateObject.format("MM"), Number(this.state.dateObject.format("D")), this.props.user.jwt)
     this.props.chosenDate(this.state.dateObject.format("Y"), this.state.dateObject.format("MMMM"), Number(this.state.dateObject.format("D")))
   }
 
@@ -109,4 +128,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { getEvents, chosenDate })(CalendarContainer)
+export default connect(mapStateToProps, { handleResult, chosenDate })(CalendarContainer)
