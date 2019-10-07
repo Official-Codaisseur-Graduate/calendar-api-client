@@ -7,6 +7,7 @@ export const SET_MESSAGE = "SET_MESSAGE"
 export const SET_USER = "SET_USER"
 export const SET_USERS = "SET_USERS"
 export const SET_VALIDATIONTYPE = "SET_VALIDATIONTYPE"
+export const GET_EVENTS = 'GET_EVENTS'
 
 export const clearMessage = () => dispatch => {
   dispatch({
@@ -30,31 +31,30 @@ export const handleResult = data => dispatch => {
   if (data && data.body && data.body.validationType) {
     dispatch({ type: SET_VALIDATIONTYPE, payload: data.body.validationType })
   }
-}
 
-
-
-
-
-export const GET_EVENTS = 'GET_EVENTS'
-
-function setEvents(payload) {
-  return {
-    type: GET_EVENTS,
-    payload
+  if (data && data.body && data.body.events) {
+    dispatch({ type: GET_EVENTS, payload: data.body.events })
   }
 }
 
-export const getEvents = (year, month, day, jwt) => dispatch => {
-  request
-    .get(`${url}/events/${year}/${month}/${day}`)
-    .set('Authorization', `Bearer ${jwt}`)
-    .then(res => {
-      const action = setEvents(res.body)
-      dispatch(action)
-    })
-    .catch(console.error)
-}
+
+// function setEvents(payload) {
+//   return {
+//     type: GET_EVENTS,
+//     payload
+//   }
+// }
+
+// export const getEvents = (year, month, day, jwt) => dispatch => {
+//   request
+//     .get(`${url}/events/${year}/${month}/${day}`)
+//     .set('Authorization', `Bearer ${jwt}`)
+//     .then(res => {
+//       const action = setEvents(res.body)
+//       dispatch(action)
+//     })
+//     .catch(console.error)
+// }
 
 export const CHOSEN_DATE = 'CHOSEN_DATE'
 
