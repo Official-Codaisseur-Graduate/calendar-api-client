@@ -4,6 +4,8 @@ import request from "superagent"
 import { baseUrl } from "../../constants"
 import { connect } from "react-redux"
 import { handleResult } from "../../actions"
+import ConfigFormContainer from '../Config/ConfigFormContainer'
+import CalendarIdFormContainer from '../CalendarId/CalendarIdFormContainer'
 
 class AdminPageContainer extends Component {
 
@@ -31,6 +33,8 @@ class AdminPageContainer extends Component {
         users={this.props.users}
         onSubmit={this.onSubmit}
          />
+        <ConfigFormContainer/>
+        <CalendarIdFormContainer />
       </div>
     )
   }
