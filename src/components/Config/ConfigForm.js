@@ -17,7 +17,7 @@ export default class ConfigForm extends React.Component {
           <input 
           type='text' 
           value={this.props.client_email} 
-          name='send_email' 
+          name='client_email' 
           placeholder='enter email' 
           onChange={this.props.onChange} 
           />
@@ -27,7 +27,7 @@ export default class ConfigForm extends React.Component {
           <input
           type='text'
           value={this.props.private_key}
-          name='send_password'
+          name='private_key'
           placeholder='enter key'
           onChange={this.props.onChange}
           />
