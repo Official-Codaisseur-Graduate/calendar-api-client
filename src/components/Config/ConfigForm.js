@@ -17,19 +17,19 @@ export default class ConfigForm extends React.Component {
           <input 
           type='text' 
           value={this.props.client_email} 
-          name='client_email' 
+          name='send_email' 
           placeholder='enter email' 
           onChange={this.props.onChange} 
           />
         </label>
         <label>
-          Key:
-          <input 
-          type='text' 
-          value={this.props.private_key} 
-          name='private_key' 
-          placeholder='enter key' 
-          onChange={this.props.onChange} 
+          Password:
+          <input
+          type='password'
+          value={this.props.password}
+          name='send_password'
+          placeholder='enter password'
+          onChange={this.props.onChange}
           />
         </label>
         <label>

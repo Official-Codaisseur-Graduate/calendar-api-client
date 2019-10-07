@@ -6,6 +6,7 @@ import { connect } from "react-redux"
 import { handleResult } from "../../actions"
 import ConfigFormContainer from '../Config/ConfigFormContainer'
 import CalendarIdFormContainer from '../CalendarId/CalendarIdFormContainer'
+import MailVerificationFormContainer from '../MailVerification/MailVerificationFormContainer'
 
 class AdminPageContainer extends Component {
 
@@ -35,6 +36,7 @@ class AdminPageContainer extends Component {
          />
         <ConfigFormContainer/>
         <CalendarIdFormContainer />
+        <MailVerificationFormContainer />
       </div>
     )
   }
