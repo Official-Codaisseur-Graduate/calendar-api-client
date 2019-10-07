@@ -23,12 +23,12 @@ export default class ConfigForm extends React.Component {
           />
         </label>
         <label>
-          Password:
+          Private key:
           <input
-          type='password'
-          value={this.props.password}
+          type='text'
+          value={this.props.private_key}
           name='send_password'
-          placeholder='enter password'
+          placeholder='enter key'
           onChange={this.props.onChange}
           />
         </label>
