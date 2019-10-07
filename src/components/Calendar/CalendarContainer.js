@@ -90,7 +90,6 @@ class CalendarContainer extends React.Component {
       .get(`${baseUrl}/events/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
       .set('Authorization', `Bearer ${this.props.user.jwt}`)
       .then(response => {
-        console.log(response)
         this.props.handleResult(response)})
       .catch(console.error)
 
