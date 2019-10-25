@@ -7,7 +7,7 @@ export default class LoginForm extends React.Component {
 
   render(){
     return (
-
+     <React.Fragment>
       <div>
     {!this.props.user.jwt ? 
       <div className="form-container">
@@ -42,8 +42,13 @@ export default class LoginForm extends React.Component {
       </form>
       
     </div> :
-    <CalendarContainer />}
-    <Link to="/adminpage/" ><button>AdminButton</button></Link>
+    <React.Fragment>
+    <CalendarContainer />
+    {this.props.user.rank === 4 &&
+    <Link to="/adminpage/" ><button>AdminButton</button></Link>}
+    </React.Fragment>}
+    
     </div>
+    </React.Fragment>
   )}
 }
