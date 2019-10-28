@@ -16,6 +16,12 @@
 4. The calendar is setup by copying the calendar id from the settings of the admin's new gmail account(refer to the server readme step D)
 5. The admin sets up the email verification for users. Note that the admin has to setup the email verification for every new user.
 
+#### Super Admin : 
+
+1. The app is designed such that when a user enter with the email= your@gmail.com, they automatically enter as the super admin. The id and password is hard coded in the server side of the app in auth/superAdmin.js. 
+2. So when doing the setup for the very first time, keep in mind that there can be multiple admins assigned. The super admin can increase ranks of users to make them admins.
+3. The hierarchy of users, assistants, teacher, admins is explained in the server readme. 
+
 
 ## For all documentation and installation instructions, see the server repository:
 
