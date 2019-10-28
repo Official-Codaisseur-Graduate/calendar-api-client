@@ -11,7 +11,7 @@ export default class MailVerificationForm extends React.Component {
       <h2>Setup mail verification</h2>
       <p>This is the email that is used to send verification links to new users</p>
       <p>Enter first the email adres you want to use with the password that belongs to that email.</p>
-      <p>Then enter your password fot this account</p>
+      <p>Then enter your password for this account</p>
 
         <label>
           Email:

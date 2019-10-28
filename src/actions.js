@@ -16,6 +16,7 @@ export const clearMessage = () => dispatch => {
 }
 
 export const handleResult = data => dispatch => {
+  console.log("data inside handle result", data)
   if (data && data.body && data.body.message) {
     dispatch({ type: SET_MESSAGE, payload: data.body.message })
   }

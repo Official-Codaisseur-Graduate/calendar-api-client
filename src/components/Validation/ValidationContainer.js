@@ -18,6 +18,8 @@ onChange = event => {
   })
 }
 
+
+// onSubmit function provides a validations for the sign up after the continue registration has been done
 onSubmit = event => {
   event.preventDefault()
   request.post(`${baseUrl}/registervalidation`)
@@ -33,6 +35,7 @@ onSubmit = event => {
     this.props.history.push('/')
 }
 
+ // verifies the validation type of the users
   componentDidMount() {
     request.get(`${baseUrl}/validation`)
       .set('validation', `${this.props.match.params.code}`)
