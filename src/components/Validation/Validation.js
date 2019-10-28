@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+
+// This component is used for Sign Up after clicking on continue with registration in the gmail account
 export default class Validation extends Component {
   render() {
     return (
