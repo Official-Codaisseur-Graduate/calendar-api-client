@@ -7,9 +7,9 @@ export default class ConfigForm extends React.Component {
       <div className="form-container">
       <form className="form" onSubmit={this.props.onSubmit}>
       
-      <h2>Setup configuration</h2>
+      <h2>Google Calendar Api configuration</h2>
       <p>If you setup your service account you get a client email and a private key.</p>
-      <p>You need both, plus your own password for this website to make a connection with the Google Calendar Api</p>
+      <p>You need both, plus your own password for this website to make a connection with the Google Calendar Api.</p>
       <p><strong>You can get all the information from the .json file you got earlier. Copy what's between the double qoutes and paste them here.</strong></p>
       
       <p>
