@@ -4,7 +4,6 @@ export default class ConfigForm extends React.Component {
 
   render(){
     return (
-      <div className="form-container">
       <form className="form" onSubmit={this.props.onSubmit}>
       
       <h2>Google Calendar Api configuration</h2>
@@ -46,7 +45,6 @@ export default class ConfigForm extends React.Component {
       </p>
       
       <button type='submit'>Submit configuration</button>
-      </form> 
-    </div>
+    </form> 
   )}
 }

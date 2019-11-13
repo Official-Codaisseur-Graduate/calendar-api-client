@@ -7,9 +7,9 @@ export default class LoginForm extends React.Component {
 
   render(){
     return (
-     <React.Fragment>
+      <>
       <div>
-    {!this.props.user.jwt ? 
+        {!this.props.user.jwt ? 
       <div className="form-container">
 
       <form className="form" onSubmit={this.props.onSubmit}>
@@ -41,14 +41,14 @@ export default class LoginForm extends React.Component {
         <p>Or sign up <Link to={'/signup'}>here</Link></p>
       </form>
       
-    </div> :
-    <React.Fragment>
-    <CalendarContainer />
-    {this.props.user.rank === 4 &&
-    <Link to="/adminpage/" ><button>AdminButton</button></Link>}
-    </React.Fragment>}
+       </div> :
+      <>
+      <CalendarContainer />
+        {this.props.user.rank === 4 &&
+        <Link to="/adminpage/" ><button>AdminButton</button></Link>}
+        </>}
     
-    </div>
-    </React.Fragment>
+      </div>
+    </>
   )}
 }

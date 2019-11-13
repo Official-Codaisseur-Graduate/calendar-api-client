@@ -6,9 +6,7 @@ export default class CalendarIdForm extends React.Component {
   render() {
     
     return (
-      
-      <div className="form-container">
-        <form className="form" onSubmit={this.props.onSubmit}>
+      <form className="form" onSubmit={this.props.onSubmit}>
           <h2>Setup Google Calendar - Calendar ID</h2>
           <p>You can find the calendar ID from the Google calendar under "Calendar settings" and down under section "Integrate calendar"</p>
 
@@ -40,8 +38,7 @@ export default class CalendarIdForm extends React.Component {
           </p>
           
           <button type='submit'>Submit calendar id</button>
-        </form>
-      </div>
+      </form>
     )
   }
 }

@@ -1,12 +1,10 @@
 import React from 'react'
 
-
 export default class MailVerificationForm extends React.Component {
 
   render(){
     return (
-      <div className="form-container">
-      <form className="form" onSubmit={this.props.onSubmit}>
+    <form className="form" onSubmit={this.props.onSubmit}>
       
       <h2>Setup mail verification</h2>
       <p>This is the email that is used to send verification links to new users</p>
@@ -46,8 +44,8 @@ export default class MailVerificationForm extends React.Component {
         /> <span>(Admin password for validation)</span>
       </p>
        
-        <button type='submit'>Submit mail verification</button>
-      </form> 
-    </div>
+      <button type='submit'>Submit mail verification</button>
+
+    </form>
   )}
 }

@@ -29,7 +29,7 @@ class AdminPageContainer extends Component {
 
   render() {
     return (
-      <div>
+      <>
         <AdminPage
         users={this.props.users}
         onSubmit={this.onSubmit}
@@ -37,7 +37,7 @@ class AdminPageContainer extends Component {
         <ConfigFormContainer/>
         <CalendarIdFormContainer />
         <MailVerificationFormContainer />
-      </div>
+      </>
     )
   }
 }
