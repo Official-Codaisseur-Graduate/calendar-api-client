@@ -24,13 +24,15 @@ export default class ConfigForm extends React.Component {
       
       <p>
         <label>Private key:</label><br/>
-        <input
+        <textarea
           type='text'
           value={this.props.private_key}
           name='private_key'
-          placeholder='enter key'
+          placeholder='-----BEGIN PRIVATE KEY-----............-----END PRIVATE KEY-----\n'
           onChange={this.props.onChange}
-        /> <span>(-----BEGIN PRIVATE KEY-----............-----END PRIVATE KEY-----\n)</span>
+          style={{width: "60vw", height: "30vw"}}
+        >
+        </textarea>
       </p>
       
       <p>
@@ -39,7 +41,7 @@ export default class ConfigForm extends React.Component {
           type='password'
           value={this.props.password}
           name='password'
-          placeholder='enter password'
+          placeholder='Enter admin password'
           onChange={this.props.onChange}
         /> <span>(Admin password for validation)</span>
       </p>
