@@ -85,13 +85,15 @@ class CalendarContainer extends React.Component {
   };
 
   componentDidMount() {
-     console.log("url",`${baseUrl}/events/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
-     console.log("jwt",this.props.user.jwt)
+    //  console.log("url",`${baseUrl}/events/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
+     
+    //  console.log("jwt",this.props.user.jwt)
+
     request
       .get(`${baseUrl}/events/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
       .set('Authorization', `Bearer ${this.props.user.jwt}`)
       .then(response => {
-        console.log("insided response",response)
+        // console.log("response >",response)
         this.props.handleResult(response)})
       .catch(console.error)
 
