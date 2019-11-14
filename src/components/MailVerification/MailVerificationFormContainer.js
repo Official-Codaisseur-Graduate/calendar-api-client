@@ -4,16 +4,17 @@ import { connect } from 'react-redux'
 import { handleResult } from '../../actions'
 import { baseUrl } from "../../constants"
 import request from "superagent"
-
+import lscache from 'lscache'
 
 class MailVerificationFormContainer extends React.Component {
   state = { send_email: '', send_password:'', password: '' }
 
   onSubmit = (event) => {
+    const user = lscache.get('user')
     event.preventDefault()
     request
       .post(`${baseUrl}/configemail`)
-      .set('Authorization', `Bearer ${this.props.user.jwt}`)
+      .set('Authorization', `Bearer ${user.jwt}`)
       .send({ send_email: this.state.send_email, send_password: this.state.send_password, password: this.state.password })
       .then(this.props.handleResult)
       .catch(error => this.props.handleResult(error.response))

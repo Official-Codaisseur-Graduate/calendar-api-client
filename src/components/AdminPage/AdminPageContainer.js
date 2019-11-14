@@ -27,7 +27,7 @@ class AdminPageContainer extends Component {
         return this.props.history.push('/')
     }
     request.get(`${baseUrl}/users`)
-      .set('Authorization', `Bearer ${this.props.user.jwt}`)
+      .set('Authorization', `Bearer ${user.jwt}`)
       .then(this.props.handleResult)
       .catch(console.error)
   }
