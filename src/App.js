@@ -7,6 +7,8 @@ import SignupFormContainer from './components/Signup/SignupFormContainer'
 import AdminPageContainer from './components/AdminPage/AdminPageContainer'
 import Notification from "./components/Notification"
 import ValidationContainer from './components/Validation/ValidationContainer';
+import ResetPasswordFormContainer from './components/ResetPassword/ResetPasswordFormContainer'
+import ForgotPasswordContainer from './components/ForgotPassword/ForgotPasswordContainer'
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
       <Route path="/calendar" component={CalendarContainer} />
       <Route path="/validate/:code" component={ValidationContainer} />
       <Route path="/adminpage" component={AdminPageContainer} />
+      <Route path="/resetpassword/:email" component={ResetPasswordFormContainer} />
+      <Route path="/forgotpassword" component={ForgotPasswordContainer} />
       <Notification />
     </div>
   );
