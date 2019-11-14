@@ -7,6 +7,7 @@ import request from "superagent"
 import { baseUrl } from "../../constants"
 import { handleResult, chosenDate } from '../../actions'
 import EventDetailsContainer from '../EventDetails/EventDetailsContainer'
+import lscache from 'lscache'
 
 class CalendarContainer extends React.Component {
 
@@ -65,6 +66,7 @@ class CalendarContainer extends React.Component {
   }
 
   onDayClick = (e, d) => {
+    const user = lscache.get('user')
     this.setState(
       {
         selectedDay: d
@@ -72,7 +74,7 @@ class CalendarContainer extends React.Component {
       () => {
         request
       .get(`${baseUrl}/events/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${this.state.selectedDay}`)
-      .set('Authorization', `Bearer ${this.props.user.jwt}`)
+      .set('Authorization', `Bearer ${user.jwt}`)
       .then(response => {
         console.log("response after events",response)
         this.props.handleResult(response)})
@@ -85,13 +87,11 @@ class CalendarContainer extends React.Component {
   };
 
   componentDidMount() {
-    //  console.log("url",`${baseUrl}/events/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
-     
-    //  console.log("jwt",this.props.user.jwt)
+    const user = lscache.get('user')
 
     request
       .get(`${baseUrl}/events/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
-      .set('Authorization', `Bearer ${this.props.user.jwt}`)
+      .set('Authorization', `Bearer ${user.jwt}`)
       .then(response => {
         // console.log("response >",response)
         this.props.handleResult(response)})
@@ -106,17 +106,16 @@ class CalendarContainer extends React.Component {
     return (
       <div>
         <Calendar 
-        onPrev={this.onPrev}
-        showMonthTable={this.state.showMonthTable}
-        showMonth={this.showMonth}
-        onNext={this.onNext}
-        showDateTable={this.state.showDateTable}
-        dateObject={this.state.dateObject}
-        onDayClick={this.onDayClick}
-        setMonth={this.setMonth}
-        onPrevYear={this.onPrevYear}
-        onNextYear={this.onNextYear}
-
+          onPrev={this.onPrev}
+          showMonthTable={this.state.showMonthTable}
+          showMonth={this.showMonth}
+          onNext={this.onNext}
+          showDateTable={this.state.showDateTable}
+          dateObject={this.state.dateObject}
+          onDayClick={this.onDayClick}
+          setMonth={this.setMonth}
+          onPrevYear={this.onPrevYear}
+          onNextYear={this.onNextYear}
         />
         <EventDetailsContainer />
       </div>

@@ -7,6 +7,7 @@ import { handleResult } from "../../actions"
 import ConfigFormContainer from '../Config/ConfigFormContainer'
 import CalendarIdFormContainer from '../CalendarId/CalendarIdFormContainer'
 import MailVerificationFormContainer from '../MailVerification/MailVerificationFormContainer'
+import lscache from 'lscache'
 
 class AdminPageContainer extends Component {
 
@@ -21,6 +22,10 @@ class AdminPageContainer extends Component {
   }
 
   componentDidMount() {
+    const user = lscache.get('user')
+    if(!user) {
+        return this.props.history.push('/')
+    }
     request.get(`${baseUrl}/users`)
       .set('Authorization', `Bearer ${this.props.user.jwt}`)
       .then(this.props.handleResult)

@@ -2,7 +2,7 @@ import React from 'react'
 import { login } from '../../actions_beta/login'
 import { connect } from 'react-redux'
 import LoginForm from './LoginForm'
-import lscache from 'lscache'
+// import lscache from 'lscache'
 
 class LoginFormContainer extends React.Component {
   state = {
