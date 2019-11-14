@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom'
 
-import CalendarContainer from './components/Calendar/CalendarContainer'
+// Components imports
 import LoginFormContainer from './components/Login/LoginFormContainer'
 import SignupFormContainer from './components/Signup/SignupFormContainer'
 import AdminPageContainer from './components/AdminPage/AdminPageContainer'
@@ -11,18 +11,21 @@ import ResetPasswordFormContainer from './components/ResetPassword/ResetPassword
 import ForgotPasswordContainer from './components/ForgotPassword/ForgotPasswordContainer'
 
 function App() {
-  return (
-    <div className="App">
-      <Route exact path="/" component={LoginFormContainer} />
-      <Route exact path="/signup" component={SignupFormContainer} />
-      <Route path="/calendar" component={CalendarContainer} />
-      <Route path="/validate/:code" component={ValidationContainer} />
-      <Route path="/adminpage" component={AdminPageContainer} />
-      <Route path="/resetpassword/:code/:email" component={ResetPasswordFormContainer} />
-      <Route path="/forgotpassword" component={ForgotPasswordContainer} />
-      <Notification />
-    </div>
-  );
+  return <div className="App">
+    {/* Signup routes */}
+    <Route component={SignupFormContainer} exact path="/signup"/>
+    <Route component={ValidationContainer} exact path="/validate/:code"/>
+    <Route component={ResetPasswordFormContainer} path="/resetpassword/:code/:email" />
+    <Route component={ForgotPasswordContainer} path="/forgotpassword" />
+      
+    {/* App routes */}
+    <Route component={LoginFormContainer} exact path="/"/>
+    
+    {/* Admin routes */}
+    <Route component={AdminPageContainer} exact path="/admin"/>
+      
+    <Notification />
+  </div>
 }
 
 export default App;

@@ -1,25 +1,13 @@
 import React from 'react'
-import LoginForm from './LoginForm'
+import { login } from '../../actions_beta/login'
 import { connect } from 'react-redux'
-import { handleResult } from '../../actions'
-import { baseUrl } from "../../constants"
-import request from "superagent"
-
+import LoginForm from './LoginForm'
+// import lscache from 'lscache'
 
 class LoginFormContainer extends React.Component {
-  state = { email: '', password: '' }
-
-  onSubmit = (event) => {
-    event.preventDefault()
-    request
-      .post(`${baseUrl}/login`)
-      .send({ email: this.state.email, password: this.state.password })
-      .then(this.props.handleResult)
-      .catch(error => this.props.handleResult(error.response))
-    this.setState({
-      email: '',
-      password: '',
-    })
+  state = {
+    email: '',
+    password: ''
   }
 
   onChange = (event) => {
@@ -28,20 +16,28 @@ class LoginFormContainer extends React.Component {
     })
   }
 
+  onSubmit = (event) => {
+    event.preventDefault()
+    this.props.login(this.state.email, this.state.password)
+  }
+
   render() {
+    // lscache.flush() // For development
+
     return <LoginForm
-      onSubmit={this.onSubmit}
-      onChange={this.onChange}
-      values={this.state}
-      user={this.props.user}
+      onSubmit = {this.onSubmit}
+      onChange = {this.onChange}
+      values = {this.state}
+      user = {this.props.user}
     />
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (reduxState) => {
+  // console.log('Redux state', reduxState);
   return {
-    user: state.user
+    user: reduxState.user
   }
 }
 
-export default connect(mapStateToProps, { handleResult })(LoginFormContainer)
+export default connect(mapStateToProps, {login})(LoginFormContainer);

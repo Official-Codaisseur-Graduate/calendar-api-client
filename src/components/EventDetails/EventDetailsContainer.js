@@ -19,17 +19,14 @@ class EventDetailsContainer extends Component {
 
   render() {
     
-    return (
-      <div>
-        <EventDetails
-        events={this.props.events}
-        rightDate={this.props.rightDate}
-        eventDetails={this.state.eventDetails}
-        showDetails={this.showDetails}
-        closeDetails={this.closeDetails}
-        />
-      </div>
-    )
+    return <EventDetails
+      events={this.props.events}
+      rightDate={this.props.rightDate}
+      eventDetails={this.state.eventDetails}
+      showDetails={this.showDetails}
+      closeDetails={this.closeDetails}
+    />
+      
   }
 }
 

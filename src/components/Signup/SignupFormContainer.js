@@ -1,14 +1,13 @@
 import React from "react"
 import { connect } from "react-redux"
 import request from "superagent"
-
 import SignupForm from "./SignupForm"
 import { baseUrl } from "../../constants"
 import { handleResult } from "../../actions"
 
 class SignupFormContainer extends React.Component {
-  state = { email: "",
-    // password: ""  
+  state = {
+    email: ""
   }
 
   onChange = event => {
@@ -40,6 +39,8 @@ class SignupFormContainer extends React.Component {
   }
 }
 
-const mapDispatchToProps = { handleResult }
+const mapDispatchToProps = {
+  handleResult
+}
 
 export default connect(null, mapDispatchToProps)(SignupFormContainer)
