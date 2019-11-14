@@ -17,7 +17,7 @@ function App() {
       <Route exact path="/signup" component={SignupFormContainer} />
       <Route path="/calendar" component={CalendarContainer} />
       <Route path="/validate/:code" component={ValidationContainer} />
-      <Route path="/adminpage" component={AdminPageContainer} />
+      <Route path="/admin" component={AdminPageContainer} />
       <Route path="/resetpassword/:email" component={ResetPasswordFormContainer} />
       <Route path="/forgotpassword" component={ForgotPasswordContainer} />
       <Notification />
