@@ -13,16 +13,11 @@ code {
 }
 
 .App {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
-
-  a {
-    color: #09d3ac;
-  }
+  color: #282c34;
 }
