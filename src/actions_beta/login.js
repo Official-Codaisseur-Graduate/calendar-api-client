@@ -1,8 +1,6 @@
 import { baseUrl } from '../constants'
 import lscache from 'lscache'
 
-console.log('New actions');
-
 export const login = (email, password) => {
     return function (dispatch, getState) {
         // console.log('email >', email, 'password >', password);

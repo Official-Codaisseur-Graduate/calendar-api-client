@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class AdminPage extends Component {
+export default class AdminPage extends React.Component {
   render() {
-    return (
-      <>
+    return <>
         <h2>Admin Page</h2>
         {!this.props.users ? 'Loading...' : 
           <>{this.props.users.map(user => {
@@ -35,7 +34,6 @@ export default class AdminPage extends Component {
           })}
           </>
         } 
-      </>
-    )
+    </>
   }
 }

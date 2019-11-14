@@ -24,7 +24,7 @@ export default class EventDetails extends Component {
         {!this.props.events ? 'loading' :
           <div>
           <div>
-            <h3>Classes: {this.props.rightDate.day} - {this.props.rightDate.month} - {this.props.rightDate.year}</h3>
+            <h3>Date: {this.props.rightDate.day} - {this.props.rightDate.month} - {this.props.rightDate.year}</h3>
           </div>
           
           <div className='eventDetailsWrapper'>{this.props.events.map(event => {

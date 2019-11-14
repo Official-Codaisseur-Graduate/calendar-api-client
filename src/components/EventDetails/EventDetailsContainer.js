@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import EventDetails from './EventDetails'
 import { connect } from 'react-redux'
 import { fetchEvents } from '../../actions_beta/fetchEvents'
 import { selectDate } from '../../actions_beta/selectDate'
 
-class EventDetailsContainer extends Component {
+class EventDetailsContainer extends React.Component {
   state = { 
     eventDetails: null,
   }
@@ -18,14 +18,12 @@ class EventDetailsContainer extends Component {
     this.setState({ eventDetails: null })
   }
 
-
   render() {
     console.log('this.props', this.props);
 
     if(!this.props) {
       return 'Loading'
     }
-    
     
     return <EventDetails
       events={this.props.events}

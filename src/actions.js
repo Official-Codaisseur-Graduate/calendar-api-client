@@ -5,8 +5,6 @@ console.log('Old actions')
 
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE"
 export const SET_MESSAGE = "SET_MESSAGE"
-export const SET_USER = "SET_USER"
-export const SET_USERS = "SET_USERS"
 export const SET_VALIDATIONTYPE = "SET_VALIDATIONTYPE"
 export const GET_EVENTS = 'GET_EVENTS'
 
@@ -26,13 +24,6 @@ export const handleResult = data => dispatch => {
         })
     }
 
-    if (data && data.body && data.body.users) {
-        dispatch({
-            type: SET_USERS,
-            payload: data.body.users
-        })
-    }
-
     if (data && data.body && data.body.validationType) {
         dispatch({
             type: SET_VALIDATIONTYPE,
@@ -40,8 +31,6 @@ export const handleResult = data => dispatch => {
         })
     }
 }
-
-export const CHOSEN_DATE = 'CHOSEN_DATE'
 
 export const GET_USER = 'GET_USER'
 
