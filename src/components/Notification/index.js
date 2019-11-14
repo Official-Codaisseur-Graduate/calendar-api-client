@@ -29,10 +29,17 @@ class Notification extends React.Component {
   }
 }
 
-const mapStateToProps = state =>
-  ({ message: state.message })
+const mapDispatchToProps = {
+  clearMessage,
+  // logout,
+  // fetchEvents,
+  // selectDate
+}
 
-const mapDispatchToProps =
-  { clearMessage }
+const mapStateToProps = (reduxState) => {
+  return {
+    message: reduxState.message
+  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notification)

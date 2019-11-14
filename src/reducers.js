@@ -7,7 +7,7 @@
 // } from './actions'
 
 const reducer = (state = {}, action = {}) => {
-    console.log('reducer state >', state, 'reducer action', action);
+    // console.log('reducer state >', state, 'reducer action', action);
     
     switch (action.type) {
         case 'GET_EVENTS':

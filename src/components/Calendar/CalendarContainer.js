@@ -1,9 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import lscache from 'lscache'
-import request from 'superagent'
 import { connect } from 'react-redux'
-import { baseUrl } from '../../constants'
 import EventDetailsContainer from '../EventDetails/EventDetailsContainer'
 import './calendar.scss'
 import Calendar from './Calendar'
@@ -68,12 +66,11 @@ class CalendarContainer extends React.Component {
   }
 
   onDayClick = (event, day) => {
-    const user = lscache.get('user')
     this.setState({
         selectedDay: day
       },
       () => {
-        console.log(`${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${this.state.selectedDay}`);
+        // console.log(`${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${this.state.selectedDay}`);
 
         const year = this.state.dateObject.format("Y")
         const month = this.state.dateObject.format("MM")
@@ -90,11 +87,8 @@ class CalendarContainer extends React.Component {
   }
 
   componentDidMount() {
-    const user = lscache.get('user')
-
-    console.log('local state' , this.state);
-
-    console.log(`${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`);
+    // console.log('local state' , this.state);
+    // console.log(`${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`);
 
     const year = this.state.dateObject.format("Y")
     const month = this.state.dateObject.format("MM")
