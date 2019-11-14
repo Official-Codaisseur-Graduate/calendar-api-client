@@ -20,12 +20,13 @@ class ResetPasswordFormContainer extends Component {
   onSubmit = event => {
     event.preventDefault()
     request.post(`${baseUrl}/reset-password`)
+      .set('validation', `${this.props.match.params.code}`)
       .send({
         email: `${this.props.match.params.email}`,
         new_password: this.state.new_password,
       })
       .then(response => {
-        console.log("EMAIL", response)
+        // console.log("EMAIL", response)
         this.props.handleResult(response)
         this.props.history.push('/')
       })
