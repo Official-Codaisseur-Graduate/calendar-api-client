@@ -2,8 +2,7 @@ import React from 'react'
 import { login } from '../../actions_beta/login'
 import { connect } from 'react-redux'
 import LoginForm from './LoginForm'
-// import { Redirect } from 'react-router-dom'
-// import lscache from 'lscache'
+import lscache from 'lscache'
 
 class LoginFormContainer extends React.Component {
   state = {
@@ -23,13 +22,7 @@ class LoginFormContainer extends React.Component {
   }
 
   render() {
-    // const JWT = lscache.get('JWT')
-    // if(JWT) {
-    //     return <Redirect to='/overview'/>
-    // }
-
-    // console.log('this.props.user', this.props.user);
-    
+    // lscache.flush() // For development
 
     return <LoginForm
       onSubmit = {this.onSubmit}

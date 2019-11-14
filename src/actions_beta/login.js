@@ -45,12 +45,10 @@ export const login = (email, password) => {
                 }
                 // console.log('json', json);
                 if (process.env.PORT) { // Production
-                    console.log('Production');
+                    console.log('Production, login session 15 minutes');
                     lscache.set('user', json.user, 15); // 15 minutes
                 } else { // Development
-                    console.log('Development');
-                    console.log(json.user);
-                    
+                    console.log('Development, login session 24 hours');
                     lscache.set('user', json.user, 1440); // 24 hours
                 }
                 dispatch(setUser(json.user))
