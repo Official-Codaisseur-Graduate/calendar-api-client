@@ -1,10 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import CalendarContainer from '../Calendar/CalendarContainer'
+import lscache from 'lscache'
 
 export default class LoginForm extends React.Component {
   render() {
-    if ( !this.props.user.jwt ) {
+    const user = lscache.get('user')
+    // console.log('user from localStorage', user);
+    
+    if (!user) {
       return <form onSubmit={this.props.onSubmit}>
         <h2>Login</h2>
         <p>
@@ -36,7 +40,7 @@ export default class LoginForm extends React.Component {
     else {
       return <>
         <CalendarContainer />
-        {this.props.user.rank === 4 &&
+        {user.rank === 4 &&
         <Link to="/admin"><button>Admin</button></Link>}
       </>
     }

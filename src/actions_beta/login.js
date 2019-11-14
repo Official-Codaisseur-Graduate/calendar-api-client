@@ -12,7 +12,7 @@ export const setUser = (payload) => {
 
 export const login = (email, password) => {
     return function (dispatch, getState) {
-        console.log('email >', email, 'password >', password);
+        // console.log('email >', email, 'password >', password);
         if (!lscache.supported()) {
             alert('Local storage is unsupported in this browser');
             return;
@@ -49,6 +49,8 @@ export const login = (email, password) => {
                     lscache.set('user', json.user, 15); // 15 minutes
                 } else { // Development
                     console.log('Development');
+                    console.log(json.user);
+                    
                     lscache.set('user', json.user, 1440); // 24 hours
                 }
                 dispatch(setUser(json.user))
