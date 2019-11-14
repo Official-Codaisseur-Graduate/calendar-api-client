@@ -2,11 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import CalendarContainer from '../Calendar/CalendarContainer'
 
-
 export default class LoginForm extends React.Component {
 
-  render(){
-    return (
+  render() {
+    return 
       <>
       <div>
         {!this.props.user.jwt ? 
@@ -38,7 +37,8 @@ export default class LoginForm extends React.Component {
           />
         </label>
         <button type='submit'>Login</button>
-        <p>Or sign up <Link to={'/signup'}>here</Link></p>
+        <Link to={'/forgotpassword'}>Forgot password?</Link>
+         Or sign up <Link to={'/signup'}>here</Link></p>
       </form>
       
        </div> :
@@ -50,5 +50,5 @@ export default class LoginForm extends React.Component {
     
       </div>
     </>
-  )}
+  }
 }
