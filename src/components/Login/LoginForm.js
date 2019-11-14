@@ -34,7 +34,10 @@ export default class LoginForm extends React.Component {
         </p>
         
         <button type='submit'>Login</button>
-        <p>Or sign up <Link to={'/signup'}>here</Link></p>
+        <p>
+          <Link to={'/forgotpassword'}>Forgot password?</Link>
+          Or sign up <Link to={'/signup'}>here</Link>
+         </p>
       </form>
     }
     else {

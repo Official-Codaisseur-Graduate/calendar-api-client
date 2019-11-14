@@ -7,16 +7,24 @@ import SignupFormContainer from './components/Signup/SignupFormContainer'
 import AdminPageContainer from './components/AdminPage/AdminPageContainer'
 import Notification from "./components/Notification"
 import ValidationContainer from './components/Validation/ValidationContainer';
+import ResetPasswordFormContainer from './components/ResetPassword/ResetPasswordFormContainer'
+import ForgotPasswordContainer from './components/ForgotPassword/ForgotPasswordContainer'
 
 function App() {
   return <div className="App">
-    <Route component={LoginFormContainer} exact path="/"/>
+    {/* Signup routes */}
     <Route component={SignupFormContainer} exact path="/signup"/>
     <Route component={ValidationContainer} exact path="/validate/:code"/>
-    <Notification />
+    <Route component={ResetPasswordFormContainer}  path="/resetpassword/:email" />
+    <Route component={ForgotPasswordContainer} path="/forgotpassword" />
+      
+    {/* App routes */}
+    <Route component={LoginFormContainer} exact path="/"/>
     
     {/* Admin routes */}
     <Route component={AdminPageContainer} exact path="/admin"/>
+      
+    <Notification />
   </div>
 }
 
