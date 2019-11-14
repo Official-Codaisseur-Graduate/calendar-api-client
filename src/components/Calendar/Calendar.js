@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import moment from "moment";
-import "./calendar.css";
+import moment from 'moment'
 
 export default class Calendar extends Component {
 
@@ -85,9 +84,9 @@ export default class Calendar extends Component {
   };
 
   render() {
-    return (
-      <div>
-        <div className="tail-datetime-calendar">
+    return <>
+      <button onClick={this.props.onClickLogout}>Logout</button>
+      <div className="tail-datetime-calendar">
       <div className="calendar-navi">
           <span
             onClick={this.props.onPrev}
@@ -160,7 +159,6 @@ export default class Calendar extends Component {
           )}
         </div>
       </div>
-      </div>
-    )
+      </>
   }
 }

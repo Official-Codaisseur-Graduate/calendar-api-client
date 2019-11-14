@@ -1,12 +1,14 @@
-import React from "react";
-import moment from "moment";
-import "./calendar.css";
-import Calendar from './Calendar'
+import React from 'react'
+import moment from 'moment'
+import lscache from 'lscache'
+import request from 'superagent'
 import { connect } from 'react-redux'
-import request from "superagent"
-import { baseUrl } from "../../constants"
-import { handleResult, chosenDate } from '../../actions'
+import { baseUrl } from '../../constants'
 import EventDetailsContainer from '../EventDetails/EventDetailsContainer'
+import './calendar.css'
+import Calendar from './Calendar'
+import { handleResult, chosenDate } from '../../actions'
+import { logout } from '../../actions_beta/logout'
 
 class CalendarContainer extends React.Component {
 
@@ -65,6 +67,7 @@ class CalendarContainer extends React.Component {
   }
 
   onDayClick = (e, d) => {
+    const user = lscache.get('user')
     this.setState(
       {
         selectedDay: d
@@ -72,7 +75,7 @@ class CalendarContainer extends React.Component {
       () => {
         request
       .get(`${baseUrl}/events/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${this.state.selectedDay}`)
-      .set('Authorization', `Bearer ${this.props.user.jwt}`)
+      .set('Authorization', `Bearer ${user.jwt}`)
       .then(response => {
         console.log("response after events",response)
         this.props.handleResult(response)})
@@ -84,14 +87,19 @@ class CalendarContainer extends React.Component {
     );
   };
 
+  onClickLogout = (event) => {
+    this.props.logout();
+    window.location.reload();
+}
+
   componentDidMount() {
-     console.log("url",`${baseUrl}/events/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
-     console.log("jwt",this.props.user.jwt)
+    const user = lscache.get('user')
+
     request
       .get(`${baseUrl}/events/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
-      .set('Authorization', `Bearer ${this.props.user.jwt}`)
+      .set('Authorization', `Bearer ${user.jwt}`)
       .then(response => {
-        console.log("insided response",response)
+        // console.log("response >",response)
         this.props.handleResult(response)})
       .catch(console.error)
 
@@ -100,33 +108,40 @@ class CalendarContainer extends React.Component {
   }
 
   render() {
+    const user = lscache.get('user')
 
-    return (
-      <div>
-        <Calendar 
-        onPrev={this.onPrev}
-        showMonthTable={this.state.showMonthTable}
-        showMonth={this.showMonth}
-        onNext={this.onNext}
-        showDateTable={this.state.showDateTable}
-        dateObject={this.state.dateObject}
-        onDayClick={this.onDayClick}
-        setMonth={this.setMonth}
-        onPrevYear={this.onPrevYear}
-        onNextYear={this.onNextYear}
-
+    if (user) {
+      return <>
+        <Calendar
+          onPrev = {this.onPrev}
+          showMonthTable = {this.state.showMonthTable}
+          showMonth = {this.showMonth}
+          onNext = {this.onNext}
+          showDateTable = {this.state.showDateTable}
+          dateObject = {this.state.dateObject}
+          onDayClick = {this.onDayClick}
+          setMonth = {this.setMonth}
+          onPrevYear = {this.onPrevYear}
+          onNextYear = {this.onNextYear}
+          onClickLogout = {this.onClickLogout}
         />
         <EventDetailsContainer />
-      </div>
-    );
+      </>
+    }
+
   }
 }
 
-const mapStateToProps = (state) => {
+const mapDispatchToProps = {
+  handleResult,
+  chosenDate,
+  logout
+}
+
+const mapStateToProps = (reduxState) => {
   return {
-    user: state.user
+    user: reduxState.user
   }
 }
 
-
-export default connect(mapStateToProps, { handleResult, chosenDate })(CalendarContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(CalendarContainer)
