@@ -1,9 +1,11 @@
 import { baseUrl } from '../constants'
 import lscache from 'lscache'
 
-export const setToken = (payload) => {
+console.log('New actions');
+
+export const setUser = (payload) => {
     return {
-        type: 'LOGIN_SUCCESS',
+        type: 'SET_USER',
         payload
     }
 }
@@ -40,13 +42,13 @@ export const login = (email, password) => {
                     // console.log('json', json);
                     if (process.env.PORT) { // Production
                         console.log('Production');
-                        lscache.set('JWT', json.jwt, 15); // 15 minutes
+                        lscache.set('JWT', json.user, 15); // 15 minutes
                     }
                     else { // Development
                         console.log('Development');
-                        lscache.set('JWT', json.jwt, 1440); // 24 hours
+                        lscache.set('JWT', json.user, 1440); // 24 hours
                     }
-                    dispatch(setToken(json.jwt))
+                    dispatch(setUser(json.user))
                 })
                 .catch(exception => {
                     console.log(new Map([
@@ -59,19 +61,3 @@ export const login = (email, password) => {
 
     }
 }
-
-
-
-
-request
-.post(`${baseUrl}/login`)
-.send({
-  email: this.state.email,
-  password: this.state.password
-})
-.then(this.props.handleResult)
-.catch(error => this.props.handleResult(error.response))
-this.setState({
-email: '',
-password: '',
-})

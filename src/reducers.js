@@ -7,13 +7,13 @@ import {
     SET_USER,
     SET_USERS,
     SET_VALIDATIONTYPE
-} from '../actions'
+} from './actions'
 
 const reducer = (state = {}, action = {}) => {
-    // console.log('state >', state, 'action', action);
+    // console.log('reducer state >', state, 'reducer action', action);
     
     switch (action.type) {
-        case SET_VALIDATIONTYPE:
+        case SET_VALIDATIONTYPE: // For new users?
             return { ...state, validationType: action.payload }
         case SET_USER:
             return { ...state, user: action.payload }
