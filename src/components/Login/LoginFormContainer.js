@@ -5,15 +5,22 @@ import { handleResult } from '../../actions'
 import { baseUrl } from '../../constants'
 import request from 'superagent'
 
-
 class LoginFormContainer extends React.Component {
   state = {
     email: '',
     password: ''
   }
 
+  onChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
   onSubmit = (event) => {
     event.preventDefault()
+    // this.props.login(this.state.email, this.state.password)
+
     request
       .post(`${baseUrl}/login`)
       .send({
@@ -28,12 +35,6 @@ class LoginFormContainer extends React.Component {
     })
   }
 
-  onChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
-
   render() {
     return <LoginForm
       onSubmit = {this.onSubmit}
@@ -44,11 +45,10 @@ class LoginFormContainer extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  console.log('Redux state >', state);
-  
+const mapStateToProps = (reduxState) => {
+  console.log('Redux state >', reduxState);
   return {
-    user: state.user
+    user: reduxState.user
   }
 }
 
