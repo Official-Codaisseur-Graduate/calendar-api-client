@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class ResetPasswordForm extends Component {
   render() {
-    console.log("PROPS", this.props)
     return (
       <div className="form-container">
         <form onSubmit={this.props.onSubmit}>
