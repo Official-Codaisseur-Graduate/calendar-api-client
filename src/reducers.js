@@ -10,12 +10,12 @@ import {
 } from './actions'
 
 const reducer = (state = {}, action = {}) => {
-    // console.log('reducer state >', state, 'reducer action', action);
+    console.log('reducer state >', state, 'reducer action', action);
     
     switch (action.type) {
         case SET_VALIDATIONTYPE: // For new users?
             return { ...state, validationType: action.payload }
-        case SET_USER:
+        case 'SET_USER':
             return { ...state, user: action.payload }
         case CHOSEN_DATE:
             return { ...state, rightDate: action.payload }

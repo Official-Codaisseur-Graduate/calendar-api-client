@@ -28,6 +28,9 @@ class LoginFormContainer extends React.Component {
     //     return <Redirect to='/overview'/>
     // }
 
+    // console.log('this.props.user', this.props.user);
+    
+
     return <LoginForm
       onSubmit = {this.onSubmit}
       onChange = {this.onChange}
