@@ -15,7 +15,7 @@ function App() {
     {/* Signup routes */}
     <Route component={SignupFormContainer} exact path="/signup"/>
     <Route component={ValidationContainer} exact path="/validate/:code"/>
-    <Route component={ResetPasswordFormContainer}  path="/resetpassword/:email" />
+    <Route component={ResetPasswordFormContainer} path="/resetpassword/:code/:email" />
     <Route component={ForgotPasswordContainer} path="/forgotpassword" />
       
     {/* App routes */}
