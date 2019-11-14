@@ -11,6 +11,9 @@ class CalendarIdFormContainer extends React.Component {
 
   componentDidMount(){
     const user = lscache.get('user')
+    if (!user) {
+      return
+    }
     request
     .get(`${baseUrl}/calendars`)
     .set('Authorization', `Bearer ${user.jwt}`)

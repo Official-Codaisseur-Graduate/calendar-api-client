@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import EventDetails from './EventDetails'
 import { connect } from 'react-redux'
+import { fetchEvents } from '../../actions_beta/fetchEvents'
+import { selectDate } from '../../actions_beta/selectDate'
 
 class EventDetailsContainer extends Component {
   state = { 
@@ -18,6 +20,12 @@ class EventDetailsContainer extends Component {
 
 
   render() {
+    console.log('this.props', this.props);
+
+    if(!this.props) {
+      return 'Loading'
+    }
+    
     
     return <EventDetails
       events={this.props.events}
@@ -30,11 +38,16 @@ class EventDetailsContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapDispatchToProps = {
+  fetchEvents,
+  selectDate
+}
+
+const mapStateToProps = (reduxState) => {
   return {
-    events: state.events,
-    rightDate: state.rightDate
+    events: reduxState.events,
+    rightDate: reduxState.rightDate
   }
 }
 
-export default connect(mapStateToProps)(EventDetailsContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(EventDetailsContainer)

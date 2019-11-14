@@ -15,8 +15,10 @@ function App() {
     {/* Signup routes */}
     <Route component={SignupFormContainer} exact path="/signup"/>
     <Route component={ValidationContainer} exact path="/validate/:code"/>
-    <Route component={ResetPasswordFormContainer}  path="/resetpassword/:email" />
-    <Route component={ForgotPasswordContainer} path="/forgotpassword" />
+
+    {/* Reset or forgot password routes */}
+    <Route component={ResetPasswordFormContainer}  path="/resetpassword/:email"/>
+    <Route component={ForgotPasswordContainer} path="/forgotpassword"/>
       
     {/* App routes */}
     <Route component={LoginFormContainer} exact path="/"/>
@@ -24,7 +26,7 @@ function App() {
     {/* Admin routes */}
     <Route component={AdminPageContainer} exact path="/admin"/>
       
-    <Notification />
+    {/* <Notification /> */}
   </div>
 }
 

@@ -26,13 +26,6 @@ export const handleResult = data => dispatch => {
         })
     }
 
-    if (data && data.body && data.body.user) {
-        dispatch({
-            type: SET_USER,
-            payload: data.body.user
-        })
-    }
-
     if (data && data.body && data.body.users) {
         dispatch({
             type: SET_USERS,
@@ -46,33 +39,9 @@ export const handleResult = data => dispatch => {
             payload: data.body.validationType
         })
     }
-
-    if (data && data.body && data.body.events) {
-        dispatch({
-            type: GET_EVENTS,
-            payload: data.body.events
-        })
-    }
 }
 
 export const CHOSEN_DATE = 'CHOSEN_DATE'
-
-function date(payload) {
-    return {
-        type: CHOSEN_DATE,
-        payload
-    }
-}
-
-export const chosenDate = (year, month, day) => dispatch => {
-    const dateObject = {
-        year: year,
-        month: month,
-        day: day
-    }
-    const action = date(dateObject)
-    dispatch(action)
-}
 
 export const GET_USER = 'GET_USER'
 

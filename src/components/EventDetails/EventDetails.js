@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './eventDetails.css'
+import './eventDetails.scss'
 
 export default class EventDetails extends Component {
   render() {

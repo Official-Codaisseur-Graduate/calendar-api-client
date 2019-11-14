@@ -5,13 +5,14 @@ import request from 'superagent'
 import { connect } from 'react-redux'
 import { baseUrl } from '../../constants'
 import EventDetailsContainer from '../EventDetails/EventDetailsContainer'
-import './calendar.css'
+import './calendar.scss'
 import Calendar from './Calendar'
-import { handleResult, chosenDate } from '../../actions'
+import { handleResult } from '../../actions'
 import { logout } from '../../actions_beta/logout'
+import { fetchEvents } from '../../actions_beta/fetchEvents'
+import { selectDate } from '../../actions_beta/selectDate'
 
 class CalendarContainer extends React.Component {
-
   state = {
     showMonthTable: false,
     showDateTable: true,
@@ -66,45 +67,41 @@ class CalendarContainer extends React.Component {
     });
   }
 
-  onDayClick = (e, d) => {
+  onDayClick = (event, day) => {
     const user = lscache.get('user')
-    this.setState(
-      {
-        selectedDay: d
+    this.setState({
+        selectedDay: day
       },
       () => {
-        request
-      .get(`${baseUrl}/events/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${this.state.selectedDay}`)
-      .set('Authorization', `Bearer ${user.jwt}`)
-      .then(response => {
-        console.log("response after events",response)
-        this.props.handleResult(response)})
-      .catch(console.error)
+        console.log(`${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${this.state.selectedDay}`);
 
-        // this.props.getEvents(this.state.dateObject.format("Y"), this.state.dateObject.format("MM"), this.state.selectedDay,this.props.user.jwt)  
-        this.props.chosenDate(this.state.dateObject.format("Y"), this.state.dateObject.format("MMMM"), this.state.selectedDay)
+        const year = this.state.dateObject.format("Y")
+        const month = this.state.dateObject.format("MM")
+        const day = this.state.selectedDay
+
+        this.props.fetchEvents(year, month, day)
+        this.props.selectDate(year, month, day)
       }
     );
   };
 
   onClickLogout = (event) => {
     this.props.logout();
-    window.location.reload();
-}
+  }
 
   componentDidMount() {
     const user = lscache.get('user')
 
-    request
-      .get(`${baseUrl}/events/${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`)
-      .set('Authorization', `Bearer ${user.jwt}`)
-      .then(response => {
-        // console.log("response >",response)
-        this.props.handleResult(response)})
-      .catch(console.error)
+    console.log('local state' , this.state);
 
-    // this.props.getEvents(this.state.dateObject.format("Y"), this.state.dateObject.format("MM"), Number(this.state.dateObject.format("D")), this.props.user.jwt)
-    this.props.chosenDate(this.state.dateObject.format("Y"), this.state.dateObject.format("MMMM"), Number(this.state.dateObject.format("D")))
+    console.log(`${this.state.dateObject.format("Y")}/${this.state.dateObject.format("MM")}/${Number(this.state.dateObject.format("D"))}`);
+
+    const year = this.state.dateObject.format("Y")
+    const month = this.state.dateObject.format("MM")
+    const day = Number(this.state.dateObject.format("D"))
+
+    this.props.fetchEvents(year, month, day)
+    this.props.selectDate(year, month, day)
   }
 
   render() {
@@ -134,8 +131,9 @@ class CalendarContainer extends React.Component {
 
 const mapDispatchToProps = {
   handleResult,
-  chosenDate,
-  logout
+  logout,
+  fetchEvents,
+  selectDate
 }
 
 const mapStateToProps = (reduxState) => {
