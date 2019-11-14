@@ -24,7 +24,7 @@ function App() {
     {/* Admin routes */}
     <Route component={AdminPageContainer} exact path="/admin"/>
       
-    <Notification />
+    {/* <Notification /> */}
   </div>
 }
 

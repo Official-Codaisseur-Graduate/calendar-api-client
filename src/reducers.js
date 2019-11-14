@@ -2,9 +2,7 @@ import {
     GET_EVENTS,
     SET_MESSAGE,
     CLEAR_MESSAGE,
-    messageTimeout,
     CHOSEN_DATE,
-    SET_USER,
     SET_USERS,
     SET_VALIDATIONTYPE
 } from './actions'
@@ -29,7 +27,7 @@ const reducer = (state = {}, action = {}) => {
             return {
                 ...state,
                 message: action.payload,
-                expires: new Date().getTime() + messageTimeout
+                expires: new Date().getTime() + 8000
             }
         case CLEAR_MESSAGE: // Admin backend - clear status update
             return {
