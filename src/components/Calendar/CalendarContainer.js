@@ -1,13 +1,14 @@
-import React from "react";
-import moment from "moment";
-import "./calendar.css";
-import Calendar from './Calendar'
-import { connect } from 'react-redux'
-import request from "superagent"
-import { baseUrl } from "../../constants"
-import { handleResult, chosenDate } from '../../actions'
-import EventDetailsContainer from '../EventDetails/EventDetailsContainer'
+import React from 'react'
+import moment from 'moment'
 import lscache from 'lscache'
+import request from 'superagent'
+import { connect } from 'react-redux'
+import { baseUrl } from '../../constants'
+import EventDetailsContainer from '../EventDetails/EventDetailsContainer'
+import './calendar.css'
+import Calendar from './Calendar'
+import { handleResult, chosenDate } from '../../actions'
+import { logout } from '../../actions_beta/logout'
 
 class CalendarContainer extends React.Component {
 
@@ -86,6 +87,11 @@ class CalendarContainer extends React.Component {
     );
   };
 
+  onClickLogout = (event) => {
+    this.props.logout();
+    window.location.reload();
+}
+
   componentDidMount() {
     const user = lscache.get('user')
 
@@ -102,32 +108,40 @@ class CalendarContainer extends React.Component {
   }
 
   render() {
+    const user = lscache.get('user')
 
-    return (
-      <div>
-        <Calendar 
-          onPrev={this.onPrev}
-          showMonthTable={this.state.showMonthTable}
-          showMonth={this.showMonth}
-          onNext={this.onNext}
-          showDateTable={this.state.showDateTable}
-          dateObject={this.state.dateObject}
-          onDayClick={this.onDayClick}
-          setMonth={this.setMonth}
-          onPrevYear={this.onPrevYear}
-          onNextYear={this.onNextYear}
+    if (user) {
+      return <>
+        <Calendar
+          onPrev = {this.onPrev}
+          showMonthTable = {this.state.showMonthTable}
+          showMonth = {this.showMonth}
+          onNext = {this.onNext}
+          showDateTable = {this.state.showDateTable}
+          dateObject = {this.state.dateObject}
+          onDayClick = {this.onDayClick}
+          setMonth = {this.setMonth}
+          onPrevYear = {this.onPrevYear}
+          onNextYear = {this.onNextYear}
+          onClickLogout = {this.onClickLogout}
         />
         <EventDetailsContainer />
-      </div>
-    );
+      </>
+    }
+
   }
 }
 
-const mapStateToProps = (state) => {
+const mapDispatchToProps = {
+  handleResult,
+  chosenDate,
+  logout
+}
+
+const mapStateToProps = (reduxState) => {
   return {
-    user: state.user
+    user: reduxState.user
   }
 }
 
-
-export default connect(mapStateToProps, { handleResult, chosenDate })(CalendarContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(CalendarContainer)

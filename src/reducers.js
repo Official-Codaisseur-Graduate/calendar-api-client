@@ -17,6 +17,8 @@ const reducer = (state = {}, action = {}) => {
             return { ...state, validationType: action.payload }
         case 'SET_USER':
             return { ...state, user: action.payload }
+        case 'LOGOUT_SUCCESS':
+            return state = action.payload
         case CHOSEN_DATE:
             return { ...state, rightDate: action.payload }
         case GET_EVENTS:
