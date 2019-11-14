@@ -3,10 +3,10 @@ import React, { Component } from 'react'
 export default class AdminPage extends Component {
   render() {
     return (
-      <div>
+      <>
         <h2>Admin Page</h2>
         {!this.props.users ? 'Loading...' : 
-          <div>{this.props.users.map(user => {
+          <>{this.props.users.map(user => {
             return <div key={user.id}>
               <p>name: {user.name}</p>
               <p>email: {user.email}</p>
@@ -33,9 +33,9 @@ export default class AdminPage extends Component {
               </form>
             </div>  
           })}
-          </div>
+          </>
         } 
-      </div>
+      </>
     )
   }
 }
