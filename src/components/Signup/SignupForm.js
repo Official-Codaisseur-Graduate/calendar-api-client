@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Button from '@material-ui/core/Button';
 
 export default class SignupForm extends React.Component {
   
   render(props) {
     return <>
-      <Link to={'/'}>Go back</Link>
+     
       <form onSubmit={this.props.onSubmit}>
         <h2>Sign up</h2>
         <p>
@@ -18,7 +19,12 @@ export default class SignupForm extends React.Component {
             onChange={this.props.onChange}
           />
         </p>
-        <button type='submit'>Sign up</button>
+          <Button variant="contained" color="primary" type='submit'> Submit</Button>
+          <div><br></br>
+            <Button variant="contained" color="primary" type='submit'>
+              <Link to={'/'}>Go back</Link>
+            </Button>
+          </div>
       </form>
     </>
   }

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import CalendarContainer from '../Calendar/CalendarContainer'
 import lscache from 'lscache'
+import Button from '@material-ui/core/Button';
 
 export default class LoginForm extends React.Component {
   render() {
@@ -32,11 +33,16 @@ export default class LoginForm extends React.Component {
             onChange={this.props.onChange}
           />
         </p>
-        
-        <button type='submit'>Login</button>
+          <Button variant="contained" color="primary" type='submit'> Submit </Button> 
         <p>
-          <Link to={'/forgotpassword'}>Forgot password?</Link>
-          Or sign up <Link to={'/signup'}>here</Link>
+          <Button variant="contained" color="primary" type='submit'> 
+            <Link to={'/forgotpassword'}>Forgot password?</Link> 
+          </Button>
+        <div><br></br>
+          <Button variant="contained" color="primary" type='submit'> 
+            <Link to={'/signup'}>Signup</Link> 
+          </Button>
+        </div>
          </p>
       </form>
     }
@@ -49,3 +55,4 @@ export default class LoginForm extends React.Component {
     }
   }
 }
+
