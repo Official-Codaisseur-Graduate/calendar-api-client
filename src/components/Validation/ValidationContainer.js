@@ -1,9 +1,8 @@
 import React from 'react'
 import Validation from './Validation'
-import request from 'superagent'
-import { baseUrl } from '../../constants'
 import { connect } from 'react-redux'
-// import { handleResult } from '../../actions'
+import { validateRegistration } from '../../actions/validateRegistration'
+import { fetchValidationType } from '../../actions/fetchValidationType'
 
 class ValidationContainer extends React.Component {
   state = {
@@ -21,28 +20,13 @@ class ValidationContainer extends React.Component {
   // onSubmit function provides a validations for the sign up after the continue registration has been done
   onSubmit = event => {
     event.preventDefault()
-    request.post(`${baseUrl}/registervalidation`)
-      .set('validation', `${this.props.match.params.code}`)
-      .send({
-        name: this.state.name,
-        password: this.state.password,
-      })
-      .then(response => {
-        this.props.handleResult(response)
-      })
-      .catch(error => this.props.handleResult(error.response))
+    this.props.validateRegistration(this.props.match.params.code, this.state.name, this.state.password)
     this.props.history.push('/')
   }
 
   // verifies the validation type of the users
   componentDidMount() {
-    request.get(`${baseUrl}/validation`)
-      .set('validation', `${this.props.match.params.code}`)
-      .send()
-      .then(response => {
-        this.props.handleResult(response)
-      })
-      .catch(error => this.props.handleResult(error.response))
+    this.props.fetchValidationType(this.props.match.params.code)
   }
 
   render() {
@@ -57,14 +41,16 @@ class ValidationContainer extends React.Component {
   }
 }
 
-const mapstateToProps = (state) => {
+
+const mapDispatchToProps = {
+  validateRegistration,
+  fetchValidationType
+}
+
+const mapStateToProps = (reduxState) => {
   return {
-    validationType: state.validationType
+    validationType: reduxState.validationType
   }
 }
 
-const mapDispatchToProps = {
-  handleResult
-}
-
-export default connect(mapstateToProps, mapDispatchToProps)(ValidationContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(ValidationContainer)
