@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 
 // This component is used for Sign Up after clicking on continue with registration in the gmail account
-export default class Validation extends Component {
+export default class Validation extends React.Component {
   render() {
-    return (
-      <div>
+    return <div>
         {!this.props.validationType ? 'loading...' :
          <div className="registrationWrapper" >
           <h2>Success!!</h2>
@@ -37,7 +36,6 @@ export default class Validation extends Component {
          </div>
         }
        
-      </div>
-    )
+    </div>
   }
 }

@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import { connect } from 'react-redux'
 import ForgotPassword from './ForgotPassword'
-import { forgotPassword } from "../../actions_beta/password"
+import { forgotPassword } from '../../actions/password'
 
-class ForgotPasswordContainer extends Component {
+class ForgotPasswordContainer extends React.Component {
   state = {
-    email: ""
+    email: ''
   }
 
   onChange = event => {
@@ -37,6 +37,4 @@ class ForgotPasswordContainer extends Component {
   }
 }
 
-export default connect(
-  null, { forgotPassword }
-)(ForgotPasswordContainer);
+export default connect(null, {forgotPassword})(ForgotPasswordContainer)
