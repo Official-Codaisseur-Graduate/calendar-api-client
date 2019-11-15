@@ -1,13 +1,11 @@
-import React from "react"
-import { connect } from "react-redux"
-import request from "superagent"
-import SignupForm from "./SignupForm"
-import { baseUrl } from "../../constants"
-import { handleResult } from "../../actions"
+import React from 'react'
+import { connect } from 'react-redux'
+import { signup } from '../../actions_beta/signup'
+import SignupForm from './SignupForm'
 
 class SignupFormContainer extends React.Component {
   state = {
-    email: ""
+    email: ''
   }
 
   onChange = event => {
@@ -18,16 +16,7 @@ class SignupFormContainer extends React.Component {
 
   onSubmit = event => {
     event.preventDefault()
-    request.post(`${baseUrl}/register`)
-      .send({
-        email: this.state.email,
-        // password: this.state.password,
-      })
-      .then(response => {
-        this.props.handleResult(response)
-        this.props.history.push('/')
-      })
-      .catch(error => this.props.handleResult(error.response))
+    this.props.signup(this.state.email)
   }
 
   render() {
@@ -40,7 +29,7 @@ class SignupFormContainer extends React.Component {
 }
 
 const mapDispatchToProps = {
-  handleResult
+  signup
 }
 
 export default connect(null, mapDispatchToProps)(SignupFormContainer)

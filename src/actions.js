@@ -6,7 +6,6 @@ console.log('Old actions')
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE"
 export const SET_MESSAGE = "SET_MESSAGE"
 export const SET_VALIDATIONTYPE = "SET_VALIDATIONTYPE"
-export const GET_EVENTS = 'GET_EVENTS'
 
 export const clearMessage = () => dispatch => {
     dispatch({

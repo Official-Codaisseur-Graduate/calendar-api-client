@@ -19,7 +19,7 @@ class EventDetailsContainer extends React.Component {
   }
 
   render() {
-    console.log('this.props', this.props);
+    // console.log('this.props', this.props);
 
     if(!this.props) {
       return 'Loading'
