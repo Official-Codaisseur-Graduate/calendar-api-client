@@ -17,7 +17,7 @@ function App() {
     <Route component={ValidationContainer} exact path="/validate/:code"/>
 
     {/* Reset or forgot password routes */}
-    <Route component={ResetPasswordFormContainer}  path="/resetpassword/:email"/>
+    <Route component={ResetPasswordFormContainer}  path="/resetpassword/:code/:email"/>
     <Route component={ForgotPasswordContainer} path="/forgotpassword"/>
       
     {/* App routes */}

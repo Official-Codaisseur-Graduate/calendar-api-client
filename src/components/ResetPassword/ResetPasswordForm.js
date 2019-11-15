@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class ResetPasswordForm extends Component {
   render() {
-    console.log("PROPS", this.props)
     return (
       <div className="form-container">
         <form onSubmit={this.props.onSubmit}>
@@ -18,7 +17,7 @@ class ResetPasswordForm extends Component {
             />
           </label>
           <button type='submit'>Reset Password</button>
-
+          <button type='cancel' onClick={this.props.cancel}>Cancel</button>
         </form>
       </div>
     );
