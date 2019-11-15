@@ -1,23 +1,27 @@
 import { baseUrl } from '../constants'
+import lscache from 'lscache'
 
-// export const setUser = (payload) => {
+// export const setGoogleCalendar = (payload) => {
 //     return {
-//         type: 'SET_USER',
+//         type: 'SET_CALENDARS',
 //         payload
 //     }
 // }
 
-export const signup = (email) => {
+export const fetchCalendars = (clientEmail, privateKey, userPassword) => {
     return function (dispatch, getState) {
+        // check if user is logged in.
+        const user = lscache.get('user');
+        if (!user) {
+            return console.log('User is not logged in.');
+        }
 
-        fetch(`${baseUrl}/register`, {
-                method: 'POST',
+        fetch(`${baseUrl}/calendars`, {
+                method: 'GET',
                 headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    email
-                })
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.jwt}`
+                }
             })
             .then(response => Promise.all([response, response.json()]))
             .then(([response, json]) => {
@@ -26,7 +30,7 @@ export const signup = (email) => {
                     throw Error(`Respsonse status ${response.status} (${response.statusText}): ${json.message}`);
                 }
                 console.log(json);
-                // dispatch(setUser(json))
+                // dispatch(SET_CALENDARS(json))
             })
             .catch(exception => {
                 console.log(new Map([

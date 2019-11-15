@@ -1,35 +1,28 @@
 import React from 'react'
 import CalendarIdForm from './CalendarIdForm'
 import { connect } from 'react-redux'
-import { handleResult } from '../../actions'
-import { baseUrl } from "../../constants"
-import request from "superagent"
 import lscache from 'lscache'
+import { fetchCalendars } from '../../actions_beta/fetchCalendars'
+import { setupGoogleCalendar } from '../../actions_beta/setupGoogleCalendar'
 
 class CalendarIdFormContainer extends React.Component {
-  state = { calendar_id: '', password: '' }
+  state = {
+    calendar_id: '',
+    password: ''
+  }
 
-  componentDidMount(){
+  componentDidMount() {
     const user = lscache.get('user')
     if (!user) {
       return
     }
-    request
-    .get(`${baseUrl}/calendars`)
-    .set('Authorization', `Bearer ${user.jwt}`)
-    .then(response => this.props.handleResult(response))
-    .catch(error => this.props.handleResult(error.response))
+    this.props.fetchCalendars()
   }
 
   onSubmit = (event) => {
-    const user = lscache.get('user')
     event.preventDefault()
-    request
-      .post(`${baseUrl}/calendar`)
-      .set('Authorization', `Bearer ${user.jwt}`)
-      .send({ calendar_id: this.state.calendar_id, password: this.state.password})
-      .then(this.props.handleResult)
-      .catch(error => this.props.handleResult(error.response))
+
+    this.props.setupGoogleCalendar(this.state.calendar_id, this.state.password)
     this.setState({
       calendar_id: '',
       password: ''
@@ -49,16 +42,20 @@ class CalendarIdFormContainer extends React.Component {
       values={this.state}
       user={this.props.user}
       calendar={this.props.calendar}
-
     />
   }
 }
 
-const mapStateToProps = (state) => {
+
+const mapDispatchToProps = {
+  fetchCalendars,
+  setupGoogleCalendar
+}
+
+const mapStateToProps = (reduxState) => {
   return {
-    user: state.user,
-    calendar: state.events
+    calendar: reduxState.events
   }
 }
 
-export default connect(mapStateToProps, { handleResult })(CalendarIdFormContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(CalendarIdFormContainer)

@@ -130,10 +130,4 @@ const mapDispatchToProps = {
   selectDate
 }
 
-const mapStateToProps = (reduxState) => {
-  return {
-    user: reduxState.user
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CalendarContainer)
+export default connect(null, mapDispatchToProps)(CalendarContainer)

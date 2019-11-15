@@ -11,7 +11,7 @@ class EventDetailsContainer extends React.Component {
 
   showDetails = (e) => {
     const eventDetails = this.props.events.find(event => event.id === e.currentTarget.dataset.event_id) 
-    this.setState({ eventDetails: eventDetails})
+    this.setState({ eventDetails })
   }
 
   closeDetails = () => {
