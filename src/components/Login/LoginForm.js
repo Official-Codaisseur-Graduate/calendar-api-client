@@ -38,11 +38,11 @@ export default class LoginForm extends React.Component {
           <Button variant="contained" color="primary" type='submit'> 
             <Link to={'/forgotpassword'}>Forgot password?</Link> 
           </Button>
-        <div><br></br>
+        <br></br><br></br>
           <Button variant="contained" color="primary" type='submit'> 
             <Link to={'/signup'}>Signup</Link> 
           </Button>
-        </div>
+        
          </p>
       </form>
     }

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography';
-import Image from 'material-ui-image'
 import Button from '@material-ui/core/Button';
 
 
@@ -22,7 +21,7 @@ class Home extends React.Component{
         return(
             <div>
                 <div styles={styles.bg}> 
-                    <Typography component="h2" variant="display4" gutterBottom>
+                    <Typography component="h2" variant="h2" gutterBottom>
                         <u> Welcome to Calendar App</u>   
                     </Typography>
                     <br></br>
