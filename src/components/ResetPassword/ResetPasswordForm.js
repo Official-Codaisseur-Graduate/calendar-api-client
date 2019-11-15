@@ -17,7 +17,7 @@ class ResetPasswordForm extends Component {
             />
           </label>
           <button type='submit'>Reset Password</button>
-
+          <button type='cancel' onClick={this.props.cancel}>Cancel</button>
         </form>
       </div>
     );

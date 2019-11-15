@@ -18,7 +18,7 @@ class ForgotPassword extends Component {
             />
           </label>
           <button type='submit'>Send</button>
-
+          <button type='cancel' onClick={this.props.cancel}>Cancel</button>
         </form>
       </div>
     );
