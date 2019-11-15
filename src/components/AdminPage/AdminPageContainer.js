@@ -1,40 +1,32 @@
 import React, { Component } from 'react'
 import AdminPage from './AdminPage'
-import request from "superagent"
-import { baseUrl } from "../../constants"
-import { connect } from "react-redux"
-import { handleResult } from "../../actions"
+import { connect } from 'react-redux'
 import ConfigFormContainer from '../Config/ConfigFormContainer'
 import CalendarIdFormContainer from '../CalendarId/CalendarIdFormContainer'
 import MailVerificationFormContainer from '../MailVerification/MailVerificationFormContainer'
 import lscache from 'lscache'
-import { logout } from '../../actions_beta/logout'
+import { logout } from '../../actions/logout'
+import { fetchUsers } from '../../actions/fetchUsers'
+import { changeUserRank } from '../../actions/changeUserRank'
 
 class AdminPageContainer extends Component {
-
   componentDidMount() {
     const user = lscache.get('user')
     if(!user) {
         return this.props.history.push('/')
     }
-    request.get(`${baseUrl}/users`)
-      .set('Authorization', `Bearer ${user.jwt}`)
-      .then(this.props.handleResult)
-      .catch(console.error)
+
+    this.props.fetchUsers()
   }
 
   onSubmit = (event) => {
     event.preventDefault()
-    
-    const user = lscache.get('user')
+    // console.log('rank:', event.currentTarget.dataset.rank, 'user:', event.currentTarget.dataset.user_id)
 
-    console.log('rank:', event.currentTarget.dataset.rank, 'user:', event.currentTarget.dataset.user_id)
+    const userId = event.currentTarget.dataset.user_id
+    const userRank = event.currentTarget.dataset.rank
 
-    request.put(`${baseUrl}/userrank/${event.currentTarget.dataset.user_id}`)
-      .set('Authorization', `Bearer ${user.jwt}`)
-      .send({ rank: event.currentTarget.dataset.rank })
-      .then(this.props.handleResult)
-      .catch(error => this.props.handleResult(error.response))
+    this.props.changeUserRank(userId, userRank)
   }
 
   onClickLogout = (event) => {
@@ -59,15 +51,14 @@ class AdminPageContainer extends Component {
   }
 }
 
-
 const mapDispatchToProps = {
-  handleResult,
-  logout
+  fetchUsers,
+  logout,
+  changeUserRank
 }
 
 const mapStateToProps = (reduxState) => {
   return {
-    user: reduxState.user,
     users: reduxState.users
   }
 }

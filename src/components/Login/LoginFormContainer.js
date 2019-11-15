@@ -1,8 +1,7 @@
 import React from 'react'
-import { login } from '../../actions_beta/login'
+import { login } from '../../actions/login'
 import { connect } from 'react-redux'
 import LoginForm from './LoginForm'
-// import lscache from 'lscache'
 
 class LoginFormContainer extends React.Component {
   state = {
@@ -22,8 +21,6 @@ class LoginFormContainer extends React.Component {
   }
 
   render() {
-    // lscache.flush() // For development
-
     return <LoginForm
       onSubmit = {this.onSubmit}
       onChange = {this.onChange}
