@@ -9,7 +9,7 @@ export default class CalendarIdForm extends React.Component {
           <h2>Setup Google Calendar - Calendar ID</h2>
           <p>You can find the calendar ID from the Google calendar under "Calendar settings" and down under section "Integrate calendar"</p>
 
-          {!this.props.calendar ? 'loading...' :
+          {!this.props.calendar ? null :
           <ul> {this.props.calendar.map(calendar => {
             return <li key={calendar.id}>{calendar.id}</li>
           })}</ul>}

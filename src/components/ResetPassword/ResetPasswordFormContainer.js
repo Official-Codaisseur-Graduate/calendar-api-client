@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
+import React from 'react'
+import { connect } from 'react-redux'
 import ResetPasswordForm from './ResetPasswordForm'
-import { resetPassword } from "../../actions_beta/password"
+import { resetPassword } from '../../actions/password'
 
-class ResetPasswordFormContainer extends Component {
+class ResetPasswordFormContainer extends React.Component {
   state = {
-    new_password: ""
+    new_password: ''
   }
 
   onChange = event => {
@@ -20,7 +19,7 @@ class ResetPasswordFormContainer extends Component {
     this.props.resetPassword(this.props.match.params.code, this.props.match.params.email, this.state.new_password)
     this.props.history.push('/')
     this.setState({
-      new_password: ""
+      new_password: ''
     })
   }
 
@@ -33,7 +32,4 @@ class ResetPasswordFormContainer extends Component {
   }
 }
 
-
-export default connect(
-  null, { resetPassword }
-)(ResetPasswordFormContainer);
+export default connect(null, {resetPassword})(ResetPasswordFormContainer)

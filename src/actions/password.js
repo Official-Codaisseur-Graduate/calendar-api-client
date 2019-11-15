@@ -1,6 +1,5 @@
 import request from "superagent"
 import { baseUrl } from "../constants"
-import { handleResult } from '../actions'
 
 export const forgotPassword = (email) => (dispatch) => {
   console.log("EMAIL FROM FORGOT PASWORD", email)
@@ -11,12 +10,10 @@ export const forgotPassword = (email) => (dispatch) => {
     })
     .then(response => {
       console.log("FORGOT PASSWORD", response)
-      dispatch(handleResult(response))
+      // dispatch(handleResult(response))
     })
     .catch(console.error)
 }
-
-
 
 export const resetPassword = (validation_code, email, new_password) => (dispatch) => {
   // console.log("RESETPASS", email, validation_code, new_password)
@@ -29,7 +26,7 @@ export const resetPassword = (validation_code, email, new_password) => (dispatch
     })
     .then(response => {
       console.log("RESET PASSWORD", response)
-      dispatch(handleResult(response))
+      // dispatch(handleResult(response))
     })
     .catch(console.error)
 }
