@@ -9,6 +9,7 @@ import ValidationContainer from './components/Validation/ValidationContainer';
 import ResetPasswordFormContainer from './components/ResetPassword/ResetPasswordFormContainer'
 import ForgotPasswordContainer from './components/ForgotPassword/ForgotPasswordContainer'
 // import Notification from './components/Notification'
+import Home from './components/Home'
 
 function App() {
   return <div className="App">
@@ -21,7 +22,8 @@ function App() {
     <Route component={ForgotPasswordContainer} path="/forgotpassword"/>
       
     {/* App routes */}
-    <Route component={LoginFormContainer} exact path="/"/>
+    <Route component={Home} exact path='/'/>
+    <Route component={LoginFormContainer} exact path="/login"/>
     
     {/* Admin routes */}
     <Route component={AdminPageContainer} exact path="/admin"/>
