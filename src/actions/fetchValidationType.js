@@ -1,5 +1,4 @@
 import { baseUrl } from '../constants'
-import lscache from 'lscache'
 
 // export const setSomething = (payload) => {
 //     return {
@@ -10,11 +9,6 @@ import lscache from 'lscache'
 
 export const fetchValidationType = (validationCode) => {
     return function (dispatch, getState) {
-        // check if user is logged in.
-        const user = lscache.get('user');
-        if(!user) {
-            return console.log('User is not logged in.');
-        }
 
         fetch(`${baseUrl}/validation`, {
                 method: 'GET',
@@ -29,5 +23,6 @@ export const fetchValidationType = (validationCode) => {
             }).catch(
                 error => console.log(error)
             )
+
     }
 }

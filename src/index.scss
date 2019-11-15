@@ -20,4 +20,8 @@ code {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #282c34;
+  button span a {
+    color: #fff !important;
+    text-decoration: none !important;
+  }
 }

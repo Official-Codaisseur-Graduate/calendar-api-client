@@ -5,7 +5,7 @@ import React from 'react'
 export default class Validation extends React.Component {
   render() {
     return <div>
-        {!this.props.validationType ? 'loading...' :
+        {!this.props.validationType ? null :
          <div className="registrationWrapper" >
           <h2>Success!!</h2>
           <p>You have confirmed your email</p>
