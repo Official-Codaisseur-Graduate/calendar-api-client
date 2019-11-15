@@ -2,7 +2,7 @@ import React from 'react'
 import ConfigForm from './ConfigForm'
 import { connect } from 'react-redux'
 import lscache from 'lscache'
-import { GoogleCalendarApiConfig } from '../../actions_beta/GoogleCalendarApiConfig'
+import { GoogleCalendarApiConfig } from '../../actions/GoogleCalendarApiConfig'
 
 class ConfigFormContainer extends React.Component {
   state = {

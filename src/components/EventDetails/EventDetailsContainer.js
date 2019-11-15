@@ -1,8 +1,8 @@
 import React from 'react'
 import EventDetails from './EventDetails'
 import { connect } from 'react-redux'
-import { fetchEvents } from '../../actions_beta/fetchEvents'
-import { selectDate } from '../../actions_beta/selectDate'
+import { fetchEvents } from '../../actions/fetchEvents'
+import { selectDate } from '../../actions/selectDate'
 
 class EventDetailsContainer extends React.Component {
   state = { 

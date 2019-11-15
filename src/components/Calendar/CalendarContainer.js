@@ -5,10 +5,9 @@ import { connect } from 'react-redux'
 import EventDetailsContainer from '../EventDetails/EventDetailsContainer'
 import './calendar.scss'
 import Calendar from './Calendar'
-import { handleResult } from '../../actions'
-import { logout } from '../../actions_beta/logout'
-import { fetchEvents } from '../../actions_beta/fetchEvents'
-import { selectDate } from '../../actions_beta/selectDate'
+import { logout } from '../../actions/logout'
+import { fetchEvents } from '../../actions/fetchEvents'
+import { selectDate } from '../../actions/selectDate'
 
 class CalendarContainer extends React.Component {
   state = {
@@ -124,7 +123,6 @@ class CalendarContainer extends React.Component {
 }
 
 const mapDispatchToProps = {
-  handleResult,
   logout,
   fetchEvents,
   selectDate

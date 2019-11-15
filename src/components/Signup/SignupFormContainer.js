@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { signup } from '../../actions_beta/signup'
+import { signup } from '../../actions/signup'
 import SignupForm from './SignupForm'
 
 class SignupFormContainer extends React.Component {

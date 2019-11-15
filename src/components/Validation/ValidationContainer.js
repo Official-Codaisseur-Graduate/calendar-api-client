@@ -3,7 +3,7 @@ import Validation from './Validation'
 import request from 'superagent'
 import { baseUrl } from '../../constants'
 import { connect } from 'react-redux'
-import { handleResult } from '../../actions'
+// import { handleResult } from '../../actions'
 
 class ValidationContainer extends React.Component {
   state = {

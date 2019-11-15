@@ -5,9 +5,9 @@ import ConfigFormContainer from '../Config/ConfigFormContainer'
 import CalendarIdFormContainer from '../CalendarId/CalendarIdFormContainer'
 import MailVerificationFormContainer from '../MailVerification/MailVerificationFormContainer'
 import lscache from 'lscache'
-import { logout } from '../../actions_beta/logout'
-import { fetchUsers } from '../../actions_beta/fetchUsers'
-import { changeUserRank } from '../../actions_beta/changeUserRank'
+import { logout } from '../../actions/logout'
+import { fetchUsers } from '../../actions/fetchUsers'
+import { changeUserRank } from '../../actions/changeUserRank'
 
 class AdminPageContainer extends Component {
   componentDidMount() {

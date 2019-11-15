@@ -6,7 +6,7 @@ export default class EventDetails extends Component {
 
   render() {
     const user = lscache.get('user')
-    console.log('user', user);
+    // console.log('user', user);
 
     if(!user) {
       return 'Loading'

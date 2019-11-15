@@ -2,8 +2,8 @@ import React from 'react'
 import CalendarIdForm from './CalendarIdForm'
 import { connect } from 'react-redux'
 import lscache from 'lscache'
-import { fetchCalendars } from '../../actions_beta/fetchCalendars'
-import { setupGoogleCalendar } from '../../actions_beta/setupGoogleCalendar'
+import { fetchCalendars } from '../../actions/fetchCalendars'
+import { setupGoogleCalendar } from '../../actions/setupGoogleCalendar'
 
 class CalendarIdFormContainer extends React.Component {
   state = {

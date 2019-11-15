@@ -1,7 +1,7 @@
 import React from 'react'
 import MailVerificationForm from './MailVerificationForm'
 import { connect } from 'react-redux'
-import { configMailService } from '../../actions_beta/configMailService'
+import { configMailService } from '../../actions/configMailService'
 
 class MailVerificationFormContainer extends React.Component {
   state = { send_email: '', send_password:'', password: '' }
