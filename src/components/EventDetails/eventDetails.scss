@@ -1,4 +1,3 @@
-
 .eventList {
   display: flex;
   align-items: center;
@@ -53,10 +52,11 @@
   background-color: #223344;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 
-.eventTitle h4{
+.eventTitle h4 {
   color: white;
 }
 
@@ -91,4 +91,5 @@
   padding: 1vh;
   border: solid white 2px;
   font-family: 'Cabin', sans-serif;
+  cursor: pointer;
 }
