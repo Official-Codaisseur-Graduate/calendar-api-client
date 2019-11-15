@@ -1,68 +1,26 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Introduction to the calendar app - client
 
-## Available Scripts
+**The app is made to show the events happening on certain dates of the calendar. In short, once a user clicks on a day, the events for that particular date would be displayed. The user and admin stories are described below.**
 
-In the project directory, you can run:
+## User's experience
 
-### `npm start`
+1. A user has to signup first to use the app. Once the user has signed up, they receice a mail verification on their email id, where they have to set their password.
+2. Once the user sign in, they receive a rank(which is set up by the admin) and they can see different events for the days listed.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Admin's experience
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+1. An admin signs up with the email=your@email.com with the password=secret(Fixed password and email for the admin to login the app). Upon logging, the calendar page opens with the admin button.Note that the admin button will only show when logging in as an admin.
+2. When the admin button is clicked, the page loads up to show admin settings. The admin can set up the calendar and add users.
+3. The service account is setup by entering the client email and the key from the downloaded json file(refer to server readme at step A)
+4. The calendar is setup by copying the calendar id from the settings of the admin's new gmail account(refer to the server readme step D)
+5. The admin sets up the email verification for users. Note that the admin has to setup the email verification for every new user.
 
-### `npm test`
+## Super Admin
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. The app is designed such that when a user enter with the email= your@gmail.com, they automatically enter as the super admin. The id and password is hard coded in the server side of the app in auth/superAdmin.js.
+2. So when doing the setup for the very first time, keep in mind that there can be multiple admins assigned. The super admin can increase ranks of users to make them admins.
+3. The hierarchy of users, assistants, teacher, admins is explained in the server readme.
 
-### `npm run build`
+## For all documentation and installation instructions, see the server repository
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+https://github.com/Official-Codaisseur-Graduate/calendar-api-server
