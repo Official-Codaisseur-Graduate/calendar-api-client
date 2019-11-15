@@ -8,7 +8,7 @@ export default class LoginForm extends React.Component {
   render() {
     const user = lscache.get('user')
     // console.log('user from localStorage', user);
-    
+
     if (!user) {
       return <form onSubmit={this.props.onSubmit}>
         <h2>Login</h2>
@@ -46,13 +46,16 @@ export default class LoginForm extends React.Component {
          </p>
       </form>
     }
-    else {
+    else if (user.rank === 4) {
       return <>
-        <CalendarContainer />
-        {user.rank === 4 &&
-        <Link to="/admin"><button>Admin</button></Link>}
+        <CalendarContainer/>
+        <Link to="/admin"><button>Admin</button></Link>
       </>
     }
+    else {
+      return <CalendarContainer/>
+    }
+    
   }
 }
 

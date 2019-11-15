@@ -1,23 +1,29 @@
-import React, { Component } from 'react'
+import React from 'react'
 import EventDetails from './EventDetails'
 import { connect } from 'react-redux'
+import { fetchEvents } from '../../actions/fetchEvents'
+import { selectDate } from '../../actions/selectDate'
 
-class EventDetailsContainer extends Component {
+class EventDetailsContainer extends React.Component {
   state = { 
     eventDetails: null,
   }
 
   showDetails = (e) => {
     const eventDetails = this.props.events.find(event => event.id === e.currentTarget.dataset.event_id) 
-    this.setState({ eventDetails: eventDetails})
+    this.setState({ eventDetails })
   }
 
   closeDetails = () => {
     this.setState({ eventDetails: null })
   }
 
-
   render() {
+    // console.log('this.props', this.props);
+
+    if(!this.props) {
+      return 'Loading'
+    }
     
     return <EventDetails
       events={this.props.events}
@@ -30,11 +36,16 @@ class EventDetailsContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapDispatchToProps = {
+  fetchEvents,
+  selectDate
+}
+
+const mapStateToProps = (reduxState) => {
   return {
-    events: state.events,
-    rightDate: state.rightDate
+    events: reduxState.events,
+    rightDate: reduxState.rightDate
   }
 }
 
-export default connect(mapStateToProps)(EventDetailsContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(EventDetailsContainer)

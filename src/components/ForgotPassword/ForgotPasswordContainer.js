@@ -1,14 +1,11 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
+import React from 'react'
+import { connect } from 'react-redux'
 import ForgotPassword from './ForgotPassword'
-import request from "superagent"
-import { baseUrl } from "../../constants"
-import { handleResult } from "../../actions"
+import { forgotPassword } from '../../actions/password'
 
-class ForgotPasswordContainer extends Component {
+class ForgotPasswordContainer extends React.Component {
   state = {
-    email: ""
+    email: ''
   }
 
   onChange = event => {
@@ -20,17 +17,13 @@ class ForgotPasswordContainer extends Component {
   onSubmit = event => {
     event.preventDefault()
     // console.table(event.target)
-    request.post(`${baseUrl}/forgot-password`)
-      .send({
-        email: this.state.email,
-        // password: this.state.password,
-      })
-      .then(response => {
-        console.log("EMAIL", response)
-        this.props.handleResult(response)
-        this.props.history.push('/')
-      })
-      .catch(error => this.props.handleResult(error.response))
+    this.props.forgotPassword(this.state.email)
+    this.props.history.push('/')
+  }
+
+  cancel = event => {
+    event.preventDefault()
+    this.props.history.push('/')
   }
 
 
@@ -39,11 +32,9 @@ class ForgotPasswordContainer extends Component {
       onChange={this.onChange}
       values={this.state}
       onSubmit={this.onSubmit}
-
+      cancel={this.cancel}
     />
   }
 }
 
-export default connect(
-  null, { handleResult }
-)(ForgotPasswordContainer);
+export default connect(null, {forgotPassword})(ForgotPasswordContainer)
