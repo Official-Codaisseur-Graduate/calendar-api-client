@@ -25,28 +25,8 @@
 
 Materialize UI: Calendar App is using Materialize UI for styling the App. Go through the https://material-ui.com to know about the materialize UI in details.
 
+## See [changelog](https://github.com/Official-Codaisseur-Graduate/calendar-api-client/blob/develop/CHANGELOG.md)
+
 ## For all documentation and installation instructions, see the server repository
 
 https://github.com/Official-Codaisseur-Graduate/calendar-api-server
-
-
-# Changelog
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-## [Unreleased]
-
-## 2019-11-18
-
-### Added
-- Forgot my password
-- Reset my password
-- Materialize UI for styling
-
-### Changed
----???---
-
-### Removed
- - Notification in App.js
