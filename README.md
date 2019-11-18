@@ -21,6 +21,11 @@
 2. So when doing the setup for the very first time, keep in mind that there can be multiple admins assigned. The super admin can increase ranks of users to make them admins.
 3. The hierarchy of users, assistants, teacher, admins is explained in the server readme.
 
+## Front-end Framework used for styling 
+1. Materialize UI : Calendar App is using Materialize UI for styling the App. 
+Go through the 'https://material-ui.com' to know about the materialize UI in details .
+
 ## For all documentation and installation instructions, see the server repository
 
 https://github.com/Official-Codaisseur-Graduate/calendar-api-server
+
