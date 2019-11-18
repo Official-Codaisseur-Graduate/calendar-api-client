@@ -23,7 +23,7 @@
 
 ## Front-end Framework used for styling
 
-Materialize UI : Calendar App is using Materialize UI for styling the App. Go through the https://material-ui.com to know about the materialize UI in details.
+Materialize UI: Calendar App is using Materialize UI for styling the App. Go through the https://material-ui.com to know about the materialize UI in details.
 
 ## For all documentation and installation instructions, see the server repository
 
