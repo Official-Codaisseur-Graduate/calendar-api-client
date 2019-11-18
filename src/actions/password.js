@@ -1,12 +1,12 @@
-import request from "superagent"
-import { baseUrl } from "../constants"
+import request from 'superagent'
+import { baseUrl } from '../constants'
 
 export const forgotPassword = (email) => (dispatch) => {
   console.log("EMAIL FROM FORGOT PASWORD", email)
   request
     .post(`${baseUrl}/forgot-password`)
     .send({
-      email: email
+      email
     })
     .then(response => {
       console.log("FORGOT PASSWORD", response)
@@ -21,8 +21,8 @@ export const resetPassword = (validation_code, email, new_password) => (dispatch
     .post(`${baseUrl}/reset-password`)
     .set('validation', validation_code)
     .send({
-      email: email,
-      new_password: new_password
+      email,
+      new_password
     })
     .then(response => {
       console.log("RESET PASSWORD", response)

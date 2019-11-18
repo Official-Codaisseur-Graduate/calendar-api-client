@@ -4,36 +4,35 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 
-class Home extends React.Component{
+class Home extends React.Component {
 
-    render(){
+    render() {
         const styles = {
             root: {
-              width: '100%',
-              maxWidth: 500,
+                width: '100%',
+                maxWidth: 500,
             },
-            bg:{
+            bg: {
                 backgroundColor: '#8BAADA',
                 color: 'white'
             }
-          };
+        };
 
-        return(
-            <div>
-                <div styles={styles.bg}> 
-                    <Typography component="h2" variant="h2" gutterBottom>
-                        <u> Welcome to Calendar App</u>   
-                    </Typography>
-                    <br></br>
-                    <div>
-                        <Button variant="contained" color="primary" type='submit'> <Link to='/signup'>signup</Link></Button>
-                    </div><br></br>
-                    <div>
-                        <Button variant="contained" color="primary" type='submit'> <Link to='/login'>Login</Link></Button>
-                    </div>
+        return <>
+            <div styles={styles.bg}> 
+                <Typography component="h2" variant="h2" gutterBottom>
+                    <u>Welcome to Calendar App</u>   
+                </Typography>
+                <br/>
+                <div>
+                    <Button variant="contained" color="primary" type='submit'> <Link to='/signup'>signup</Link></Button>
+                </div>
+                <br/>
+                <div>
+                    <Button variant="contained" color="primary" type='submit'> <Link to='/login'>Login</Link></Button>
                 </div>
             </div>
-        )
+        </>
     }
 }
 

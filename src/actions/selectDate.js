@@ -8,9 +8,9 @@ export const setDate = (payload) => {
 export const selectDate = (year, month, day) => {
     return function (dispatch, getState) {
         const dateObject = {
-            year: year,
-            month: month,
-            day: day
+            year,
+            month,
+            day
         }
         dispatch(setDate(dateObject))
     }
