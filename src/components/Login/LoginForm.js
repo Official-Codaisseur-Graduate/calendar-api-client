@@ -2,7 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import CalendarContainer from '../Calendar/CalendarContainer'
 import lscache from 'lscache'
-import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
 
 export default class LoginForm extends React.Component {
   render() {
@@ -11,7 +12,10 @@ export default class LoginForm extends React.Component {
 
     if (!user) {
       return <form onSubmit={this.props.onSubmit}>
-        <h2>Login</h2>
+        <Typography component="h2" variant="h2" gutterBottom>
+          Login
+        </Typography>
+        
         <p>
           <label>Email:</label><br/>
           <input

@@ -2,6 +2,7 @@ import React from 'react'
 import { login } from '../../actions/login'
 import { connect } from 'react-redux'
 import LoginForm from './LoginForm'
+import Typography from '@material-ui/core/Typography'
 
 class LoginFormContainer extends React.Component {
   state = {
@@ -21,12 +22,17 @@ class LoginFormContainer extends React.Component {
   }
 
   render() {
-    return <LoginForm
-      onSubmit = {this.onSubmit}
-      onChange = {this.onChange}
-      values = {this.state}
-      user = {this.props.user}
-    />
+    return <>
+      <Typography component="h1" variant="h1" gutterBottom>
+        Codaisseur Academy Calendar
+      </Typography>
+      <LoginForm
+        onSubmit = {this.onSubmit}
+        onChange = {this.onChange}
+        values = {this.state}
+        user = {this.props.user}
+      />
+    </>
   }
 }
 

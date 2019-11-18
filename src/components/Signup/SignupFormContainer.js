@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { signup } from '../../actions/signup'
 import SignupForm from './SignupForm'
+import Typography from '@material-ui/core/Typography'
 
 class SignupFormContainer extends React.Component {
   state = {
@@ -20,11 +21,16 @@ class SignupFormContainer extends React.Component {
   }
 
   render() {
-    return <SignupForm
-      onSubmit={this.onSubmit}
-      onChange={this.onChange}
-      values={this.state}
-    />
+    return <>
+      <Typography component="h1" variant="h1" gutterBottom>
+        Codaisseur Academy Calendar
+      </Typography>
+      <SignupForm
+        onSubmit={this.onSubmit}
+        onChange={this.onChange}
+        values={this.state}
+      />
+    </>
   }
 }
 

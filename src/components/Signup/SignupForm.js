@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
 
 export default class SignupForm extends React.Component {
   
@@ -8,7 +9,9 @@ export default class SignupForm extends React.Component {
     return <>
      
       <form onSubmit={this.props.onSubmit}>
-        <h2>Sign up</h2>
+        <Typography component="h2" variant="h2" gutterBottom>
+          Sign up
+        </Typography>
         <p>
           <label>Email:</label><br/>
           <input
@@ -22,7 +25,7 @@ export default class SignupForm extends React.Component {
           <Button variant="contained" color="primary" type='submit'> Submit</Button>
           <div><br></br>
             <Button variant="contained" color="primary" type='submit'>
-              <Link to={'/'}>Go back</Link>
+              <Link to={'/'}>Login</Link>
             </Button>
           </div>
       </form>
