@@ -7,8 +7,15 @@
 
 }
 
+.users-list td {
+    padding: 10px !important;
+
+}
+
 .users-list select {
-    margin-bottom: 10px;
+    width: 150px !important;
+    margin-bottom: 5px;
+    padding: 2px;
 }
 
 .header-settings {

@@ -77,7 +77,7 @@ export default class AdminPage extends React.Component {
                                                             </option>
                                                             {this.props
                                                                 .currentUser
-                                                                .rank > 4 && (
+                                                                .rank === 4 && (
                                                                 <>
                                                                     <option value="3">
                                                                         3 -

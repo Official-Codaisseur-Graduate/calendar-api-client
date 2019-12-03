@@ -19,12 +19,13 @@ export default class ConfigForm extends React.Component {
                         paste them here.
                     </strong>
                 </p>
-                <h3 className="header-settings">
-                    Google Calendar Api configuration
-                </h3>
 
                 <Form className="form" onSubmit={this.props.onSubmit}>
                     <Form.Group controlId="formBasicEmail">
+                        <h3 className="header-settings">
+                            Google Calendar API configuration
+                        </h3>
+
                         <Form.Label>Client email: </Form.Label>
                         <Form.Control
                             type="email"
@@ -49,9 +50,9 @@ export default class ConfigForm extends React.Component {
                             onChange={this.props.onChange}
                         />
                         <Form.Text className="text-muted">
-                            (Copy past everything: including the following:
-                            ----BEGIN PRIVATE KEY-----............-----END
-                            PRIVATE KEY-----\n)
+                            (Copy paste everything between the quotes. <br />
+                            Including the following: ----BEGIN PRIVATE
+                            KEY-----............-----END PRIVATE KEY-----\n)
                         </Form.Text>
                     </Form.Group>
                     <Form.Group controlId="formBasicPassword">
@@ -67,7 +68,7 @@ export default class ConfigForm extends React.Component {
                             To confirm admin changes
                         </Form.Text>
                         <Button type="submit" variant="danger">
-                            Submit configuration
+                            Submit settings
                         </Button>
                     </Form.Group>
                 </Form>

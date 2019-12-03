@@ -1,4 +1,9 @@
 .form-group {
-    width: 80%;
+    width: 60%;
+    padding-bottom: 20px;
     margin: 0 auto !important;
+}
+
+.form-group .btn {
+    margin: 10px 0;
 }
