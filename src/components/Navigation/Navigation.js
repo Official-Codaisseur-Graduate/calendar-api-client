@@ -30,7 +30,7 @@ export default function Navigation(props) {
                         <Nav.Item>Calendar</Nav.Item>
                     </LinkContainer>
                     <LinkContainer to="/admin">
-                        <Nav.Item>Admin</Nav.Item>
+                        <Nav.Item>Admin Panel</Nav.Item>
                     </LinkContainer>
                     <LinkContainer to="/logout">
                         <Nav.Item>Logout</Nav.Item>
@@ -39,14 +39,14 @@ export default function Navigation(props) {
             );
         } else {
             navigationLinks = (
-                <nav>
+                <Nav>
                     <LinkContainer to="/">
                         <Nav.Item>Calendar</Nav.Item>
                     </LinkContainer>
                     <LinkContainer to="/logout">
                         <Nav.Item>Logout</Nav.Item>
                     </LinkContainer>
-                </nav>
+                </Nav>
             );
         }
     }
@@ -60,7 +60,6 @@ export default function Navigation(props) {
             <LinkContainer to="/">
                 <Navbar.Brand>Codaisseur Academy</Navbar.Brand>
             </LinkContainer>
-
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 {navigationLinks}

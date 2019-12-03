@@ -10,12 +10,12 @@ import { fetchUsers } from '../../actions/fetchUsers';
 import { changeUserRank } from '../../actions/changeUserRank';
 
 class AdminPageContainer extends Component {
+    user = lscache.get('user');
     state = {
         rank: '',
     };
     componentDidMount() {
-        const user = lscache.get('user');
-        if (!user) {
+        if (!this.user) {
             return this.props.history.push('/');
         }
 
@@ -53,10 +53,16 @@ class AdminPageContainer extends Component {
                     users={this.props.users}
                     onSubmit={this.onSubmit}
                     onChange={this.onChange}
+                    currentUser={this.user}
                 />
-                <ConfigFormContainer />
-                <CalendarIdFormContainer />
-                <MailVerificationFormContainer />
+                {this.user.rank === 4 && (
+                    <>
+                        <h2 className="header-settings">App settings</h2>
+                        <ConfigFormContainer />
+                        <CalendarIdFormContainer />
+                        <MailVerificationFormContainer />
+                    </>
+                )}
             </>
         );
     }

@@ -1,86 +1,109 @@
 import React from 'react';
+import { Table, Button, Form } from 'react-bootstrap';
+import './adminpage.css';
 
 export default class AdminPage extends React.Component {
     render() {
         return (
             <>
-                <h2>Admin Page</h2>
+                <h1>Admin Panel</h1>
+                <p>
+                    Here you can change the ranks of signed up students,
+                    teachers and assistants.
+                </p>
                 {!this.props.users ? (
                     'Loading...'
                 ) : (
                     <>
-                        {this.props.users.map(user => {
-                            return (
-                                <div key={user.id}>
-                                    <p>name: {user.name}</p>
-                                    <p>email: {user.email}</p>
-                                    <p>rank: {user.rank}</p>
-                                    <form
-                                        onSubmit={this.props.onSubmit}
-                                        data-rank="0"
-                                        data-user_id={user.id}
-                                    >
-                                        <button type="submit">Rank 0</button>
-                                    </form>
-                                    <form
-                                        onSubmit={this.props.onSubmit}
-                                        data-rank="1"
-                                        data-user_id={user.id}
-                                    >
-                                        <button type="submit" value="1">
-                                            Rank 1
-                                        </button>
-                                    </form>
-                                    <form
-                                        onSubmit={this.props.onSubmit}
-                                        data-rank="2"
-                                        data-user_id={user.id}
-                                    >
-                                        <button type="submit" value="2">
-                                            Rank 2
-                                        </button>
-                                    </form>
-                                    <form
-                                        onSubmit={this.props.onSubmit}
-                                        data-rank="3"
-                                        data-user_id={user.id}
-                                    >
-                                        <button type="submit" value="3">
-                                            Rank 3
-                                        </button>
-                                    </form>
-                                    <form
-                                        onSubmit={this.props.onSubmit}
-                                        data-rank="4"
-                                        data-user_id={user.id}
-                                    >
-                                        <button type="submit" value="4">
-                                            Rank 4
-                                        </button>
-                                    </form>
-                                    <form
-                                        onSubmit={this.props.onSubmit}
-                                        data-user_id={user.id}
-                                        id="rank"
-                                    >
-                                        <select
-                                            value={this.props.rank}
-                                            onChange={this.props.onChange}
-                                            name="rank"
-                                        >
-                                            <option value="0">0</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                        </select>
-                                        <button type="submit">
-                                            Change rank
-                                        </button>
-                                    </form>
-                                </div>
-                            );
-                        })}
+                        <h3>Users list</h3>
+                        <Table className="users-list" striped bordered hover>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Current rank</th>
+                                    <th>Change rank</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.props.users.map(user => {
+                                    return (
+                                        <tr key={user.id}>
+                                            <td>{user.id}</td>
+                                            <td> {user.name}</td>
+                                            <td>{user.email}</td>
+                                            {user.rank === 0 && (
+                                                <td>Unauthorized</td>
+                                            )}
+                                            {user.rank === 1 && (
+                                                <td>Student</td>
+                                            )}
+                                            {user.rank === 2 && (
+                                                <td>Assistant</td>
+                                            )}
+                                            {user.rank === 3 && (
+                                                <td>Teacher</td>
+                                            )}
+                                            {user.rank === 4 && <td>Admin</td>}
+                                            <td>
+                                                <form
+                                                    onSubmit={
+                                                        this.props.onSubmit
+                                                    }
+                                                    data-user_id={user.id}
+                                                    id="rank"
+                                                >
+                                                    <Form.Group
+                                                        inline
+                                                        controlId="select-user-rank"
+                                                    >
+                                                        <Form.Control
+                                                            as="select"
+                                                            value={
+                                                                this.props.rank
+                                                            }
+                                                            onChange={
+                                                                this.props
+                                                                    .onChange
+                                                            }
+                                                            name="rank"
+                                                        >
+                                                            <option value="1">
+                                                                1 - Student
+                                                            </option>
+                                                            <option value="2">
+                                                                2 - Assistant
+                                                            </option>
+                                                            {this.props
+                                                                .currentUser
+                                                                .rank > 4 && (
+                                                                <>
+                                                                    <option value="3">
+                                                                        3 -
+                                                                        Teacher
+                                                                    </option>
+                                                                    <option value="4">
+                                                                        4 -
+                                                                        Admin
+                                                                    </option>
+                                                                </>
+                                                            )}
+                                                        </Form.Control>
+                                                        <Button
+                                                            type="submit"
+                                                            variant="danger"
+                                                        >
+                                                            Change rank
+                                                        </Button>
+                                                    </Form.Group>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
+                            </tbody>
+                        </Table>
                     </>
                 )}
             </>

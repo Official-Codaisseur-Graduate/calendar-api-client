@@ -1,0 +1,16 @@
+.users-list {
+    margin-bottom: 50px;
+}
+
+.users-list tr td:last-of-type {
+    text-align: center;
+
+}
+
+.users-list select {
+    margin-bottom: 10px;
+}
+
+.header-settings {
+    margin-top: 75px;
+}
