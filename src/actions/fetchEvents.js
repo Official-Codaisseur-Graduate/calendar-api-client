@@ -9,14 +9,8 @@ export const setEvents = payload => {
 };
 
 export const fetchEvents = (year, month, day) => {
-  return function(dispatch, getState) {
-    // console.log('What do I get?', year, month, day);
-
-    // check if user is logged in.
+  return function(dispatch) {
     const user = lscache.get('user');
-    if (!user) {
-      return console.log('User is not logged in.');
-    }
 
     fetch(`${baseUrl}/events/${year}/${month}/${day}`, {
       method: 'GET',
@@ -26,7 +20,6 @@ export const fetchEvents = (year, month, day) => {
     })
       .then(response => response.json())
       .then(data => {
-        // console.log('fetchEvenst data.events', data.events);
         dispatch(setEvents(data.events));
       })
       .catch(error => console.log(error));

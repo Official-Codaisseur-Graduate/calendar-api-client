@@ -9,12 +9,8 @@ export const setUsers = payload => {
 };
 
 export const fetchUsers = () => {
-  return function(dispatch, getState) {
-    // check if user is logged in.
+  return function(dispatch) {
     const user = lscache.get('user');
-    if (!user) {
-      return console.log('User is not logged in.');
-    }
 
     fetch(`${baseUrl}/users`, {
       method: 'GET',
@@ -24,7 +20,6 @@ export const fetchUsers = () => {
     })
       .then(response => response.json())
       .then(data => {
-        // console.log('data.users', data.users);
         dispatch(setUsers(data.users));
       })
       .catch(error => console.log(error));

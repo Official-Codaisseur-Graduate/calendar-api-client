@@ -2,21 +2,10 @@ import { baseUrl } from '../constants';
 import lscache from 'lscache';
 
 export const login = (email, password) => {
-  return function(dispatch, getState) {
-    // console.log('email >', email, 'password >', password);
-    if (!lscache.supported()) {
-      alert('Local storage is unsupported in this browser');
-      return;
-    }
+  return function() {
     // enable warnings
     lscache.enableWarnings(true);
     lscache.flushExpired();
-
-    // check if already logged in.
-    const user = lscache.get('user');
-    if (user) {
-      return;
-    }
 
     fetch(`${baseUrl}/login`, {
       method: 'POST',
@@ -35,7 +24,6 @@ export const login = (email, password) => {
             `Respsonse status ${response.status} (${response.statusText}): ${json.message}`
           );
         }
-        // console.log('json', json);
         if (process.env.PORT) {
           // Production
           console.log('Production, login session 15 minutes');
@@ -45,7 +33,6 @@ export const login = (email, password) => {
           console.log('Development, login session 24 hours');
           lscache.set('user', json.user, 1440); // 24 hours
         }
-        // dispatch(setUser(json.user))
         window.location.reload(); // Sometimes needed
       })
       .catch(exception => {

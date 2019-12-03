@@ -1,8 +1,7 @@
 import request from 'superagent';
 import { baseUrl } from '../constants';
 
-export const forgotPassword = email => dispatch => {
-  console.log('EMAIL FROM FORGOT PASWORD', email);
+export const forgotPassword = email => {
   request
     .post(`${baseUrl}/forgot-password`)
     .send({
@@ -10,17 +9,11 @@ export const forgotPassword = email => dispatch => {
     })
     .then(response => {
       console.log('FORGOT PASSWORD', response);
-      // dispatch(handleResult(response))
     })
     .catch(console.error);
 };
 
-export const resetPassword = (
-  validation_code,
-  email,
-  new_password
-) => dispatch => {
-  // console.log("RESETPASS", email, validation_code, new_password)
+export const resetPassword = (validation_code, email, new_password) => {
   request
     .post(`${baseUrl}/reset-password`)
     .set('validation', validation_code)
@@ -30,7 +23,6 @@ export const resetPassword = (
     })
     .then(response => {
       console.log('RESET PASSWORD', response);
-      // dispatch(handleResult(response))
     })
     .catch(console.error);
 };

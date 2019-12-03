@@ -1,7 +1,7 @@
 import { baseUrl } from '../constants';
 
 export const validateRegistration = (code, name, password) => {
-  return function(dispatch, getState) {
+  return function() {
     fetch(`${baseUrl}/registervalidation`, {
       method: 'POST',
       headers: {
@@ -15,14 +15,12 @@ export const validateRegistration = (code, name, password) => {
     })
       .then(response => Promise.all([response, response.json()]))
       .then(([response, json]) => {
-        // console.log('response', response);
         if (!response.ok) {
           throw Error(
             `Respsonse status ${response.status} (${response.statusText}): ${json.message}`
           );
         }
         console.log(json);
-        // dispatch(setValidation(json))
       })
       .catch(exception => {
         console.log(

@@ -2,7 +2,7 @@ import { baseUrl } from '../constants';
 import lscache from 'lscache';
 
 export const setupGoogleCalendar = (calendarId, password) => {
-  return function(dispatch, getState) {
+  return function() {
     // check if user is logged in.
     const user = lscache.get('user');
     if (!user) {
@@ -22,14 +22,12 @@ export const setupGoogleCalendar = (calendarId, password) => {
     })
       .then(response => Promise.all([response, response.json()]))
       .then(([response, json]) => {
-        // console.log('response', response);
         if (!response.ok) {
           throw Error(
             `Respsonse status ${response.status} (${response.statusText}): ${json.message}`
           );
         }
         console.log(json);
-        // dispatch(setGoogleCalendar(json))
       })
       .catch(exception => {
         console.log(
