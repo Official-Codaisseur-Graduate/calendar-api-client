@@ -1,0 +1,23 @@
+.users-list {
+    margin-bottom: 50px;
+}
+
+.users-list tr td:last-of-type {
+    text-align: center;
+
+}
+
+.users-list td {
+    padding: 10px !important;
+
+}
+
+.users-list select {
+    width: 150px !important;
+    margin-bottom: 5px;
+    padding: 2px;
+}
+
+.header-settings {
+    margin-top: 75px;
+}
