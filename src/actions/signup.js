@@ -1,7 +1,7 @@
 import { baseUrl } from '../constants';
 
 export const signup = email => {
-  return function(dispatch, getState) {
+  return function() {
     fetch(`${baseUrl}/register`, {
       method: 'POST',
       headers: {
@@ -13,14 +13,12 @@ export const signup = email => {
     })
       .then(response => Promise.all([response, response.json()]))
       .then(([response, json]) => {
-        // console.log('response', response);
         if (!response.ok) {
           throw Error(
             `Respsonse status ${response.status} (${response.statusText}): ${json.message}`
           );
         }
         console.log(json);
-        // dispatch(setUser(json))
       })
       .catch(exception => {
         console.log(
