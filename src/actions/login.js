@@ -1,7 +1,7 @@
 import { baseUrl } from '../constants';
 import lscache from 'lscache';
 
-function handleError(payload) {
+export function handleError(payload) {
   return {
     type: 'ERROR',
     payload

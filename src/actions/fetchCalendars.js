@@ -19,7 +19,6 @@ export const fetchCalendars = () => {
             `Respsonse status ${response.status} (${response.statusText}): ${json.message}`
           );
         }
-        // console.log(json);
       })
       .catch(exception => {
         console.log(

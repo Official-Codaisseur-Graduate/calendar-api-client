@@ -1,5 +1,6 @@
 import { baseUrl } from '../constants';
 import lscache from 'lscache';
+import { handleError } from './login';
 
 export const setEvents = payload => {
   return {
@@ -20,7 +21,12 @@ export const fetchEvents = (year, month, day) => {
     })
       .then(response => response.json())
       .then(data => {
-        dispatch(setEvents(data.events));
+        const events = data.events;
+        if (!events) {
+          const action = handleError(data.message);
+          dispatch(action);
+        }
+        dispatch(setEvents(events));
       })
       .catch(error => console.log(error));
   };

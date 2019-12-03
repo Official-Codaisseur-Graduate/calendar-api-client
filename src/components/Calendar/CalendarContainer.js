@@ -104,7 +104,8 @@ class CalendarContainer extends React.Component {
       return (
         <>
           <button onClick={this.onClickLogout}>Logout</button>
-          <h2>No access, please ask a teacher to help you out.</h2>
+          <p>{this.props.error}</p>
+          <h2>Please ask a teacher to help you out.</h2>
         </>
       );
     }
@@ -129,10 +130,16 @@ class CalendarContainer extends React.Component {
   }
 }
 
+const mapStateToProps = reduxState => {
+  return {
+    error: reduxState.error
+  };
+};
+
 const mapDispatchToProps = {
   logout,
   fetchEvents,
   selectDate
 };
 
-export default connect(null, mapDispatchToProps)(CalendarContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(CalendarContainer);
