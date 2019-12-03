@@ -32,6 +32,7 @@ class LoginFormContainer extends React.Component {
           onChange={this.onChange}
           values={this.state}
           user={this.props.user}
+          error={this.props.error}
         />
       </>
     );
@@ -40,7 +41,8 @@ class LoginFormContainer extends React.Component {
 
 const mapStateToProps = reduxState => {
   return {
-    user: reduxState.user
+    user: reduxState.user,
+    error: reduxState.error
   };
 };
 

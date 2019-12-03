@@ -1,29 +1,38 @@
 import { baseUrl } from '../constants';
 import lscache from 'lscache';
 
-export const login = (email, password) => {
-  return function() {
-    // enable warnings
-    lscache.enableWarnings(true);
-    lscache.flushExpired();
+function handleError(payload) {
+  return {
+    type: 'ERROR',
+    payload
+  };
+}
 
-    fetch(`${baseUrl}/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email,
-        password
-      })
+export const login = (email, password) => dispatch => {
+  // enable warnings
+  lscache.enableWarnings(true);
+  lscache.flushExpired();
+
+  fetch(`${baseUrl}/login`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      email,
+      password
     })
-      .then(response => Promise.all([response, response.json()]))
-      .then(([response, json]) => {
-        if (!response.ok) {
-          throw Error(
-            `Respsonse status ${response.status} (${response.statusText}): ${json.message}`
-          );
-        }
+  })
+    .then(response => Promise.all([response, response.json()]))
+    .then(([response, json]) => {
+      console.log(response);
+      console.log(json);
+      if (!response.ok) {
+        const action = handleError(json.message);
+        dispatch(action);
+      } else {
+        const action = handleError('');
+        dispatch(action);
         if (process.env.PORT) {
           // Production
           console.log('Production, login session 15 minutes');
@@ -34,15 +43,15 @@ export const login = (email, password) => {
           lscache.set('user', json.user, 1440); // 24 hours
         }
         window.location.reload(); // Sometimes needed
-      })
-      .catch(exception => {
-        console.log(
-          new Map([
-            [TypeError, 'There was a problem fetching the response.'],
-            [SyntaxError, 'There was a problem parsing the response.'],
-            [Error, exception.message]
-          ]).get(exception.constructor)
-        );
-      });
-  };
+      }
+    })
+    .catch(exception => {
+      console.log(
+        new Map([
+          [TypeError, 'There was a problem fetching the response.'],
+          [SyntaxError, 'There was a problem parsing the response.'],
+          [Error, exception.message]
+        ]).get(exception.constructor)
+      );
+    });
 };

@@ -15,7 +15,6 @@ export default class LoginForm extends React.Component {
           <Typography component='h2' variant='h2' gutterBottom>
             Login
           </Typography>
-
           <p>
             <label>Email:</label>
             <br />
@@ -27,7 +26,6 @@ export default class LoginForm extends React.Component {
               onChange={this.props.onChange}
             />
           </p>
-
           <p>
             <label>Password:</label>
             <br />
@@ -42,6 +40,7 @@ export default class LoginForm extends React.Component {
           <Button variant='contained' color='primary' type='submit'>
             Submit
           </Button>
+          <p>{this.props.error}</p>
           <p>
             <Button variant='contained' color='primary' type='submit'>
               <Link to={'/forgotpassword'}>Forgot password?</Link>
