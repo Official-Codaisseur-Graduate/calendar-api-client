@@ -26,6 +26,9 @@ export default function Navigation(props) {
         if (props.user.rank === 4) {
             navigationLinks = (
                 <Nav className="mr-auto">
+                    <LinkContainer to="/">
+                        <Nav.Item>Calendar</Nav.Item>
+                    </LinkContainer>
                     <LinkContainer to="/admin">
                         <Nav.Item>Admin</Nav.Item>
                     </LinkContainer>
@@ -37,6 +40,9 @@ export default function Navigation(props) {
         } else {
             navigationLinks = (
                 <nav>
+                    <LinkContainer to="/">
+                        <Nav.Item>Calendar</Nav.Item>
+                    </LinkContainer>
                     <LinkContainer to="/logout">
                         <Nav.Item>Logout</Nav.Item>
                     </LinkContainer>
@@ -45,9 +51,14 @@ export default function Navigation(props) {
         }
     }
     return (
-        <Navbar bg="secondary" variant="dark" expand="lg">
+        <Navbar
+            className="main-navigation"
+            bg="secondary"
+            variant="dark"
+            expand="lg"
+        >
             <LinkContainer to="/">
-                <Navbar.Brand>Codaisseur Academy Calendar </Navbar.Brand>
+                <Navbar.Brand>Codaisseur Academy</Navbar.Brand>
             </LinkContainer>
 
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
