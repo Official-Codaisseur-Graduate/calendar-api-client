@@ -19,35 +19,19 @@ export default function Navigation(props) {
         if (props.user.rank === 4) {
             navigationLinks = (
                 <Nav>
-                    <LinkContainer to="/">
-                        <Nav.Item>Calendar</Nav.Item>
-                    </LinkContainer>
                     <LinkContainer to="/profile">
                         <Nav.Item>Profile</Nav.Item>
                     </LinkContainer>
                     <LinkContainer to="/admin">
                         <Nav.Item>Admin Panel</Nav.Item>
                     </LinkContainer>
-                    <LinkContainer to="/logout">
-                        <Nav.Item onClick={() => props.logout()}>
-                            Logout
-                        </Nav.Item>
-                    </LinkContainer>
                 </Nav>
             );
         } else {
             navigationLinks = (
                 <Nav>
-                    <LinkContainer to="/">
-                        <Nav.Item>Calendar</Nav.Item>
-                    </LinkContainer>
                     <LinkContainer to="/profile">
                         <Nav.Item>Profile</Nav.Item>
-                    </LinkContainer>
-                    <LinkContainer to="/logout">
-                        <Nav.Item onClick={() => props.logout()}>
-                            Logout
-                        </Nav.Item>
                     </LinkContainer>
                 </Nav>
             );
@@ -91,7 +75,21 @@ export default function Navigation(props) {
                 id="basic-navbar-nav"
                 className="justify-content-end"
             >
-                {navigationLinks}
+                <Nav>
+                    {navigationLinks}
+                    {props.user && (
+                        <>
+                            <LinkContainer to="/profile">
+                                <Nav.Item>Your Profile</Nav.Item>
+                            </LinkContainer>
+                            <LinkContainer to="/logout">
+                                <Nav.Item onClick={() => props.logout()}>
+                                    Logout
+                                </Nav.Item>
+                            </LinkContainer>
+                        </>
+                    )}
+                </Nav>
             </Navbar.Collapse>
         </Navbar>
     );
