@@ -1,6 +1,6 @@
 import { baseUrl } from '../constants';
 import lscache from 'lscache';
-import { getServerMessage } from './login';
+import { getServerMessage } from './messages';
 
 export const setEvents = payload => {
   return {
