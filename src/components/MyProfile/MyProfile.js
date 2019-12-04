@@ -13,7 +13,12 @@ class MyProfile extends React.Component {
   };
 
   componentDidMount() {
-    this.props.fetchUsers();
+    const user = lscache.get('user');
+    if (user) {
+      this.props.fetchUsers();
+    } else {
+      this.props.history.push('/');
+    }
   }
 
   onChange = event => {
