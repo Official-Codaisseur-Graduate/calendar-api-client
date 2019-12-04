@@ -1,41 +1,38 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { signup } from '../../actions/signup'
-import SignupForm from './SignupForm'
-import Typography from '@material-ui/core/Typography'
+import React from 'react';
+import { connect } from 'react-redux';
+import { signup } from '../../actions/signup';
+import SignupForm from './SignupForm';
+import Typography from '@material-ui/core/Typography';
 
 class SignupFormContainer extends React.Component {
-  state = {
-    email: ''
-  }
+    state = {
+        email: '',
+    };
 
-  onChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
+    onChange = event => {
+        this.setState({
+            [event.target.name]: event.target.value,
+        });
+    };
 
-  onSubmit = event => {
-    event.preventDefault()
-    this.props.signup(this.state.email)
-  }
+    onSubmit = event => {
+        event.preventDefault();
+        this.props.signup(this.state.email);
+    };
 
-  render() {
-    return <>
-      <Typography component="h1" variant="h1" gutterBottom>
-        Codaisseur Academy Calendar
-      </Typography>
-      <SignupForm
-        onSubmit={this.onSubmit}
-        onChange={this.onChange}
-        values={this.state}
-      />
-    </>
-  }
+    render() {
+        return (
+            <SignupForm
+                onSubmit={this.onSubmit}
+                onChange={this.onChange}
+                values={this.state}
+            />
+        );
+    }
 }
 
 const mapDispatchToProps = {
-  signup
-}
+    signup,
+};
 
-export default connect(null, mapDispatchToProps)(SignupFormContainer)
+export default connect(null, mapDispatchToProps)(SignupFormContainer);
