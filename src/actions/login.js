@@ -42,7 +42,7 @@ export const login = (email, password) => dispatch => {
                     console.log('Development, login session 24 hours');
                     lscache.set('user', json.user, 1440); // 24 hours
                 }
-                //window.location.reload(); // Sometimes needed
+                window.location.reload(); // Sometimes needed
             }
         })
         .catch(exception => {

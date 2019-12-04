@@ -5,22 +5,8 @@ import '../../forms.css';
 export default class ConfigForm extends React.Component {
     render() {
         return (
-            <>
-                <p>
-                    If you setup your service account you get a client email and
-                    a private key. You need both, plus your own password for
-                    this website to make a connection with the Google Calendar
-                    Api.
-                </p>
-                <p>
-                    <strong>
-                        You can get all the information from the .json file you
-                        got earlier. Copy what's between the double qoutes and
-                        paste them here.
-                    </strong>
-                </p>
-
-                <Form className="form" onSubmit={this.props.onSubmit}>
+            <div className="form">
+                <Form onSubmit={this.props.onSubmit}>
                     <Form.Group controlId="formBasicEmail">
                         <h3 className="header-settings">
                             Google Calendar API configuration
@@ -72,7 +58,7 @@ export default class ConfigForm extends React.Component {
                         </Button>
                     </Form.Group>
                 </Form>
-            </>
+            </div>
         );
     }
 }

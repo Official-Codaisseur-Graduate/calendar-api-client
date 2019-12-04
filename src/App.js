@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-
+import { Container } from 'react-bootstrap';
 // Components imports
 import LoginFormContainer from './components/Login/LoginFormContainer';
 import SignupFormContainer from './components/Signup/SignupFormContainer';
@@ -9,19 +9,23 @@ import ValidationContainer from './components/Validation/ValidationContainer';
 import ResetPasswordFormContainer from './components/ResetPassword/ResetPasswordFormContainer';
 import ForgotPasswordContainer from './components/ForgotPassword/ForgotPasswordContainer';
 import NavigationContainer from './components/Navigation/NavigationContainer';
-import { Container } from 'react-bootstrap';
-import HomePageContainer from './components/HomePage/HomePageContainer';
 
+import HomePageContainer from './components/HomePage/HomePageContainer';
+import CalendarContainer from './components/Calendar/CalendarContainer';
+import lscache from 'lscache';
 // import Notification from './components/Notification'
 
 function App() {
+    const user = lscache.get('user');
     return (
         <div className="App">
             <Route path="/" component={NavigationContainer} />
-            <Route exact path="/" component={HomePageContainer} />
 
             <Container className="main-container">
-                {/* Signup routes */}
+                {!user && (
+                    <Route exact path="/" component={HomePageContainer} />
+                )}
+                {user && <Route exact path="/" component={CalendarContainer} />}
                 <Route exact path="/login" component={LoginFormContainer} />
                 <Route exact path="/signup" component={SignupFormContainer} />
                 <Route

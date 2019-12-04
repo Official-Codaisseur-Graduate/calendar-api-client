@@ -1,77 +1,49 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CalendarContainer from '../Calendar/CalendarContainer';
-import lscache from 'lscache';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import { Form, Button, Alert } from 'react-bootstrap';
+import '../../forms.css';
 
 export default class LoginForm extends React.Component {
     render() {
-        const user = lscache.get('user');
-
-        if (!user) {
-            return (
-                <form onSubmit={this.props.onSubmit}>
-                    <Typography component="h2" variant="h2" gutterBottom>
-                        Login
-                    </Typography>
-                    <p>
-                        <label>Email:</label>
-                        <br />
-                        <input
+        return (
+            <div className="form">
+                <h2>Login</h2>
+                <Form onSubmit={this.props.onSubmit}>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control
                             type="text"
-                            value={this.props.email}
                             name="email"
                             placeholder="Enter email"
+                            value={this.props.email}
                             onChange={this.props.onChange}
                         />
-                    </p>
-                    <p>
-                        <label>Password:</label>
-                        <br />
-                        <input
+                    </Form.Group>
+
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control
                             type="password"
                             value={this.props.password}
                             name="password"
                             placeholder="Enter password"
                             onChange={this.props.onChange}
                         />
-                    </p>
-                    <Button variant="contained" color="primary" type="submit">
-                        Submit
-                    </Button>
-                    <p>{this.props.error}</p>
-                    <p>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            type="submit"
-                        >
-                            <Link to={'/forgotpassword'}>Forgot password?</Link>
+                        <Button variant="danger" type="submit">
+                            Submit
                         </Button>
-                        <br></br>
-                        <br></br>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            type="submit"
-                        >
-                            <Link to={'/signup'}>Signup</Link>
-                        </Button>
-                    </p>
-                </form>
-            );
-        } else if (user.rank === 4) {
-            return (
-                <>
-                    <CalendarContainer />
-                    <Link to="/admin">
-                        <button>Admin</button>
-                    </Link>
-                </>
-            );
-        } else {
-            return <CalendarContainer />;
-        }
+                        <Form.Text className="text-muted">
+                            <Link to="/forgotpassword">
+                                Forgot your password?
+                            </Link>
+                        </Form.Text>
+                    </Form.Group>
+                </Form>
+
+                {this.props.error && (
+                    <Alert variant="danger">{this.props.error} </Alert>
+                )}
+            </div>
+        );
     }
 }
