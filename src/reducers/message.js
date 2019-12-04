@@ -1,6 +1,6 @@
 export default function(state = '', action = {}) {
   switch (action.type) {
-    case 'ERROR':
+    case 'MESSAGE':
       return action.payload;
     default:
       return state;

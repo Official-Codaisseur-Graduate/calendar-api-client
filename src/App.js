@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
+
 // Components imports
 import LoginFormContainer from './components/Login/LoginFormContainer';
 import SignupFormContainer from './components/Signup/SignupFormContainer';
@@ -9,8 +10,8 @@ import ValidationContainer from './components/Validation/ValidationContainer';
 import ResetPasswordFormContainer from './components/ResetPassword/ResetPasswordFormContainer';
 import ForgotPasswordContainer from './components/ForgotPassword/ForgotPasswordContainer';
 import NavigationContainer from './components/Navigation/NavigationContainer';
-
 import HomePageContainer from './components/HomePage/HomePageContainer';
+import MyProfile from './components/MyProfile/MyProfile';
 import CalendarContainer from './components/Calendar/CalendarContainer';
 import lscache from 'lscache';
 // import Notification from './components/Notification'
@@ -32,7 +33,9 @@ function App() {
                     exact
                     path="/validate/:code"
                     component={ValidationContainer}
-                />
+                />    
+                <Route exact path='/profile' component={MyProfile}  />
+
                 {/* Reset or forgot password routes */}
                 <Route
                     component={ResetPasswordFormContainer}
@@ -44,13 +47,13 @@ function App() {
                     path="/forgotpassword"
                 />
 
-                {/* Admin routes */}
-                <Route component={AdminPageContainer} exact path="/admin" />
+        {/* Admin routes */}
+        <Route component={AdminPageContainer} exact path='/admin' />
 
-                {/* <Notification /> */}
-            </Container>
-        </div>
-    );
+        {/* <Notification /> */}
+      </Container>
+    </div>
+  );
 }
 
 export default App;
