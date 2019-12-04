@@ -1,12 +1,6 @@
 import { baseUrl } from '../constants';
 import lscache from 'lscache';
-
-export function getServerMessage(payload) {
-  return {
-    type: 'MESSAGE',
-    payload
-  };
-}
+import { getServerMessage } from './messages';
 
 export const login = (email, password) => dispatch => {
   // enable warnings
