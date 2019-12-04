@@ -19,8 +19,6 @@ export const login = (email, password) => dispatch => {
   })
     .then(response => Promise.all([response, response.json()]))
     .then(([response, json]) => {
-      console.log(response);
-      console.log(json);
       if (!response.ok) {
         const action = getServerMessage(json.message);
         dispatch(action);
