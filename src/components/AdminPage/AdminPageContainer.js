@@ -49,12 +49,6 @@ class AdminPageContainer extends Component {
     render() {
         return (
             <>
-                <AdminPage
-                    users={this.props.users}
-                    onSubmit={this.onSubmit}
-                    onChange={this.onChange}
-                    currentUser={this.user}
-                />
                 {this.user && this.user.rank === 4 && (
                     <>
                         <h2 className="header-settings">App settings</h2>

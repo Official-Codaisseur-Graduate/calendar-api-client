@@ -14,6 +14,7 @@ import HomePageContainer from './components/HomePage/HomePageContainer';
 import MyProfile from './components/MyProfile/MyProfile';
 import CalendarContainer from './components/Calendar/CalendarContainer';
 import lscache from 'lscache';
+import UsersListContainer from './components/UsersList/UsersListContainer';
 // import Notification from './components/Notification'
 
 function App() {
@@ -33,10 +34,8 @@ function App() {
                     exact
                     path="/validate/:code"
                     component={ValidationContainer}
-                />    
-                <Route exact path='/profile' component={MyProfile}  />
-
-                {/* Reset or forgot password routes */}
+                />
+                <Route exact path="/profile" component={MyProfile} />
                 <Route
                     component={ResetPasswordFormContainer}
                     path="/resetpassword/:code/:email"
@@ -47,13 +46,11 @@ function App() {
                     path="/forgotpassword"
                 />
 
-        {/* Admin routes */}
-        <Route component={AdminPageContainer} exact path='/admin' />
-
-        {/* <Notification /> */}
-      </Container>
-    </div>
-  );
+                <Route component={AdminPageContainer} exact path="/admin" />
+                <Route exact path="/users" component={UsersListContainer} />
+            </Container>
+        </div>
+    );
 }
 
 export default App;
