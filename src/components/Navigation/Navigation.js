@@ -6,34 +6,32 @@ import './navigation.scss';
 
 export default function Navigation(props) {
     let navigationLinks = (
-        <Nav>
+        <>
             <LinkContainer to="/login">
                 <Nav.Item>Login</Nav.Item>
             </LinkContainer>
             <LinkContainer to="/signup">
                 <Nav.Item>Sign up</Nav.Item>
             </LinkContainer>
-        </Nav>
+        </>
     );
     if (props.user) {
-        if (props.user.rank === 4) {
+        if (props.user.rank === 3) {
             navigationLinks = (
-                <Nav>
-                    <LinkContainer to="/profile">
-                        <Nav.Item>Profile</Nav.Item>
+                <LinkContainer to="/users">
+                    <Nav.Item>Users List</Nav.Item>
+                </LinkContainer>
+            );
+        } else if (props.user.rank === 4) {
+            navigationLinks = (
+                <>
+                    <LinkContainer to="/users">
+                        <Nav.Item>Users List</Nav.Item>
                     </LinkContainer>
                     <LinkContainer to="/admin">
                         <Nav.Item>Admin Panel</Nav.Item>
                     </LinkContainer>
-                </Nav>
-            );
-        } else {
-            navigationLinks = (
-                <Nav>
-                    <LinkContainer to="/profile">
-                        <Nav.Item>Profile</Nav.Item>
-                    </LinkContainer>
-                </Nav>
+                </>
             );
         }
     }
