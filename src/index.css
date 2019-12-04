@@ -22,3 +22,11 @@ h6 {
   font-family: 'Roboto Slab', serif, monospace;
   margin: 20px 0;
 }
+
+.main-home {
+  text-align: center;
+}
+
+.main-logo {
+  max-width: 400px;
+}
