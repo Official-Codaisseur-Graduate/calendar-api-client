@@ -28,7 +28,7 @@ export default class MailVerificationForm extends React.Component {
                         <Form.Label>Email's password: </Form.Label>
                         <Form.Control
                             type="password"
-                            name="password"
+                            name="send_password"
                             placeholder="Password"
                             value={this.props.send_password}
                             onChange={this.props.onChange}

@@ -37,6 +37,9 @@ export default class LoginForm extends React.Component {
                                 Forgot your password?
                             </Link>
                         </Form.Text>
+                        <Form.Text className="text-muted">
+                            <Link to="/signup">Don't have an account yet?</Link>
+                        </Form.Text>
                     </Form.Group>
                 </Form>
 
