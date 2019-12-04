@@ -10,8 +10,8 @@ export default class MailVerificationForm extends React.Component {
 
                     <Form.Label>Verification email: </Form.Label>
                     <Form.Control
-                        type="email"
-                        name="send_mail"
+                        type="text"
+                        name="send_email"
                         placeholder="Email"
                         value={this.props.send_email}
                         onChange={this.props.onChange}

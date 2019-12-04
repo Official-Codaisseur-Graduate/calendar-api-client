@@ -28,7 +28,7 @@ export default class ConfigForm extends React.Component {
 
                         <Form.Label>Client email: </Form.Label>
                         <Form.Control
-                            type="email"
+                            type="text"
                             name="client_email"
                             placeholder="Email"
                             value={this.props.client_email}

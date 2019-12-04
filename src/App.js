@@ -10,6 +10,7 @@ import ResetPasswordFormContainer from './components/ResetPassword/ResetPassword
 import ForgotPasswordContainer from './components/ForgotPassword/ForgotPasswordContainer';
 import NavigationContainer from './components/Navigation/NavigationContainer';
 import { Container } from 'react-bootstrap';
+import HomePageContainer from './components/HomePage/HomePageContainer';
 
 // import Notification from './components/Notification'
 
@@ -17,14 +18,16 @@ function App() {
     return (
         <div className="App">
             <Route path="/" component={NavigationContainer} />
+            <Route exact path="/" component={HomePageContainer} />
 
             <Container className="main-container">
                 {/* Signup routes */}
-                <Route component={SignupFormContainer} exact path="/signup" />
+                <Route exact path="/login" component={LoginFormContainer} />
+                <Route exact path="/signup" component={SignupFormContainer} />
                 <Route
-                    component={ValidationContainer}
                     exact
                     path="/validate/:code"
+                    component={ValidationContainer}
                 />
                 {/* Reset or forgot password routes */}
                 <Route
@@ -36,8 +39,6 @@ function App() {
                     exact
                     path="/forgotpassword"
                 />
-                {/* App routes */}
-                <Route component={LoginFormContainer} exact path="/" />
 
                 {/* Admin routes */}
                 <Route component={AdminPageContainer} exact path="/admin" />
