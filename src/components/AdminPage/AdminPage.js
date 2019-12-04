@@ -1,11 +1,13 @@
 import React from 'react';
 import { Table, Button, Form } from 'react-bootstrap';
 import './adminpage.css';
+import DocumentTitle from '../DocumentTitle/DocumentTitle';
 
 export default class AdminPage extends React.Component {
     render() {
         return (
             <>
+                <DocumentTitle title="Admin Panel" />
                 <h1>Admin Panel</h1>
                 <p>
                     Here you can change the ranks of signed up students,

@@ -9,11 +9,12 @@
 
 .users-list td {
     padding: 10px !important;
+    max-width: 100%;
 
 }
 
 .users-list select {
-    width: 150px !important;
+    max-width: 150px !important;
     margin-bottom: 5px;
     padding: 2px;
 }

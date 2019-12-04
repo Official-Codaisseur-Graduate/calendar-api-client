@@ -12,30 +12,40 @@ import ForgotPasswordContainer from './components/ForgotPassword/ForgotPasswordC
 import NavigationContainer from './components/Navigation/NavigationContainer';
 import HomePageContainer from './components/HomePage/HomePageContainer';
 import MyProfile from './components/MyProfile/MyProfile';
-
+import CalendarContainer from './components/Calendar/CalendarContainer';
+import lscache from 'lscache';
 // import Notification from './components/Notification'
 
 function App() {
-  return (
-    <div className='App'>
-      <Route path='/' component={NavigationContainer} />
-      <Route exact path='/' component={HomePageContainer} />
-      <Route component={MyProfile} exact path='/myProfile' />
-      <Container className='main-container'>
-        {/* Signup routes */}
-        <Route exact path='/login' component={LoginFormContainer} />
-        <Route exact path='/signup' component={SignupFormContainer} />
-        <Route exact path='/validate/:code' component={ValidationContainer} />
-        {/* Reset or forgot password routes */}
-        <Route
-          component={ResetPasswordFormContainer}
-          path='/resetpassword/:code/:email'
-        />
-        <Route
-          component={ForgotPasswordContainer}
-          exact
-          path='/forgotpassword'
-        />
+    const user = lscache.get('user');
+    return (
+        <div className="App">
+            <Route path="/" component={NavigationContainer} />
+
+            <Container className="main-container">
+                {!user && (
+                    <Route exact path="/" component={HomePageContainer} />
+                )}
+                {user && <Route exact path="/" component={CalendarContainer} />}
+                <Route exact path="/login" component={LoginFormContainer} />
+                <Route exact path="/signup" component={SignupFormContainer} />
+                <Route
+                    exact
+                    path="/validate/:code"
+                    component={ValidationContainer}
+                />    
+                <Route exact path='/profile' component={MyProfile}  />
+
+                {/* Reset or forgot password routes */}
+                <Route
+                    component={ResetPasswordFormContainer}
+                    path="/resetpassword/:code/:email"
+                />
+                <Route
+                    component={ForgotPasswordContainer}
+                    exact
+                    path="/forgotpassword"
+                />
 
         {/* Admin routes */}
         <Route component={AdminPageContainer} exact path='/admin' />

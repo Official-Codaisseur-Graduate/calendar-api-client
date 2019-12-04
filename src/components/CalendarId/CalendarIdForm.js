@@ -4,8 +4,8 @@ import { Form, Button } from 'react-bootstrap';
 export default class CalendarIdForm extends React.Component {
     render() {
         return (
-            <>
-                <Form className="form" onSubmit={this.props.onSubmit}>
+            <div className="form">
+                <Form onSubmit={this.props.onSubmit}>
                     <Form.Group controlId="formBasicCalendarId">
                         <h3 className="header-settings">
                             Setup Google Calendar - Calendar ID
@@ -46,7 +46,7 @@ export default class CalendarIdForm extends React.Component {
                         </Button>
                     </Form.Group>
                 </Form>
-            </>
+            </div>
         );
     }
 }
