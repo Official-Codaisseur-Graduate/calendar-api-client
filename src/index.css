@@ -20,4 +20,5 @@ h4,
 h5,
 h6 {
   font-family: 'Roboto Slab', serif, monospace;
+  margin: 20px 0;
 }

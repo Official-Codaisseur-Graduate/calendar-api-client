@@ -6,7 +6,7 @@ import './navigation.scss';
 
 export default function Navigation(props) {
     let navigationLinks = (
-        <Nav className="mr-auto justify-content-end">
+        <Nav>
             <LinkContainer to="/login">
                 <Nav.Item>Login</Nav.Item>
             </LinkContainer>
@@ -18,9 +18,12 @@ export default function Navigation(props) {
     if (props.user) {
         if (props.user.rank === 4) {
             navigationLinks = (
-                <Nav className="mr-auto justify-content-end">
+                <Nav>
                     <LinkContainer to="/">
                         <Nav.Item>Calendar</Nav.Item>
+                    </LinkContainer>
+                    <LinkContainer to="/profile">
+                        <Nav.Item>Profile</Nav.Item>
                     </LinkContainer>
                     <LinkContainer to="/admin">
                         <Nav.Item>Admin Panel</Nav.Item>
@@ -34,9 +37,12 @@ export default function Navigation(props) {
             );
         } else {
             navigationLinks = (
-                <Nav className="mr-auto justify-content-end">
+                <Nav>
                     <LinkContainer to="/">
                         <Nav.Item>Calendar</Nav.Item>
+                    </LinkContainer>
+                    <LinkContainer to="/profile">
+                        <Nav.Item>Profile</Nav.Item>
                     </LinkContainer>
                     <LinkContainer to="/logout">
                         <Nav.Item onClick={() => props.logout()}>
@@ -81,7 +87,10 @@ export default function Navigation(props) {
                 </Navbar.Brand>
             </LinkContainer>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="justify-content-end">
+            <Navbar.Collapse
+                id="basic-navbar-nav"
+                className="justify-content-end"
+            >
                 {navigationLinks}
             </Navbar.Collapse>
         </Navbar>

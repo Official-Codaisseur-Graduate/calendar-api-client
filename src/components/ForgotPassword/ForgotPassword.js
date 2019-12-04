@@ -1,30 +1,33 @@
 import React from 'react';
+import { Form, Button, Alert } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class ForgotPassword extends React.Component {
-  render() {
-    return (
-      <form onSubmit={this.props.onSubmit}>
-        <h2>Forgot your Password ?</h2>
-        <p>
-          Enter your email address, and we'll send you a password reset email.
-        </p>
-        <label>
-          Email:           
-          <input
-            type='text'
-            value={this.props.email}
-            name='email'
-            placeholder='enter email'
-            onChange={this.props.onChange}
-          />
-        </label>
-        <button type='submit'>Send</button>
-        <button type='cancel' onClick={this.props.cancel}>
-          Cancel
-        </button>
-      </form>
-    );
-  }
+    render() {
+        return (
+            <div className="form">
+                <h2>Forgot your password?</h2>
+                <Form onSubmit={this.props.onSubmit}>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control
+                            type="text"
+                            name="email"
+                            placeholder="Enter email"
+                            value={this.props.email}
+                            onChange={this.props.onChange}
+                        />
+                        <Button variant="danger" type="submit">
+                            Send
+                        </Button>
+                        <Form.Text className="text-muted">
+                            <Link to="/login">Back to login</Link>
+                        </Form.Text>
+                    </Form.Group>
+                </Form>
+            </div>
+        );
+    }
 }
 
 export default ForgotPassword;
