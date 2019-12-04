@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-
 import { login } from '../../actions/login';
 import LoginForm from './LoginForm';
 import lscache from 'lscache';

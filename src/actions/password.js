@@ -1,14 +1,21 @@
 import request from 'superagent';
 import { baseUrl } from '../constants';
+import { getServerMessage } from './messages';
 
-export const forgotPassword = email => {
+export const forgotPassword = email => dispatch => {
   request
     .post(`${baseUrl}/forgot-password`)
     .send({
       email
     })
     .then(response => {
-      console.log('FORGOT PASSWORD', response);
+      if (response.ok) {
+        const action = getServerMessage(response.body.message);
+        dispatch(action);
+      } else if (!response.ok) {
+        const action = getServerMessage(response.body.message);
+        dispatch(action);
+      }
     })
     .catch(console.error);
 };

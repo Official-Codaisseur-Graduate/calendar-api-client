@@ -2,11 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ForgotPassword from './ForgotPassword';
 import { forgotPassword } from '../../actions/password';
+import { clearMessage } from '../../actions/messages';
 
 class ForgotPasswordContainer extends React.Component {
   state = {
     email: ''
   };
+
+  componentDidMount() {
+    this.props.clearMessage();
+  }
 
   onChange = event => {
     this.setState({
@@ -16,9 +21,7 @@ class ForgotPasswordContainer extends React.Component {
 
   onSubmit = event => {
     event.preventDefault();
-
     this.props.forgotPassword(this.state.email);
-    this.props.history.push('/');
   };
 
   cancel = event => {
@@ -33,9 +36,17 @@ class ForgotPasswordContainer extends React.Component {
         values={this.state}
         onSubmit={this.onSubmit}
         cancel={this.cancel}
+        message={this.props.message}
       />
     );
   }
 }
+const mapStateToProps = reduxState => {
+  return {
+    message: reduxState.message
+  };
+};
 
-export default connect(null, { forgotPassword })(ForgotPasswordContainer);
+export default connect(mapStateToProps, { forgotPassword, clearMessage })(
+  ForgotPasswordContainer
+);
