@@ -2,50 +2,53 @@ import React from 'react';
 import ConfigForm from './ConfigForm';
 import { connect } from 'react-redux';
 import { GoogleCalendarApiConfig } from '../../actions/GoogleCalendarApiConfig';
-
+import lscache from 'lscache';
 class ConfigFormContainer extends React.Component {
-  state = {
-    client_email: '',
-    private_key: '',
-    password: ''
-  };
+    state = {
+        client_email: '',
+        private_key: '',
+        password: '',
+    };
 
-  onSubmit = event => {
-    event.preventDefault();
+    onSubmit = event => {
+        event.preventDefault();
+        const user = lscache.get('user');
 
-    this.props.GoogleCalendarApiConfig(
-      this.state.client_email,
-      this.state.private_key,
-      this.state.password
-    );
+        console.log('user', user);
 
-    this.setState({
-      client_email: '',
-      private_key: '',
-      password: ''
-    });
-  };
+        this.props.GoogleCalendarApiConfig(
+            this.state.client_email,
+            this.state.private_key,
+            this.state.password
+        );
 
-  onChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
+        this.setState({
+            client_email: '',
+            private_key: '',
+            password: '',
+        });
+    };
 
-  render() {
-    return (
-      <ConfigForm
-        onSubmit={this.onSubmit}
-        onChange={this.onChange}
-        values={this.state}
-        user={this.props.user}
-      />
-    );
-  }
+    onChange = event => {
+        this.setState({
+            [event.target.name]: event.target.value,
+        });
+    };
+
+    render() {
+        return (
+            <ConfigForm
+                onSubmit={this.onSubmit}
+                onChange={this.onChange}
+                values={this.state}
+                user={this.props.user}
+            />
+        );
+    }
 }
 
 const mapDispatchToProps = {
-  GoogleCalendarApiConfig
+    GoogleCalendarApiConfig,
 };
 
 export default connect(null, mapDispatchToProps)(ConfigFormContainer);

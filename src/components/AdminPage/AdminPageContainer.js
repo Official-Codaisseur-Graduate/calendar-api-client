@@ -55,7 +55,7 @@ class AdminPageContainer extends Component {
                     onChange={this.onChange}
                     currentUser={this.user}
                 />
-                {this.user.rank === 4 && (
+                {this.user && this.user.rank === 4 && (
                     <>
                         <h2 className="header-settings">App settings</h2>
                         <ConfigFormContainer />
