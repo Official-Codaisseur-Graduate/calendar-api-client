@@ -5,16 +5,8 @@ import { LinkContainer } from 'react-router-bootstrap';
 import './navigation.scss';
 
 export default function Navigation(props) {
-    let navigationLinks = (
-        <>
-            <LinkContainer to="/login">
-                <Nav.Item>Login</Nav.Item>
-            </LinkContainer>
-            <LinkContainer to="/signup">
-                <Nav.Item>Sign up</Nav.Item>
-            </LinkContainer>
-        </>
-    );
+    let navigationLinks;
+
     if (props.user) {
         if (props.user.rank === 3) {
             navigationLinks = (
@@ -34,6 +26,17 @@ export default function Navigation(props) {
                 </>
             );
         }
+    } else {
+        navigationLinks = (
+            <>
+                <LinkContainer to="/login">
+                    <Nav.Item>Login</Nav.Item>
+                </LinkContainer>
+                <LinkContainer to="/signup">
+                    <Nav.Item>Sign up</Nav.Item>
+                </LinkContainer>
+            </>
+        );
     }
     return (
         <Navbar className="main-navigation" bg="light" expand="lg">

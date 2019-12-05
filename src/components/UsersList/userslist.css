@@ -4,6 +4,7 @@
 
 .users-list tr td:last-of-type {
     text-align: center;
+    width: 200px;
 
 }
 
@@ -14,7 +15,7 @@
 }
 
 .users-list select {
-    max-width: 150px !important;
+
     margin-bottom: 5px;
     padding: 2px;
 }

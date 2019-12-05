@@ -29,6 +29,7 @@ export default class Validation extends React.Component {
                                     value={this.props.password}
                                     name="password"
                                     placeholder="Enter password"
+                                    minlength="8"
                                     onChange={this.props.onChange}
                                 />
                             </Form.Group>
