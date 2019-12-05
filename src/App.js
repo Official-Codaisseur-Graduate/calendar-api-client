@@ -26,7 +26,7 @@ function App() {
 
       <Container className='main-container'>
         {!user && <Route exact path='/' component={HomePageContainer} />}
-        {user && <Route exact path='/' component={CalendarContainer} />}
+        {user && <Route exact path='/' component={NewCalendarContainer} />}
         <Route exact path='/login' component={LoginFormContainer} />
         <Route exact path='/signup' component={SignupFormContainer} />
         <Route exact path='/validate/:code' component={ValidationContainer} />
@@ -40,7 +40,6 @@ function App() {
           exact
           path='/forgotpassword'
         />
-        <Route component={NewCalendarContainer} exact path='/123' />
         <Route component={AdminPageContainer} exact path='/admin' />
         <Route exact path='/users' component={UsersListContainer} />
       </Container>

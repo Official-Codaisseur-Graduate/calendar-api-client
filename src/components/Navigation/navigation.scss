@@ -1,59 +1,57 @@
 .main-navigation {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .navbar {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 .nav-item {
-    margin: 0 20px;
-    cursor: pointer;
-
+  margin: 0 20px;
+  cursor: pointer;
 }
 
 .nav-item:not(.icon) {
-    margin-top: 3px;
+  margin-top: 4.5px;
 }
 
 .navbar .active {
-    font-weight: bold;
-
+  font-weight: bold;
 }
 
 .nav-item span {
-    margin-left: 10px;
+  margin-right: 10px;
 }
 
 .navbar-brand span {
-    font-family: 'Roboto Slab', serif;
-    margin: auto;
-    font-weight: 800;
-    padding-left: 0;
-    vertical-align: middle
+  font-family: 'Roboto Slab', serif;
+  margin: auto;
+  font-weight: 800;
+  padding-left: 0;
+  vertical-align: middle;
 }
 
 .navbar-brand svg {
-    display: inline-block;
-    vertical-align: middle
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .navbar-brand {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 .profile-icon {
-    display: inline-block;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    margin: 0;
-    vertical-align: middle;
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  margin: 0;
+  vertical-align: middle;
 }
 
 .nav-item .span {
-    vertical-align: middle;
+  vertical-align: middle;
 }
