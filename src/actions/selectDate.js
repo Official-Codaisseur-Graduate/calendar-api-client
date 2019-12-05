@@ -1,17 +1,16 @@
 export const setDate = payload => {
-  return {
-    type: 'SET_DATE',
-    payload
-  };
+    return {
+        type: 'SET_CURRENT_MONTH',
+        payload,
+    };
 };
 
-export const selectDate = (year, month, day) => {
-  return function(dispatch) {
-    const dateObject = {
-      year,
-      month,
-      day
+export const selectDate = (year, month) => {
+    return function(dispatch) {
+        const dateObject = {
+            year,
+            month,
+        };
+        dispatch(setDate(dateObject));
     };
-    dispatch(setDate(dateObject));
-  };
 };
