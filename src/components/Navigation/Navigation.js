@@ -78,7 +78,16 @@ export default function Navigation(props) {
                     {props.user && (
                         <>
                             <LinkContainer to="/profile">
-                                <Nav.Item>Your Profile</Nav.Item>
+                                <Nav.Item>
+                                    <div class="circle-tag">
+                                        <img
+                                            src={props.user.profilePic}
+                                            alt="That's you!"
+                                            title="That's you!"
+                                        />
+                                    </div>
+                                    <span>Your Profile</span>
+                                </Nav.Item>
                             </LinkContainer>
                             <LinkContainer to="/logout">
                                 <Nav.Item onClick={() => props.logout()}>

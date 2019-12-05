@@ -10,8 +10,8 @@ class ProfileContainer extends React.Component {
     user = lscache.get('user');
 
     state = {
-        name: '',
-        profilePic: '',
+        name: this.user.name || '',
+        profilePic: this.user.profilePic || '',
         editView: false,
         changes: false,
     };
@@ -26,9 +26,6 @@ class ProfileContainer extends React.Component {
         event.preventDefault();
         this.props.editProfile(this.state.name, this.state.profilePic);
         this.setState({
-            name: '',
-            profilePic: '',
-            editView: false,
             changes: true,
         });
     };
@@ -47,9 +44,7 @@ class ProfileContainer extends React.Component {
     };
 
     componentDidMount() {
-        if (this.user) {
-            this.props.fetchUsers();
-        } else {
+        if (!this.user) {
             this.props.history.push('/');
         }
     }
@@ -57,15 +52,10 @@ class ProfileContainer extends React.Component {
         if (!this.user) {
             return <Redirect to="/" />;
         }
-        const findUser = this.props.users.find(
-            user => user.email === this.user.email
-        );
 
-        const user = findUser;
-        console.log(findUser);
         return (
             <Profile
-                user={user}
+                user={this.user}
                 editView={this.state.editView}
                 changes={this.state.changes}
                 name={this.state.name}
@@ -79,15 +69,9 @@ class ProfileContainer extends React.Component {
     }
 }
 
-const mapStateToProps = reduxState => {
-    return {
-        users: reduxState.users,
-    };
-};
-
 const mapDispatchToProps = {
     editProfile,
     fetchUsers,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);
+export default connect(null, mapDispatchToProps)(ProfileContainer);

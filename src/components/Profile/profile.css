@@ -1,3 +1,32 @@
 .profile {
     display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 20px 40px;
+    max-width: 350px;
+    background: #f5f5f5;
+    border-radius: 7px;
+}
+
+.profile-pic {
+    display: block;
+    max-width: 200px;
+    height: auto;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    margin: 30px auto;
+    border: 3px solid lightgray;
+    box-sizing: content-box;
+}
+
+p {
+
+    text-align: left;
+}
+
+.profile .btn {
+    margin-top: 20px;
 }
