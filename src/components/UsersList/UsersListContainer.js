@@ -23,7 +23,10 @@ class UsersListContainer extends Component {
         this.setState({ rank: event.target.value });
     };
     onSubmit = event => {
-        event.preventDefault();
+        if (!this.state.rank) {
+            event.preventDefault();
+        }
+
         console.log(
             'rank:',
             this.state.rank,
@@ -49,6 +52,7 @@ class UsersListContainer extends Component {
             <>
                 <UsersList
                     users={this.props.users}
+                    unauthorizedUsers={this.props.unauthorizedUsers}
                     onSubmit={this.onSubmit}
                     onChange={this.onChange}
                     currentUser={this.user}
@@ -67,6 +71,12 @@ const mapDispatchToProps = {
 const mapStateToProps = reduxState => {
     return {
         users: reduxState.users,
+        unauthorizedUsers: reduxState.users.reduce((users, user) => {
+            if (user.rank === 0) {
+                users.push(user);
+            }
+            return users;
+        }, []),
     };
 };
 
