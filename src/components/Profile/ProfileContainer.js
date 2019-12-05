@@ -5,73 +5,83 @@ import lscache from 'lscache';
 import { fetchUsers } from '../../actions/fetchUsers';
 import Profile from './Profile';
 import { Redirect } from 'react-router-dom';
+import { clearMessage } from '../../actions/messages';
 
 class ProfileContainer extends React.Component {
-    user = lscache.get('user');
+  user = lscache.get('user');
 
-    state = {
-        name: this.user.name || '',
-        profilePic: this.user.profilePic || '',
-        editView: false,
-        changes: false,
-    };
+  state = {
+    name: '',
+    profilePic: '',
+    editView: false,
+    changes: false
+  };
 
-    onChange = event => {
-        this.setState({
-            [event.target.name]: event.target.value,
-        });
-    };
+  onChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
 
-    onSubmit = event => {
-        event.preventDefault();
-        this.props.editProfile(this.state.name, this.state.profilePic);
-        this.setState({
-            changes: true,
-        });
-    };
+  onSubmit = event => {
+    event.preventDefault();
+    this.props.editProfile(this.state.name, this.state.profilePic);
+    this.setState({
+      changes: true
+    });
+  };
 
-    editMode = () => {
-        this.setState({
-            editView: true,
-        });
-    };
+  editMode = () => {
+    this.setState({
+      editView: true
+    });
+  };
 
-    backToProfile = () => {
-        this.setState({
-            editView: false,
-            changes: false,
-        });
-    };
+  backToProfile = () => {
+    this.setState({
+      editView: false,
+      changes: false
+    });
+  };
 
-    componentDidMount() {
-        if (!this.user) {
-            this.props.history.push('/');
-        }
+  componentDidMount() {
+    this.props.clearMessage();
+    if (!this.user) {
+      this.props.history.push('/');
     }
-    render() {
-        if (!this.user) {
-            return <Redirect to="/" />;
-        }
-
-        return (
-            <Profile
-                user={this.user}
-                editView={this.state.editView}
-                changes={this.state.changes}
-                name={this.state.name}
-                profilePic={this.state.profilePic}
-                onSubmit={this.onSubmit}
-                onChange={this.onChange}
-                backToProfile={this.backToProfile}
-                editMode={this.editMode}
-            />
-        );
+  }
+  render() {
+    if (!this.user) {
+      return <Redirect to='/' />;
     }
+
+    return (
+      <Profile
+        user={this.user}
+        editView={this.state.editView}
+        changes={this.state.changes}
+        name={this.state.name}
+        profilePic={this.state.profilePic}
+        onSubmit={this.onSubmit}
+        onChange={this.onChange}
+        backToProfile={this.backToProfile}
+        editMode={this.editMode}
+        message={this.props.message}
+      />
+    );
+  }
 }
 
-const mapDispatchToProps = {
-    editProfile,
-    fetchUsers,
+const mapStateToProps = reduxState => {
+  return {
+    message: reduxState.message
+  };
 };
 
-export default connect(null, mapDispatchToProps)(ProfileContainer);
+const mapDispatchToProps = {
+  editProfile,
+  fetchUsers,
+  clearMessage
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileContainer);

@@ -103,8 +103,7 @@ class CalendarContainer extends React.Component {
     if (user.rank === 0) {
       return (
         <>
-          <button onClick={this.onClickLogout}>Logout</button>
-          <p>{this.props.error}</p>
+          <p>{this.props.message}</p>
           <h2>Please ask a teacher to help you out.</h2>
         </>
       );
@@ -132,7 +131,7 @@ class CalendarContainer extends React.Component {
 
 const mapStateToProps = reduxState => {
   return {
-    error: reduxState.error
+    message: reduxState.message
   };
 };
 
