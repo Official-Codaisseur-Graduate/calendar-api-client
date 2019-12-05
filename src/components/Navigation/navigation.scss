@@ -5,6 +5,11 @@
 .nav-item {
     margin: 0 20px;
     cursor: pointer;
+    vertical-align: middle
+}
+
+.nav-item span {
+    margin-left: 10px;
 }
 
 .navbar-brand span {
@@ -24,4 +29,25 @@
 
 .navbar-brand {
     vertical-align: middle !important;
+}
+
+.circle-tag {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    border: 3px solid lightgray;
+    box-sizing: content-box;
+}
+
+.circle-tag img {
+    display: inline-block;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
 }

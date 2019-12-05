@@ -11,7 +11,7 @@ import ResetPasswordFormContainer from './components/ResetPassword/ResetPassword
 import ForgotPasswordContainer from './components/ForgotPassword/ForgotPasswordContainer';
 import NavigationContainer from './components/Navigation/NavigationContainer';
 import HomePageContainer from './components/HomePage/HomePageContainer';
-import MyProfile from './components/MyProfile/MyProfile';
+import ProfileContainer from './components/Profile/ProfileContainer';
 import CalendarContainer from './components/Calendar/CalendarContainer';
 import lscache from 'lscache';
 import UsersListContainer from './components/UsersList/UsersListContainer';
@@ -35,7 +35,7 @@ function App() {
                     path="/validate/:code"
                     component={ValidationContainer}
                 />
-                <Route exact path="/profile" component={MyProfile} />
+                <Route exact path="/profile" component={ProfileContainer} />
                 <Route
                     component={ResetPasswordFormContainer}
                     path="/resetpassword/:code/:email"

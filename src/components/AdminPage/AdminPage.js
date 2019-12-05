@@ -1,114 +1,36 @@
 import React from 'react';
-import { Table, Button, Form } from 'react-bootstrap';
 import './adminpage.css';
+import ConfigFormContainer from '../Config/ConfigFormContainer';
+import CalendarIdFormContainer from '../CalendarId/CalendarIdFormContainer';
+import MailVerificationFormContainer from '../MailVerification/MailVerificationFormContainer';
 import DocumentTitle from '../DocumentTitle/DocumentTitle';
+import { Redirect } from 'react-router-dom';
 
-export default class AdminPage extends React.Component {
-    render() {
+export default function AdminPage(props) {
+    if (props.user && props.user.rank === 4) {
         return (
             <>
-                <DocumentTitle title="Admin Panel" />
-                <h1>Admin Panel</h1>
+                <DocumentTitle title="Login" />
+                <h2 className="header-settings">App settings</h2>
                 <p>
-                    Here you can change the ranks of signed up students,
-                    teachers and assistants.
+                    If you setup your service account you get a client email and
+                    a private key. You need both, plus your own password for
+                    this website to make a connection with the Google Calendar
+                    API.
                 </p>
-                {!this.props.users ? (
-                    'Loading...'
-                ) : (
-                    <>
-                        <h3>Users list</h3>
-                        <Table className="users-list" striped bordered hover>
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Current rank</th>
-                                    <th>Change rank</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.props.users.map(user => {
-                                    return (
-                                        <tr key={user.id}>
-                                            <td>{user.id}</td>
-                                            <td> {user.name}</td>
-                                            <td>{user.email}</td>
-                                            {user.rank === 0 && (
-                                                <td>Unauthorized</td>
-                                            )}
-                                            {user.rank === 1 && (
-                                                <td>Student</td>
-                                            )}
-                                            {user.rank === 2 && (
-                                                <td>Assistant</td>
-                                            )}
-                                            {user.rank === 3 && (
-                                                <td>Teacher</td>
-                                            )}
-                                            {user.rank === 4 && <td>Admin</td>}
-                                            <td>
-                                                <form
-                                                    onSubmit={
-                                                        this.props.onSubmit
-                                                    }
-                                                    data-user_id={user.id}
-                                                    id="rank"
-                                                >
-                                                    <Form.Group
-                                                        inline
-                                                        controlId="select-user-rank"
-                                                    >
-                                                        <Form.Control
-                                                            as="select"
-                                                            value={
-                                                                this.props.rank
-                                                            }
-                                                            onChange={
-                                                                this.props
-                                                                    .onChange
-                                                            }
-                                                            name="rank"
-                                                        >
-                                                            <option value="1">
-                                                                1 - Student
-                                                            </option>
-                                                            <option value="2">
-                                                                2 - Assistant
-                                                            </option>
-                                                            {this.props
-                                                                .currentUser
-                                                                .rank === 4 && (
-                                                                <>
-                                                                    <option value="3">
-                                                                        3 -
-                                                                        Teacher
-                                                                    </option>
-                                                                    <option value="4">
-                                                                        4 -
-                                                                        Admin
-                                                                    </option>
-                                                                </>
-                                                            )}
-                                                        </Form.Control>
-                                                        <Button
-                                                            type="submit"
-                                                            variant="danger"
-                                                        >
-                                                            Change rank
-                                                        </Button>
-                                                    </Form.Group>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
-                            </tbody>
-                        </Table>
-                    </>
-                )}
+                <p>
+                    <strong>
+                        You can get all the information from the .json file you
+                        got earlier. Copy what's between the double quotes and
+                        paste them here.
+                    </strong>
+                </p>
+                <ConfigFormContainer />
+                <CalendarIdFormContainer />
+                <MailVerificationFormContainer />
             </>
         );
+    } else {
+        return <Redirect to="/" />;
     }
 }
