@@ -2,10 +2,23 @@
     margin-bottom: 30px;
 }
 
+.navbar {
+    vertical-align: middle;
+}
+
 .nav-item {
     margin: 0 20px;
     cursor: pointer;
-    vertical-align: middle
+
+}
+
+.nav-item:not(.icon) {
+    margin-top: 3px;
+}
+
+.navbar .active {
+    font-weight: bold;
+
 }
 
 .nav-item span {
@@ -15,39 +28,32 @@
 .navbar-brand span {
     font-family: 'Roboto Slab', serif;
     margin: auto;
-
     font-weight: 800;
     padding-left: 0;
     vertical-align: middle
 }
 
 .navbar-brand svg {
-
     display: inline-block;
     vertical-align: middle
 }
 
 .navbar-brand {
-    vertical-align: middle !important;
-}
-
-.circle-tag {
-    width: 25px;
-    height: 25px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    display: inline-block;
     vertical-align: middle;
-    border: 3px solid lightgray;
-    box-sizing: content-box;
 }
 
-.circle-tag img {
+.profile-icon {
     display: inline-block;
-    margin: 0 auto;
-    height: 100%;
-    width: auto;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    margin: 0;
+    vertical-align: middle;
+}
+
+.nav-item .span {
+    vertical-align: middle;
 }

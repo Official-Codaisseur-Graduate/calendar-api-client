@@ -81,14 +81,13 @@ export default function Navigation(props) {
                     {props.user && (
                         <>
                             <LinkContainer to="/profile">
-                                <Nav.Item>
-                                    <div class="circle-tag">
-                                        <img
-                                            src={props.user.profilePic}
-                                            alt="That's you!"
-                                            title="That's you!"
-                                        />
-                                    </div>
+                                <Nav.Item className="icon">
+                                    <div
+                                        className="profile-icon"
+                                        style={{
+                                            backgroundImage: `url(${props.user.profilePic})`,
+                                        }}
+                                    ></div>
                                     <span>Your Profile</span>
                                 </Nav.Item>
                             </LinkContainer>
