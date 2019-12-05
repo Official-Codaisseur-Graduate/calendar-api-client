@@ -50,6 +50,7 @@ class ProfileContainer extends React.Component {
       this.props.history.push('/');
     }
   }
+
   render() {
     if (!this.user) {
       return <Redirect to='/' />;

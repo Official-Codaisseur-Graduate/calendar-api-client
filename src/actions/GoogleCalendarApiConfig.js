@@ -1,12 +1,13 @@
 import { baseUrl } from '../constants';
 import lscache from 'lscache';
+import { getServerMessage } from './messages';
 
 export const GoogleCalendarApiConfig = (
   clientEmail,
   privateKey,
   userPassword
 ) => {
-  return function() {
+  return function(dispatch) {
     const user = lscache.get('user');
 
     fetch(`${baseUrl}/googleapi`, {
@@ -24,11 +25,12 @@ export const GoogleCalendarApiConfig = (
       .then(response => Promise.all([response, response.json()]))
       .then(([response, json]) => {
         if (!response.ok) {
-          throw Error(
-            `Respsonse status ${response.status} (${response.statusText}): ${json.message}`
-          );
+          const action = getServerMessage(json.message);
+          dispatch(action);
+        } else {
+          const action = getServerMessage(json.message);
+          dispatch(action);
         }
-        console.log(json);
       })
       .catch(exception => {
         console.log(
