@@ -9,11 +9,11 @@ export const setEvents = payload => {
   };
 };
 
-export const fetchEvents = (year, month, day) => {
+export const fetchEvents = (year, month) => {
   return function(dispatch) {
     const user = lscache.get('user');
 
-    fetch(`${baseUrl}/events/${year}/${month}/${day}`, {
+    fetch(`${baseUrl}/events/${year}/${month}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${user.jwt}`
