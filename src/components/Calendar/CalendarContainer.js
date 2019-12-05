@@ -75,7 +75,7 @@ class CalendarContainer extends React.Component {
         const month = this.state.dateObject.format('MM');
         const day = this.state.selectedDay;
 
-        this.props.fetchEvents(year, month, day);
+        this.props.fetchEvents(year, month);
         this.props.selectDate(year, month, day);
       }
     );
@@ -93,7 +93,7 @@ class CalendarContainer extends React.Component {
     const month = this.state.dateObject.format('MM');
     const day = Number(this.state.dateObject.format('D'));
 
-    this.props.fetchEvents(year, month, day);
+    this.props.fetchEvents(year, month);
     this.props.selectDate(year, month, day);
   }
 

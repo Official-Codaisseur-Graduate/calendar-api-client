@@ -15,42 +15,37 @@ import ProfileContainer from './components/Profile/ProfileContainer';
 import CalendarContainer from './components/Calendar/CalendarContainer';
 import lscache from 'lscache';
 import UsersListContainer from './components/UsersList/UsersListContainer';
+import NewCalendarContainer from './components/NewBIGCalendar/NewCalendarContainer';
 // import Notification from './components/Notification'
 
 function App() {
-    const user = lscache.get('user');
-    return (
-        <div className="App">
-            <Route path="/" component={NavigationContainer} />
+  const user = lscache.get('user');
+  return (
+    <div className='App'>
+      <Route path='/' component={NavigationContainer} />
 
-            <Container className="main-container">
-                {!user && (
-                    <Route exact path="/" component={HomePageContainer} />
-                )}
-                {user && <Route exact path="/" component={CalendarContainer} />}
-                <Route exact path="/login" component={LoginFormContainer} />
-                <Route exact path="/signup" component={SignupFormContainer} />
-                <Route
-                    exact
-                    path="/validate/:code"
-                    component={ValidationContainer}
-                />
-                <Route exact path="/profile" component={ProfileContainer} />
-                <Route
-                    component={ResetPasswordFormContainer}
-                    path="/resetpassword/:code/:email"
-                />
-                <Route
-                    component={ForgotPasswordContainer}
-                    exact
-                    path="/forgotpassword"
-                />
-
-                <Route component={AdminPageContainer} exact path="/admin" />
-                <Route exact path="/users" component={UsersListContainer} />
-            </Container>
-        </div>
-    );
+      <Container className='main-container'>
+        {!user && <Route exact path='/' component={HomePageContainer} />}
+        {user && <Route exact path='/' component={CalendarContainer} />}
+        <Route exact path='/login' component={LoginFormContainer} />
+        <Route exact path='/signup' component={SignupFormContainer} />
+        <Route exact path='/validate/:code' component={ValidationContainer} />
+        <Route exact path='/profile' component={ProfileContainer} />
+        <Route
+          component={ResetPasswordFormContainer}
+          path='/resetpassword/:code/:email'
+        />
+        <Route
+          component={ForgotPasswordContainer}
+          exact
+          path='/forgotpassword'
+        />
+        <Route component={NewCalendarContainer} exact path='/123' />
+        <Route component={AdminPageContainer} exact path='/admin' />
+        <Route exact path='/users' component={UsersListContainer} />
+      </Container>
+    </div>
+  );
 }
 
 export default App;
