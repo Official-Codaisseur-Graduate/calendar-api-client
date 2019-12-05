@@ -2,53 +2,66 @@ import React from 'react';
 import ConfigForm from './ConfigForm';
 import { connect } from 'react-redux';
 import { GoogleCalendarApiConfig } from '../../actions/GoogleCalendarApiConfig';
-import lscache from 'lscache';
+import { clearMessage } from '../../actions/messages';
+
 class ConfigFormContainer extends React.Component {
-    state = {
-        client_email: '',
-        private_key: '',
-        password: '',
-    };
+  state = {
+    client_email: '',
+    private_key: '',
+    password: ''
+  };
 
-    onSubmit = event => {
-        event.preventDefault();
-        const user = lscache.get('user');
+  componentDidMount() {
+    this.props.clearMessage();
+  }
 
-        console.log('user', user);
+  onSubmit = event => {
+    event.preventDefault();
 
-        this.props.GoogleCalendarApiConfig(
-            this.state.client_email,
-            this.state.private_key,
-            this.state.password
-        );
+    this.props.GoogleCalendarApiConfig(
+      this.state.client_email,
+      this.state.private_key,
+      this.state.password
+    );
 
-        this.setState({
-            client_email: '',
-            private_key: '',
-            password: '',
-        });
-    };
+    this.setState({
+      client_email: '',
+      private_key: '',
+      password: ''
+    });
+  };
 
-    onChange = event => {
-        this.setState({
-            [event.target.name]: event.target.value,
-        });
-    };
+  onChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
 
-    render() {
-        return (
-            <ConfigForm
-                onSubmit={this.onSubmit}
-                onChange={this.onChange}
-                values={this.state}
-                user={this.props.user}
-            />
-        );
-    }
+  render() {
+    return (
+      <ConfigForm
+        onSubmit={this.onSubmit}
+        onChange={this.onChange}
+        values={this.state}
+        user={this.props.user}
+        message={this.props.message}
+      />
+    );
+  }
 }
 
-const mapDispatchToProps = {
-    GoogleCalendarApiConfig,
+const mapStateToProps = reduxState => {
+  return {
+    message: reduxState.message
+  };
 };
 
-export default connect(null, mapDispatchToProps)(ConfigFormContainer);
+const mapDispatchToProps = {
+  GoogleCalendarApiConfig,
+  clearMessage
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ConfigFormContainer);
