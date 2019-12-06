@@ -3,6 +3,29 @@ import { Button, Card } from 'react-bootstrap';
 import Moment from 'react-moment';
 
 export default function EventDetails(props) {
+    console.log(props.event);
+
+    const allUsers = props.users;
+    const event = props.event;
+    console.log('allusers', allUsers);
+    console.log('event', event);
+    let teacher;
+    let assistant;
+
+    if (event.teacher) {
+        teacher = allUsers.find(
+            user => user.email === props.event.teacher.email
+        );
+    }
+
+    if (event.assistant) {
+        assistant = allUsers.find(
+            user => user.email === props.event.assistant.email
+        );
+    }
+
+    console.log('teacher', teacher);
+    console.log('assistant', assistant);
     return (
         <div className="">
             <Card
@@ -21,10 +44,21 @@ export default function EventDetails(props) {
                     <Card.Title>{props.event.title}</Card.Title>
                     <Card.Text>
                         {props.event.description}
-                        <span>Teacher</span>
-                        <span>Assistant</span>
+                        {teacher && <span>Teacher: {teacher.name}</span>}
+
+                        {assistant && <span>Assistant: {assistant.name}</span>}
                     </Card.Text>
                     <nav className="buttons">
+                        {props.user.rank === 2 && (
+                            <Button
+                                variant="success"
+                                onClick={() =>
+                                    props.beAssistant(teacher.email, event)
+                                }
+                            >
+                                Want to assist?
+                            </Button>
+                        )}
                         <Button
                             onClick={() => props.closeEvent()}
                             variant="light"

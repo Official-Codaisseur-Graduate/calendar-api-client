@@ -13,20 +13,19 @@
  */
 
 .main-calendar-container {
-  margin: 40px auto;
+  margin: 40px 10%;
   width: 90%;
-
-
 }
 
 .calendar-wrap {
   display: flex;
+  margin: 0 auto;
 
 }
 
 .calendar {
   background: #f7f7f7;
-  width: 800px;
+  width: 1000px;
   min-height: 700px;
   margin: 0 50px;
   padding: 20px;
@@ -60,4 +59,8 @@
 
 nav.buttons {
   text-align: center;
+}
+
+.buttons button {
+  margin: 10px;
 }

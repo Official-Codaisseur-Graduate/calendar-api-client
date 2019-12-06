@@ -41,6 +41,9 @@ export default function CodaisseurCalendar(props) {
                             <EventDetails
                                 event={props.selectedEvent}
                                 closeEvent={props.closeEvent}
+                                user={props.user}
+                                users={props.users}
+                                beAssistant={props.beAssistant}
                             />
                         </div>
                     )}
