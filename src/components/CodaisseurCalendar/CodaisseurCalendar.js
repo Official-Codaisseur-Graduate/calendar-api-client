@@ -4,6 +4,8 @@ import moment from 'moment';
 import DocumentTitle from '../DocumentTitle/DocumentTitle';
 import EventDetails from './EventDetails';
 
+import CodaisseurLogo from '../../assets/codaisseur-logo.png';
+
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import './calendar.css';
 const localizer = momentLocalizer(moment);
@@ -36,7 +38,7 @@ export default function CodaisseurCalendar(props) {
                     </div>
 
                     {props.selectedEvent && (
-                        <div className="selectedEvent">
+                        <div className="selected-event">
                             <h3>Event details</h3>
                             <EventDetails
                                 event={props.selectedEvent}
@@ -44,6 +46,20 @@ export default function CodaisseurCalendar(props) {
                                 user={props.user}
                                 users={props.users}
                                 beAssistant={props.beAssistant}
+                            />
+                        </div>
+                    )}
+                    {!props.selectedEvent && (
+                        <div className="selected-event">
+                            <h3>No event selected</h3>
+                            <p>
+                                For more information about an event, click the
+                                event on the calendar.
+                            </p>
+                            <img
+                                className="event-image"
+                                src={CodaisseurLogo}
+                                alt=""
                             />
                         </div>
                     )}

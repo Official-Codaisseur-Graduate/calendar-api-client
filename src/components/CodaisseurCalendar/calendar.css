@@ -13,13 +13,13 @@
  */
 
 .main-calendar-container {
-  margin: 40px 10%;
+  margin: 60px 5%;
   width: 90%;
 }
 
 .calendar-wrap {
   display: flex;
-  margin: 0 auto;
+  margin: 70px auto;
 
 }
 
@@ -48,13 +48,26 @@
   background: #9e212e !important;
 }
 
+.event-details {
+  width: 500px !important;
+}
+
 .event-details .card-header {
   text-align: center;
+
+}
+
+.event-details .card-text {
+  font-size: 22px;
 }
 
 .event-details .card-text span {
   display: block;
   font-weight: bold;
+}
+
+.event-details .card-text span:first-of-type {
+  margin-top: 20px;
 }
 
 nav.buttons {
@@ -63,4 +76,19 @@ nav.buttons {
 
 .buttons button {
   margin: 10px;
+}
+
+.selected-event {
+  width: 500px;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-content: middle !important;
+}
+
+.event-image {
+  max-width: 500px;
+  height: auto;
+  opacity: .3;
 }
