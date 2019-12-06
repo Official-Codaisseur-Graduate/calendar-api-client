@@ -11,8 +11,7 @@ import lscache from 'lscache';
 class CodaisseurCalendarContainer extends Component {
   user = lscache.get('user');
   state = {
-    selectedEvent: null,
-    assistantRequest: false
+    selectedEvent: null
   };
 
   onSelectEvent = event => {
@@ -45,12 +44,7 @@ class CodaisseurCalendarContainer extends Component {
   closeEvent = () => {
     this.setState({ selectedEvent: null });
   };
-  onAssistantRequest = (teacherMail, event) => {
-    this.props.beAssistant(teacherMail, event);
-    this.setState({
-      assistantRequest: true
-    });
-  };
+
   render() {
     return (
       <div className='calendar-wrapper'>
@@ -60,7 +54,7 @@ class CodaisseurCalendarContainer extends Component {
           onSelectSlot={this.onSelectSlot}
           events={this.props.events}
           selectedEvent={this.state.selectedEvent}
-          assistantRequest={this.state.assistantRequest}
+          beAssistant={this.state.beAssistant}
           closeEvent={this.closeEvent}
           user={this.user}
           users={this.props.users}

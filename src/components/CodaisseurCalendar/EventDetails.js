@@ -47,10 +47,10 @@ export default function EventDetails(props) {
             {assistant && <span>Assistant: {assistant.name}</span>}
           </Card.Text>
           <nav className='buttons'>
-            {props.user.rank === 2 && !props.assistantRequest && (
+            {props.user.rank === 2 && (
               <Button
                 variant='success'
-                onClick={() => props.onAssistantRequest(teacher.email, event)}
+                onClick={() => props.beAssistant(teacher.email, event)}
               >
                 Want to assist?
               </Button>
