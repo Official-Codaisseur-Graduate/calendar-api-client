@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { fetchEvents } from '../../actions/fetchEvents';
 import { selectDate } from '../../actions/selectDate';
 import moment from 'moment';
+import EventDetails from './EventDetails';
+import './NewCalendar.css';
 class NewCalendarContainer extends Component {
   state = {
     selectedEvent: null
@@ -16,7 +18,9 @@ class NewCalendarContainer extends Component {
   onSelectSlot = slot => {
     console.log(slot);
   };
+
   onNavigate = date => {
+    this.setState({ selectedEvent: null });
     const transformedDate = moment(date);
     console.log(transformedDate);
     const year = transformedDate.year();
@@ -33,14 +37,28 @@ class NewCalendarContainer extends Component {
     this.props.fetchEvents(year, month);
   };
 
+  closeEvent = () => {
+    this.setState({ selectedEvent: null });
+  };
+
   render() {
     return (
-      <NewCalendar
-        onSelectEvent={this.onSelectEvent}
-        onNavigate={this.onNavigate}
-        onSelectSlot={this.onSelectSlot}
-        events={this.props.events}
-      />
+      <div className='calendar-wrapper'>
+        <NewCalendar
+          onSelectEvent={this.onSelectEvent}
+          onNavigate={this.onNavigate}
+          onSelectSlot={this.onSelectSlot}
+          events={this.props.events}
+        />
+        {this.state.selectedEvent && (
+          <div className='selectedEvent'>
+            <EventDetails
+              selectedEvent={this.state.selectedEvent}
+              closeEvent={this.closeEvent}
+            />
+          </div>
+        )}
+      </div>
     );
   }
 }

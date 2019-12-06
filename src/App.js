@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
+import lscache from 'lscache';
 
 // Components imports
 import LoginFormContainer from './components/Login/LoginFormContainer';
@@ -12,8 +13,6 @@ import ForgotPasswordContainer from './components/ForgotPassword/ForgotPasswordC
 import NavigationContainer from './components/Navigation/NavigationContainer';
 import HomePageContainer from './components/HomePage/HomePageContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
-import CalendarContainer from './components/Calendar/CalendarContainer';
-import lscache from 'lscache';
 import UsersListContainer from './components/UsersList/UsersListContainer';
 import NewCalendarContainer from './components/NewBIGCalendar/NewCalendarContainer';
 // import Notification from './components/Notification'
