@@ -7,7 +7,9 @@ export default function(state = [], action = {}) {
                     title: event.summary,
                     start: event.start.dateTime,
                     end: event.end.dateTime,
+                    eventLink: event.htmlLink,
                     description: event.description,
+                    attendees: event.attendees,
                 }));
             }
             return state;
