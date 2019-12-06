@@ -54,7 +54,7 @@ class CodaisseurCalendarContainer extends Component {
           onSelectSlot={this.onSelectSlot}
           events={this.props.events}
           selectedEvent={this.state.selectedEvent}
-          beAssistant={this.state.beAssistant}
+          beAssistant={this.props.beAssistant}
           closeEvent={this.closeEvent}
           user={this.user}
           users={this.props.users}
