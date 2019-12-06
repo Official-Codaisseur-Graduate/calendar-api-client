@@ -47,13 +47,18 @@ export default function EventDetails(props) {
             {assistant && <span>Assistant: {assistant.name}</span>}
           </Card.Text>
           <nav className='buttons'>
-            {props.user.rank === 2 && (
+            {(props.user.rank === 2 &&
+              props.message !==
+                'Request email sent. Now wait for a teacher to accept your request.') ||
+            props.message === '' ? (
               <Button
                 variant='success'
                 onClick={() => props.beAssistant(teacher.email, event)}
               >
                 Want to assist?
               </Button>
+            ) : (
+              <Button variant='success'>Message Sent!</Button>
             )}
             <Button onClick={() => props.closeEvent()} variant='light'>
               Close the event

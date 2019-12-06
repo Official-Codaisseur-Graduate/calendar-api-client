@@ -14,7 +14,6 @@ class AdminPageContainer extends Component {
   state = {
     form: null
   };
-  componentDidMount() {}
   changeForms(formName) {
     this.setState({ form: formName });
   }

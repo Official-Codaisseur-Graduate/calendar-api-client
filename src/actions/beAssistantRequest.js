@@ -18,7 +18,6 @@ export const beAssistant = (teacherEmail, event) => dispatch => {
     })
   })
     .then(response => {
-      console.log('MESSAGE SENT');
       if (response.ok) {
         console.log(response);
         const action = getServerMessage(response.body.message);

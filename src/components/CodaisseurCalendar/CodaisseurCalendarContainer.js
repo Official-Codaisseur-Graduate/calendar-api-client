@@ -7,6 +7,7 @@ import { beAssistant } from '../../actions/beAssistantRequest';
 import { fetchUsers } from '../../actions/fetchUsers';
 import moment from 'moment';
 import lscache from 'lscache';
+import { clearMessage } from '../../actions/messages';
 
 class CodaisseurCalendarContainer extends Component {
   user = lscache.get('user');
@@ -30,6 +31,7 @@ class CodaisseurCalendarContainer extends Component {
     const month = transformedDate.month();
     this.props.selectDate(year, month);
     this.props.fetchEvents(year, month);
+    this.props.clearMessage();
   };
 
   componentDidMount = () => {
@@ -58,6 +60,7 @@ class CodaisseurCalendarContainer extends Component {
           closeEvent={this.closeEvent}
           user={this.user}
           users={this.props.users}
+          message={this.props.message}
         />
       </div>
     );
@@ -66,12 +69,14 @@ class CodaisseurCalendarContainer extends Component {
 const mapStateToProps = reduxState => {
   return {
     events: reduxState.events,
-    users: reduxState.users
+    users: reduxState.users,
+    message: reduxState.message
   };
 };
 export default connect(mapStateToProps, {
   fetchEvents,
   selectDate,
   beAssistant,
-  fetchUsers
+  fetchUsers,
+  clearMessage
 })(CodaisseurCalendarContainer);
