@@ -1,0 +1,63 @@
+/* .calendar-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.selectedEvent {
+  border: 5px solid red;
+  margin: 0 10%;
+  padding: 2%;
+  height: 450px;
+  width: 40%;
+}
+ */
+
+.main-calendar-container {
+  margin: 40px auto;
+  width: 90%;
+
+
+}
+
+.calendar-wrap {
+  display: flex;
+
+}
+
+.calendar {
+  background: #f7f7f7;
+  width: 800px;
+  min-height: 700px;
+  margin: 0 50px;
+  padding: 20px;
+  font-size: 14px;
+  border: 1px solid #dddddd;
+
+}
+
+.rbc-event {
+  background: #dc3545;
+  font-size: 12px;
+
+}
+
+.rbc-event:hover {
+  background: #9e212e;
+}
+
+.rbc-selected {
+  background: #9e212e !important;
+}
+
+.event-details .card-header {
+  text-align: center;
+}
+
+.event-details .card-text span {
+  display: block;
+  font-weight: bold;
+}
+
+nav.buttons {
+  text-align: center;
+}
