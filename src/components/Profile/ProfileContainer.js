@@ -1,10 +1,11 @@
+import lscache from 'lscache';
 import React from 'react';
 import { connect } from 'react-redux';
-import { editProfile } from '../../actions/editProfile';
-import lscache from 'lscache';
-import { fetchUsers } from '../../actions/fetchUsers';
-import Profile from './Profile';
 import { Redirect } from 'react-router-dom';
+
+import Profile from './Profile';
+import { editProfile } from '../../actions/editProfile';
+import { fetchUsers } from '../../actions/fetchUsers';
 import { clearMessage } from '../../actions/messages';
 
 class ProfileContainer extends React.Component {

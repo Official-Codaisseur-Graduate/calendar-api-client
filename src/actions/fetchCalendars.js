@@ -1,5 +1,6 @@
-import { baseUrl } from '../constants';
 import lscache from 'lscache';
+
+import { baseUrl } from '../constants';
 
 export const fetchCalendars = () => {
   return function() {

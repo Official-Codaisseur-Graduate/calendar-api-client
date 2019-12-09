@@ -1,6 +1,7 @@
 import React from 'react';
-import MailVerificationForm from './MailVerificationForm';
 import { connect } from 'react-redux';
+
+import MailVerificationForm from './MailVerificationForm';
 import { configMailService } from '../../actions/configMailService';
 import { clearMessage } from '../../actions/messages';
 

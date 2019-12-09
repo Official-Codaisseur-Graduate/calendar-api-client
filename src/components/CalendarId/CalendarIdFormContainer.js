@@ -1,7 +1,8 @@
-import React from 'react';
-import CalendarIdForm from './CalendarIdForm';
-import { connect } from 'react-redux';
 import lscache from 'lscache';
+import React from 'react';
+import { connect } from 'react-redux';
+
+import CalendarIdForm from './CalendarIdForm';
 import { fetchCalendars } from '../../actions/fetchCalendars';
 import { setupGoogleCalendar } from '../../actions/setupGoogleCalendar';
 import { clearMessage } from '../../actions/messages';

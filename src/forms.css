@@ -1,21 +1,20 @@
 .form {
-    margin: 0 auto !important;
-    width: 60%;
-    padding-bottom: 20px;
-
+  margin: 0 auto !important;
+  width: 60%;
+  padding-bottom: 20px;
 }
 
 .form-group .btn {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 .form a,
 .form a:active,
 .form a:focus {
-    color: #c1272d;
-    text-decoration: underline;
+  color: #c1272d;
+  text-decoration: underline;
 }
 
 .form a:hover {
-    color: #811d1d;
+  color: #811d1d;
 }

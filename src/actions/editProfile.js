@@ -1,10 +1,12 @@
-import { baseUrl } from '../constants';
 import lscache from 'lscache';
+
+import { baseUrl } from '../constants';
 import { getServerMessage } from './messages';
 
 export const editProfile = (name, profilePic) => {
   return function(dispatch) {
     const user = lscache.get('user');
+
     if (!name && !profilePic) {
       const action = getServerMessage('Not changes made...');
       return dispatch(action);
@@ -30,8 +32,8 @@ export const editProfile = (name, profilePic) => {
         const action = getServerMessage(data.message);
         dispatch(action);
 
-        console.log('data', data);
         lscache.set('user', newUserData);
+
         setTimeout(() => {
           window.location.reload();
         }, 3000);

@@ -1,23 +1,26 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import lscache from 'lscache';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+
 import ConfigFormContainer from '../Config/ConfigFormContainer';
 import CalendarIdFormContainer from '../CalendarId/CalendarIdFormContainer';
 import MailVerificationFormContainer from '../MailVerification/MailVerificationFormContainer';
 import DocumentTitle from '../DocumentTitle/DocumentTitle';
-import { Redirect } from 'react-router-dom';
+
 import './adminpage.css';
 
 class AdminPageContainer extends Component {
   user = lscache.get('user');
+
   state = {
     form: null
   };
-  componentDidMount() {}
+
   changeForms(formName) {
     this.setState({ form: formName });
   }
+
   render() {
     if (this.user && this.user.rank === 4) {
       return (
@@ -57,10 +60,5 @@ class AdminPageContainer extends Component {
     }
   }
 }
-const mapDispatchToProps = {};
 
-const mapStateToProps = reduxState => {
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AdminPageContainer);
+export default AdminPageContainer;

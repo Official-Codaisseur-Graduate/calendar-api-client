@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
+
 import '../../forms.css';
 
 export default class ConfigForm extends React.Component {

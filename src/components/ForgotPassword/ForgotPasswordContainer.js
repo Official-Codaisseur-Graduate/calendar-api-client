@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import ForgotPassword from './ForgotPassword';
 import { forgotPassword } from '../../actions/password';
 import { clearMessage } from '../../actions/messages';

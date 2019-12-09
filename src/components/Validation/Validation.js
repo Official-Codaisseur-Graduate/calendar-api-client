@@ -1,7 +1,6 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-// This component is used for Sign Up after clicking on continue with registration in the gmail account
 export default class Validation extends React.Component {
   render() {
     return (

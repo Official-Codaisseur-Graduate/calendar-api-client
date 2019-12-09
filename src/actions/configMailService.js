@@ -1,5 +1,6 @@
-import { baseUrl } from '../constants';
 import lscache from 'lscache';
+
+import { baseUrl } from '../constants';
 import { getServerMessage } from './messages';
 
 export const configMailService = (send_email, send_password, password) => {

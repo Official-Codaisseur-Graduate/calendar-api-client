@@ -1,6 +1,7 @@
 import React from 'react';
-import ConfigForm from './ConfigForm';
 import { connect } from 'react-redux';
+
+import ConfigForm from './ConfigForm';
 import { GoogleCalendarApiConfig } from '../../actions/GoogleCalendarApiConfig';
 import { clearMessage } from '../../actions/messages';
 

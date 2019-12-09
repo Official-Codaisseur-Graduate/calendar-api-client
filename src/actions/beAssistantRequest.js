@@ -1,11 +1,11 @@
-import { baseUrl } from '../constants';
 import lscache from 'lscache';
+
+import { baseUrl } from '../constants';
 import { getServerMessage } from './messages';
 
 export const beAssistant = (teacherEmail, event) => dispatch => {
-  console.log('Action happened');
-
   const user = lscache.get('user');
+
   fetch(`${baseUrl}/assistant-request`, {
     method: 'POST',
     headers: {
@@ -18,7 +18,6 @@ export const beAssistant = (teacherEmail, event) => dispatch => {
     })
   })
     .then(response => {
-      console.log('MESSAGE SENT');
       if (response.ok) {
         console.log(response);
         const action = getServerMessage(response.body.message);

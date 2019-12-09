@@ -1,9 +1,9 @@
-import { baseUrl } from '../constants';
 import lscache from 'lscache';
+
+import { baseUrl } from '../constants';
 import { getServerMessage } from './messages';
 
 export const login = (email, password) => dispatch => {
-  // enable warnings
   lscache.enableWarnings(true);
   lscache.flushExpired();
 
@@ -34,7 +34,7 @@ export const login = (email, password) => dispatch => {
           console.log('Development, login session 24 hours');
           lscache.set('user', json.user, 1440); // 24 hours
         }
-        window.location.reload(); // Sometimes needed
+        window.location.reload();
       }
     })
     .catch(exception => {

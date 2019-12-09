@@ -1,14 +1,11 @@
 import React from 'react';
-import { Button, Card } from 'react-bootstrap';
 import Moment from 'react-moment';
+import { Button, Card } from 'react-bootstrap';
 
 export default function EventDetails(props) {
-  console.log(props.event);
-
   const allUsers = props.users;
   const event = props.event;
-  console.log('allusers', allUsers);
-  console.log('event', event);
+
   let teacher;
   let assistant;
 
@@ -22,8 +19,6 @@ export default function EventDetails(props) {
     );
   }
 
-  console.log('teacher', teacher);
-  console.log('assistant', assistant);
   return (
     <div className=''>
       <Card

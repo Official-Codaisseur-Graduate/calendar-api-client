@@ -1,10 +1,12 @@
 import React from 'react';
-import './adminpage.css';
+import { Redirect } from 'react-router-dom';
+
 import ConfigFormContainer from '../Config/ConfigFormContainer';
 import CalendarIdFormContainer from '../CalendarId/CalendarIdFormContainer';
 import MailVerificationFormContainer from '../MailVerification/MailVerificationFormContainer';
 import DocumentTitle from '../DocumentTitle/DocumentTitle';
-import { Redirect } from 'react-router-dom';
+
+import './adminpage.css';
 
 export default function AdminPage(props) {
   if (props.user && props.user.rank === 4) {

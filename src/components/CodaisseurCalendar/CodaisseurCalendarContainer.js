@@ -1,15 +1,17 @@
+import lscache from 'lscache';
+import moment from 'moment';
 import React, { Component } from 'react';
-import CodaisseurCalendar from './CodaisseurCalendar';
 import { connect } from 'react-redux';
+
+import CodaisseurCalendar from './CodaisseurCalendar';
 import { fetchEvents } from '../../actions/fetchEvents';
 import { selectDate } from '../../actions/selectDate';
 import { beAssistant } from '../../actions/beAssistantRequest';
 import { fetchUsers } from '../../actions/fetchUsers';
-import moment from 'moment';
-import lscache from 'lscache';
 
 class CodaisseurCalendarContainer extends Component {
   user = lscache.get('user');
+
   state = {
     selectedEvent: null
   };
@@ -18,18 +20,13 @@ class CodaisseurCalendarContainer extends Component {
     this.setState({ selectedEvent: event });
   };
 
-  onSelectSlot = slot => {
-    console.log(slot);
-  };
-
   onNavigate = date => {
-    this.setState({ selectedEvent: null });
     const transformedDate = moment(date);
-    console.log(transformedDate);
     const year = transformedDate.year();
     const month = transformedDate.month();
     this.props.selectDate(year, month);
     this.props.fetchEvents(year, month);
+    this.setState({ selectedEvent: null });
   };
 
   componentDidMount = () => {

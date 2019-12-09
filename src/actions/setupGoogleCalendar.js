@@ -1,11 +1,12 @@
-import { baseUrl } from '../constants';
 import lscache from 'lscache';
+
+import { baseUrl } from '../constants';
 import { getServerMessage } from './messages';
 
 export const setupGoogleCalendar = (calendarId, password) => {
   return function(dispatch) {
-    // check if user is logged in.
     const user = lscache.get('user');
+
     if (!user) {
       return console.log('User is not logged in.');
     }

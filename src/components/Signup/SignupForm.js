@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Button, Alert } from 'react-bootstrap';
+
 import DocumentTitle from '../DocumentTitle/DocumentTitle';
 
 export default class SignupForm extends React.Component {
   render() {
     return (
       <>
-        {' '}
         <DocumentTitle title='Sign up' />
         <div className='form'>
           <h2>Sign up</h2>

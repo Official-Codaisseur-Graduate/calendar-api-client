@@ -1,9 +1,10 @@
+import lscache from 'lscache';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { login } from '../../actions/login';
+
 import LoginForm from './LoginForm';
-import lscache from 'lscache';
+import { login } from '../../actions/login';
 import { clearMessage } from '../../actions/messages';
 
 class LoginFormContainer extends React.Component {
@@ -13,9 +14,11 @@ class LoginFormContainer extends React.Component {
     email: '',
     password: ''
   };
+
   componentDidMount() {
     this.props.clearMessage();
   }
+
   onChange = event => {
     this.setState({
       [event.target.name]: event.target.value
