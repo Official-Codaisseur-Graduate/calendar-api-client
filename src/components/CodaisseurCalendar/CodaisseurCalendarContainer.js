@@ -20,6 +20,10 @@ class CodaisseurCalendarContainer extends Component {
     this.setState({ selectedEvent: event });
   };
 
+  //When user navigates through months,
+  //the month is calculated by date and
+  //events are fetched for this specific month only.
+  //Also hide previous selected event info.
   onNavigate = date => {
     const transformedDate = moment(date);
     const year = transformedDate.year();
